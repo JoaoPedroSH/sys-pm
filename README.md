@@ -1,1 +1,1 @@
-# Sistema Integrado de Gestão do 7ºBPM-PA
+# Sistema Integrado de Gestão Armamentista do 7ºBPM-PA
