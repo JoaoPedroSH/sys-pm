@@ -1,0 +1,96 @@
+body{
+  background-color: #0a0a0a;
+}
+
+#main {
+  margin-top: 50px;
+ 
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+}
+ul{
+  font-size: 18pt;
+  margin-top: 40px;
+ 
+}
+
+/* Estilização Geral*/
+
+#logo{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 2px 3px 1px 2px rgb(48, 45, 45);
+
+}
+
+#titulo{
+  text-align: center;
+  width: auto;
+  height: auto;
+ 
+  border-radius: 15px;
+  font-weight: bold;
+  margin-top: 150px;
+}
+.row{
+  padding: 10px;
+  font-size: 15pt;
+  color: rgb(19, 17, 17);
+ 
+}
+label{
+ font-size: 30pt;
+}
+
+
+  .box {
+  width: 300px;
+  height: 300px;
+ 
+  }
+  body {
+  margin: 0px;
+  }
+
+  /* Estilização Botões*/
+
+  .btn-outline-danger {
+    color: #dc3545;
+    background-color: #fff9;
+    background-image: none;
+    border-color: #dc3545;
+  }
+
+  .btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-outline-info {
+    color: #17a2b8 !important;
+    background-color: #fff9 !important;
+    background-image: none !important;
+    border-color: #17a2b8 !important;
+  }
+
+  .btn-outline-info:hover {
+    color: #fff !important;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+  }
+
+  .btn-od {
+    color: #343a40 !important;
+    background-color: #fff9 !important;
+    border-color: #343a40 !important;
+  }
+
+  .btn-od:hover {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+  }

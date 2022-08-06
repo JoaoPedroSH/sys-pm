@@ -1,0 +1,256 @@
+<style>
+  .btn-outline-dark:hover {
+    color: #343a40;
+    background-color: #fff;
+    background-image: none;
+    border-color: #343a40;
+  }
+
+  .btn-group,
+  .btn-outline-dark {
+    width: 100%;
+  }
+
+  .btn-outline-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: #fff;
+  }
+
+  .bg-light {
+    background-color: #0a0a0a !important;
+    width: auto;
+  }
+
+  .text-muted {
+    color: #e7e7e7 !important;
+  }
+
+  .barra-lateral.mostra {
+    display: none;
+  }
+
+  .btn-abre.some {
+    display: none;
+  }
+
+  .barra-lateral.ocultar {
+    display: none;
+  }
+
+  .corpo-painel.expandir {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+   .sidebar {
+    position: fixed;
+    top: 35px;    
+    z-index: 2;
+    width: 15%;    
+  }
+
+</style>
+<div class="barra-lateral col-md-2" style="padding: 0;">
+  <div class="col-md-12 bg-light" style="padding-top: 0;height: 100%;">
+    <nav class="sidebar d-none mt-0 d-md-block">
+      <div class="sidebar-sticky">
+
+        <ul class="nav flex-column">
+
+          <li class="nav-item">
+            <center><img src="../../img/logo.png" alt="SysPM.png" style="margin-top: 20px; width: 160px; height: 50px;"></center>
+              
+            <!-- Home -->
+
+            <hr style="border-top: 1px solid rgb(255 255 255 / 37%)">
+
+            <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+              <span>PAINEIS</span>
+            </h6>
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm/home.php" style="margin-bottom: 10px; padding-right: 10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+              </svg>
+              Painel Geral
+            </a>
+
+          </li>
+
+          <li class="nav-item">
+            <!-- Cadastrar -->
+
+            <hr style="border-top: 1px solid rgb(255 255 255 / 37%)">
+
+            <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+              <span>AÇÕES</span>
+            </h6>
+
+            <div class="btn-group dropright">
+
+              <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 31px;">
+                <svg xmlns="img/cadastrar.svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                Cadastrar
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../adm/cadastro_armas.php">Armas</a>
+                <a class="dropdown-item" href="../adm/cadastro_municoes.php">Munições</a>
+                <a class="dropdown-item" href="../adm/cadastro_equipamentos.php">Equipamentos</a>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="nav-item">
+            <!-- Consultar -->
+
+            <div class="btn-group dropright">
+
+              <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 31px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+                Consultar
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../adm/inventario_geral.php">Inventário Geral</a>
+                <a class="dropdown-item" href="../adm/consulta_armas_gto.php">Armas GTO</a>
+                <a class="dropdown-item" href="../adm/consulta_armas_ordinario.php">Armas Ordinário</a>
+                <a class="dropdown-item" href="../adm/consulta_municao_gto.php">Munições GTO</a>
+                <a class="dropdown-item" href="../adm/consulta_municao_ordinario.php">Munições Ordinário</a>
+                <a class="dropdown-item" href="../adm/consulta_equipamento_gto.php">Equipamentos GTO</a>
+                <a class="dropdown-item" href="../adm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="nav-item">
+            <!-- Cautela do EPI -->
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+              style="margin-bottom: 10px; padding-right: 10px;" href="../adm/caterinha_epi.php">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-layers">
+
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+
+                <polyline points="2 17 12 22 22 17"></polyline>
+
+                <polyline points="2 12 12 17 22 12"></polyline>
+
+              </svg>
+
+              Cautela do EPI
+
+            </a>
+
+          </li>
+
+          <li class="nav-item">
+            <!-- Descargo de Munição -->
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+              style="margin-bottom: 10px; padding-right: 10px;" href="../adm/descargo_de_municao.php">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bullseye"
+                viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+              </svg>
+              Descargo de Munição
+            </a>
+          </li>
+        </ul>
+
+        <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
+
+        <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+
+          <span>ADMINISTRADOR</span>
+
+        </h6>
+
+        <ul class="nav flex-column">
+          
+          <li class="nav-item">
+
+            <!-- Permissões -->
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+              style="margin-bottom: 10px; padding-right: 33px;" href="../adm/permissao.php">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-users">
+
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+
+                <circle cx="9" cy="7" r="4"></circle>
+
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+
+              </svg>
+
+              Permissões
+
+            </a>
+
+          </li>
+
+          <li class="nav-item">
+            
+            <!-- Histórico de Acesso -->
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+              style="margin-bottom: 10px; padding-right: 33px;" href="../adm/historico_acesso.php">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 171 171" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,171.99654v-171.99654h171.99654v171.99654z" fill="none"></path><g fill="#ffffff"><path d="M23.94,6.84v157.32h82.33383c-1.88442,-2.09988 -3.56033,-4.38444 -4.98305,-6.84h-70.51078v-143.64h68.4v41.04h41.04v41.21367c2.34612,0.19494 4.62384,0.59781 6.84,1.16895v-47.21871l-43.04391,-43.04391zM106.02,18.51609l29.36391,29.36391h-29.36391zM136.8,102.6c-18.81,0 -34.2,15.39 -34.2,34.2c0,18.81 15.39,34.2 34.2,34.2c18.81,0 34.2,-15.39 34.2,-34.2c0,-18.81 -15.39,-34.2 -34.2,-34.2zM133.38,109.68047v27.11953c0.00019,1.88874 1.53126,3.41981 3.42,3.42h27.11953c-1.70019,13.44526 -13.23219,23.94 -27.11953,23.94c-15.048,0 -27.36,-12.312 -27.36,-27.36c0,-13.88734 10.49474,-25.41934 23.94,-27.11953zM140.22,109.68047c12.32155,1.5581 22.14143,11.37798 23.69953,23.69953h-23.69953z"></path></g></g></svg>
+              Histórico de Acesso
+            </a>
+
+          </li>
+
+          <li class="nav-item">
+            
+            <!-- Backup -->
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+              style="margin-bottom: 10px; padding-right: 33px;" href="../../services/Backupando.php">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 171 171" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,171.99654v-171.99654h171.99654v171.99654z" fill="none"></path><g fill="#ffffff"><path d="M71.82668,0c-42.96204,0 -71.82668,15.91342 -71.82668,30.77332c0,14.86674 28.86464,30.78668 71.82668,30.78668c42.96204,0 71.81332,-15.91994 71.81332,-30.78668c0,-14.8599 -28.85128,-30.77332 -71.81332,-30.77332zM0,46.54406v18.95027c0,14.61708 28.88388,30.26566 71.88012,30.26566c42.99624,0 71.75988,-15.64858 71.75988,-30.26566v-18.95027c-12.5685,12.83868 -39.55374,21.85594 -71.75988,21.85594c-32.2164,0 -59.3082,-9.02068 -71.88012,-21.85594zM0,81.77273v18.07523c0,14.61366 28.88388,30.11203 71.88012,30.11203c11.92554,0 22.71014,-1.08077 32.14934,-3.13277c-0.77571,2.54242 -1.2283,5.22139 -1.38938,7.97555c-9.41868,1.84338 -19.77834,1.99723 -30.75996,1.99723c-32.2164,0 -59.3082,-7.83837 -71.88012,-20.67363v17.76797c0,14.61708 28.88388,30.26566 71.88012,30.26566c14.93514,0 28.11293,-1.91841 39.02273,-4.99641c6.28596,7.27092 15.55165,11.89652 25.89715,11.89652c18.89208,0 34.2668,-15.3713 34.2668,-34.2668c0,-1.91862 -1.56134,-3.48012 -3.4868,-3.48012c-1.92546,0 -3.4868,1.56134 -3.4868,3.4868c0,15.05142 -12.24178,27.2932 -27.2932,27.2932c-15.05142,0 -27.2932,-12.24178 -27.2932,-27.2932c0,-15.05142 12.24178,-27.2932 27.2932,-27.2932c10.94026,0 17.47933,6.84415 20.04574,10.1932h-12.11027c-1.89126,0 -3.42,1.52874 -3.42,3.42c0,1.89126 1.52874,3.42 3.42,3.42h22.84453v-22.84453c0,-1.89126 -1.52874,-3.42 -3.42,-3.42c-1.89126,0 -3.42,1.52874 -3.42,3.42v9.83918c-3.34337,-3.71477 -9.12338,-8.60686 -17.54086,-10.34684c0.32832,-1.11492 0.44086,-2.22835 0.44086,-3.33985v-18.07523c-12.5685,12.83184 -39.55374,20.82727 -71.75988,20.82727c-32.2164,0 -59.3082,-7.99543 -71.88012,-20.82727z"></path></g></g></svg>
+              Gerar Backup
+            </a>
+
+          </li> 
+          <li style="position: bottom;">
+          <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
+          <center><img src="../../img/marcauepa.png" width="180px" height="80px"></center>
+        </li>
+
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+</div>

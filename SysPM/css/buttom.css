@@ -1,0 +1,40 @@
+
+  /* Estilização Botões*/
+
+  .btn-outline-danger {
+    color: #dc3545;
+    background-color: #fff9;
+    background-image: none;
+    border-color: #dc3545;
+  }
+
+  .btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-outline-info {
+    color: #17a2b8 !important;
+    background-color: #fff9 !important;
+    background-image: none !important;
+    border-color: #17a2b8 !important;
+  }
+
+  .btn-outline-info:hover {
+    color: #fff !important;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+  }
+
+  .btn-od {
+    color: #343a40 !important;
+    background-color: #fff9 !important;
+    border-color: #343a40 !important;
+  }
+
+  .btn-od:hover {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+  }
