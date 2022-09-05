@@ -47,6 +47,7 @@ if (isset($_POST['modelo'])) {
   //VERIFICANDO SE OCORREU O CADASTRO
   if ($result > 0) {
     $_SESSION['sucesso'] = $cadastrado;
+    header('Location: ../pages/adm/cadastro_armas.php');
   } else {
     echo "<script>alert('Erro ao Realizar Cadastro')</script>";
   }
