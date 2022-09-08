@@ -1,7 +1,7 @@
 <?php
 session_start();
 //VERIFICANDO SE FOI ENVIADO ALGO
-if (isset($_POST['modelo'])) {
+if (isset($_POST['n_serie'])) {
 
   //INCLUINDO CONEXÃO COM O BANCO DE DADOS
   include('../db/Conexao.php');
@@ -20,7 +20,7 @@ if (isset($_POST['modelo'])) {
   $foto = $_FILES['foto']['name'];
   $extensao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
   $novo_nome = md5(time()) . "." . $extensao;
-  $diretorio = "../../img/fotos_armas/";
+  $diretorio = "../img/fotos_armas/";
   move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);
 
   //VERIFICANDO TIPO DE CADASTRO

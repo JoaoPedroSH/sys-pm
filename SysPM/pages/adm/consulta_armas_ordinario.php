@@ -6,6 +6,8 @@ if (!isset($_SESSION['adm'])) {
   header("location:../login.php");
 }
 
+include_once "../../db/Conexao.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -13,14 +15,6 @@ if (!isset($_SESSION['adm'])) {
 <html lang="pt-br">
 
 <head>
-
-  <meta charset="utf-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <meta name="description" content="">
-
-  <meta name="author" content="">
 
   <?php include('../layouts/title_e_favicon.html') ?>
 
@@ -65,35 +59,43 @@ if (!isset($_SESSION['adm'])) {
 
           <br>
           <div class="col-md-12" style="display: flex;width: 100%;margin: 0 0 5px;padding-left: 9%;">
-            
+
             <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
           </div>
 
           <?php
-          if (isset($_SESSION['cadastrato'])) {
+          if (isset($_SESSION['success_edit'])) {
           ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 50%;">
-              Edição Realizada Com Sucesso!!!
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <script>
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edição Realizada com Sucesso!',
+                showConfirmButton: false,
+                confirmButtonColor: '#2ECC71',
+                timer: 3000
+              })
+            </script>
 
           <?php
-            unset($_SESSION['cadastrato']);
+            unset($_SESSION['success_edit']);
           }
-          if (isset($_SESSION['nao_cadastrato'])) {
+          if (isset($_SESSION['error_edit'])) {
           ?>
 
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 50%;">
-              Erro ao realizar edição tente novamente....
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <script>
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro ao realizar Edição! Tente novamente...',
+                showConfirmButton: false,
+                confirmButtonColor: '#2ECC71',
+                timer: 3000
+              })
+            </script>
 
           <?php
-            unset($_SESSION['nao_cadastrato']);
+            unset($_SESSION['error_edit']);
           }
 
           ?>
@@ -123,8 +125,6 @@ if (!isset($_SESSION['adm'])) {
 
             <?php
 
-            include('../../db/Conexao.php');
-
             $query = "SELECT  * FROM armas_ord";
 
             $resultvba = mysqli_query($conexao, $query);
@@ -145,18 +145,17 @@ if (!isset($_SESSION['adm'])) {
                   <td><?php echo $linhas['localizacao'] ?></td>
                   <td><?php echo $linhas['situacao'] ?></td>
                   <td><?php echo $linhas['cautela'] ?></td>
-                  <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button></td>
+                  <td><button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>"> OBS </button></td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal" data-bs-whatever="<?= $linhas['modelo'] ?>" data-bs-whatever2="<?= $linhas['marca'] ?>" data-bs-whatever9="<?= $linhas['id'] ?>" data-bs-whatever7="<?= $linhas['situacao'] ?>" data-bs-whatever3="<?= $linhas['n_serie'] ?>" data-bs-whatever4="<?= $linhas['patrimonio'] ?>" data-bs-whatever5="<?= $linhas['localizacao'] ?>" data-bs-whatever6="<?= $linhas['cautela'] ?>" data-bs-whatever8="<?= $linhas['obs'] ?>">Editar</button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
 
-                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#ModalLongoExemplo<?php echo $linhas['id'] ?>" style="margin-left: 5px;">Ver Histórico</button>
+                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#ModalLongoExemplo<?php echo $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
 
                 </tr>
 
                 <!-- MODAL DO HISTÓRICO -->
-
                 <div class="modal fade bd-example-modal-lg" id="ModalLongoExemplo<?php echo $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -184,12 +183,10 @@ if (!isset($_SESSION['adm'])) {
                           <hr>
 
                           <form action="../../services/biblioteca_pdf/PdfHistoricoDaArma.php" method="POST" enctype="multipart/form-data">
-                    
-                    
+
+
 
                             <?php
-
-                            include('../../db/Conexao.php');
 
                             $query2 = "SELECT  * FROM historico_armas";
 
@@ -215,17 +212,15 @@ if (!isset($_SESSION['adm'])) {
                             <?php
 
                                 $y++;
-                              } 
+                              }
                             }
                             ?>
 
-
                         </div>
-
                       </div>
                       <div class="modal-footer">
 
-                      <input type="checkbox" name="imprimir" checked>
+                        <input type="checkbox" name="imprimir" checked>
 
                         <button type="submit" class="btn btn-outline-danger">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-pdf-fill" viewBox="0 0 20 20">
@@ -239,6 +234,110 @@ if (!isset($_SESSION['adm'])) {
                   </div>
                 </div>
 
+                <!-- MODAL DE EDIÇÃO -->
+                <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="edit">Editar Dados</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- <form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
+
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Imagem da arma:</label><br>
+                            <input type="file" name="fotoarma" accept="image/*" id="fotoarma" title=" ">
+                            <input type="hidden" name="id" id="idarma">
+
+                            <input type="hidden" name="tipo" value="ordinario">
+                            <button class="btn btn-outline-success" type="submit">Alterar</button>
+                          </div>
+                        </form> -->
+
+                        <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
+
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Marca:</label>
+                            <input type="text" class="form-control" id="marca" name="marca">
+                          </div>
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Modelo:</label>
+                            <input type="text" class="form-control" id="modelo" name="modelo">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Nº Série:</label>
+                            <input type="text" class="form-control" id="n_serie" name="n_serie">
+                            <input type="hidden" id="serie2" name="serie2">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">PRATIMÔNIO:</label>
+                            <input type="text" class="form-control" id="patrimonio" name="patrimonio">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO:</label>
+                            <input type="text" class="form-control" id="localizacao" name="localizacao">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">SITUAÇÃO:</label>
+                            <input type="text" class="form-control" id="situacao" name="situacao">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">CAUTELA:</label>
+                            <input type="text" class="form-control" id="cautela" name="cautela">
+
+                            <hr>
+                            <label>Selecione uma ação: </label>
+                            <select class="form-select " aria-label="Default select example" style="text-align: center;" name="tipoedicao" required>
+                              <option value=""></option>
+                              <option value="correcao">Corrigir</option>
+                              <option value="mudanca">Mudar</option>
+
+                            </select>
+                            <hr>
+                          </div>
+                          <div>
+                            <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
+                            <textarea id="obs" name="obs" cols="60" rows="4"> </textarea>
+                          </div>
+
+                          <div class="form-group">
+
+                            <input type="hidden" name="id" id="id" value="">
+                            <input type="hidden" name="tipo" id="tipo" value="ordin">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- MODAL DA OBSERVAÇÃO -->
+                <div class="modal fade" id="obs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Obervações</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <span id="conteudo"></span>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               <?php
 
               $x++;
@@ -248,15 +347,14 @@ if (!isset($_SESSION['adm'])) {
               </tbody>
           </table>
         </div>
-
       </div>
     </div>
-
   </div>
+</body>
 
-  <!-- IMPRIME HISTÓRICO -->
-  <script>
-    /*function historico() {
+<!-- IMPRIME HISTÓRICO -->
+<script>
+  /*function historico() {
       alert("Pressiona a Tecla (CTRL) + (P) para realizar a impressão!")
       var divToPrint = document.getElementById('historico')
       var popupWin = window.open('', '_blank', 'width=300,height=400,location=no,left=200px');
@@ -264,231 +362,91 @@ if (!isset($_SESSION['adm'])) {
       popupWin.document.write('<html style="text-align:left"><body onload="window.historico()">' + divToPrint.innerHTML + '</html>');
       popupWin.document.close();
     }*/
-  </script>
+</script>
 
-  <!-- ALERTA DA OBSERVAÇÃO-->
-  <script>
-    $(document).ready(function() {
-      $(document).on('click', '.obs', function() {
-        var user_id = $(this).attr("id");
+<!-- MANIPULANDO DADOS DE EDIÇÃO -->
+<script>
+  $(document).ready(function() {
+    $('#modalEdit').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var foto_arma = button.data('foto-arma');
+      var tipo_arma = button.data('tipo-arma');
+      var marca = button.data('marca');
+      var modelo = button.data('modelo');
+      var n_serie = button.data('numero-serie');
+      var patrimonio = button.data('patrimonio');
+      var localizacao = button.data('localizacao');
+      var situacao = button.data('situacao');
+      var cautela = button.data('cautela');
+      var observacao = button.data('observacao');
 
-        if (user_id != "") {
-          alert(user_id);
+      $('#id').val(id);
+      $('#foto_arma').val(foto_arma);
+      $('#tipo_arma').val(tipo_arma);
+      $('#marca').val(marca);
+      $('#modelo').val(modelo);
+      $('#n_serie').val(n_serie);
+      $('#patrimonio').val(patrimonio);
+      $('#localizacao').val(localizacao);
+      $('#situacao').val(situacao);
+      $('#cautela').val(cautela);
+      $('#obs').val(observacao);
+    })
+  })
+</script>
 
-        } else {
-          alert("Armamento sem Observação!!!")
-        }
+<!-- VALIDAÇÃO DO MODAL DE EDIÇÃO -->
+<script>
+  function verificar() {
+    var modelo = document.getElementById("modelo")
+    var marca = document.getElementById("marca")
+    var n_serie = document.getElementById("serie")
+    var patrimonio = document.getElementById("patrimonio")
+    var localiza = document.getElementById("localizacao")
+    var situacao = document.getElementById("situacao")
+    var cautela = document.getElementById("cautela")
+    var id = document.getElementById("id")
+    var obs = document.getElementById('obs')
 
+    if (modelo.value == "" && marca.value == "" && n_serie.value == "" && patrimonio.value == "" &&
+      localiza.value == "" && situacao.value == "" && cautela.value == "") {
 
+      alert("TODOS OS CAMPOS EM BRANCO")
+      return false
+    } else {
+      return true
+    }
 
-      });
-    });
-  </script>
+  }
+</script>
 
-  <!-- MODAL DA OBSERVAÇÃO -->
-  <div class="modal fade" id="obs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Obervações</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <span id="conteudo"></span>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+<!-- ALERTA DA OBSERVAÇÃO-->
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '.obs', function() {
+      var user_id = $(this).attr("id");
 
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- JQUERY DO FILTRO DE TABELA -->
-  <script>
-    $(document).ready(function() {
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-  </script>
+      if (user_id != "") {
+        alert(user_id);
 
-  <!--MODAL EDITAR-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Dados</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
-
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Imagem da arma:</label><br>
-              <input type="file" name="fotoarma" accept="image/*" id="fotoarma" title=" ">
-              <input type="hidden" name="id" id="idarma">
-
-              <input type="hidden" name="tipo" value="ordinario">
-              <button class="btn btn-outline-success" type="submit">Alterar</button>
-            </div>
-          </form>
-
-          <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
-
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Marca:</label>
-              <input type="text" class="form-control" id="marca" name="marca">
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Modelo:</label>
-              <input type="text" class="form-control" id="modelo" name="modelo">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Nº Série:</label>
-              <input type="text" class="form-control" id="serie" name="serie">
-              <input type="hidden" id="serie2" name="serie2">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">PRATIMÔNIO:</label>
-              <input type="text" class="form-control" id="patrimonio" name="patrimonio">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">LOCALIZAÇÃO:</label>
-              <input type="text" class="form-control" id="localizacao" name="localizacao">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">SITUAÇÃO:</label>
-              <input type="text" class="form-control" id="situacao" name="situacao">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">CAUTELA:</label>
-              <input type="text" class="form-control" id="cautela" name="cautela">
-
-              <hr>
-              <label>Selecione o tipo de edição: </label>
-              <select class="form-select " aria-label="Default select example" style="text-align: center;" name="tipoedicao" required>
-                <option value=""></option>
-                <option value="correcao">Correção</option>
-                <option value="mudanca">Mudança</option>
-
-              </select>
-              <hr>
-            </div>
-            <div>
-              <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
-              <textarea id="obss" name="obss" cols="55" rows="4"> </textarea>
-            </div>
-
-            <div class="form-group">
-
-              <input type="hidden" name="id" id="id" value="">
-              <input type="hidden" name="tipo" id="tipo" value="ordin">
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- MANIPULANDO DADOS EDITADOS/EDIÇÃO -->
-    <script>
-      function verificar() {
-
-        var modelo = document.getElementById("modelo")
-        var marca = document.getElementById("marca")
-        var n_serie = document.getElementById("serie")
-        var patrimonio = document.getElementById("patrimonio")
-        var localiza = document.getElementById("localizacao")
-        var situacao = document.getElementById("situacao")
-        var cautela = document.getElementById("cautela")
-        var id = document.getElementById("id")
-        var obs = document.getElementById('obss')
-
-        if (modelo.value == "" || marca.value == "" || n_serie.value == "" || patrimonio.value == "" ||
-          localiza.value == "" || situacao.value == "" || cautela.value == "") {
-
-          alert("Campo/os em Branco, preencha todos os campos para realiza edição dos dados")
-          return false
-        } else {
-          return true
-        }
-
+      } else {
+        alert("Armamento sem Observação!!!")
       }
-    </script>
+    });
+  });
+</script>
 
-    <script>
-      var exampleModal = document.getElementById('exampleModal')
-      exampleModal.addEventListener('show.bs.modal', function(event) {
-
-        var button = event.relatedTarget
-
-        var recipient = button.getAttribute('data-bs-whatever')
-        var recipient1 = button.getAttribute('data-bs-whatever2')
-        var recipient2 = button.getAttribute('data-bs-whatever3')
-        var recipient3 = button.getAttribute('data-bs-whatever4')
-        var recipient4 = button.getAttribute('data-bs-whatever5')
-        var recipient5 = button.getAttribute('data-bs-whatever6')
-        var recipient7 = button.getAttribute('data-bs-whatever7')
-        var recipient8 = button.getAttribute('data-bs-whatever8')
-        var id = button.getAttribute('data-bs-whatever9')
-
-
-        var modalBodyInput = exampleModal.querySelector('#modelo')
-        modalBodyInput.value = recipient
-        var modalBodyInput = exampleModal.querySelector('#marca')
-        modalBodyInput.value = recipient1
-        var modalBodyInput = exampleModal.querySelector('#serie')
-        modalBodyInput.value = recipient2
-        var modalBodyInput = exampleModal.querySelector('#serie2')
-        modalBodyInput.value = recipient2
-
-
-        var modalBodyInput = exampleModal.querySelector('#patrimonio')
-        modalBodyInput.value = recipient3
-        var modalBodyInput = exampleModal.querySelector('#localizacao')
-        modalBodyInput.value = recipient4
-        var modalBodyInput = exampleModal.querySelector('#situacao')
-        modalBodyInput.value = recipient7
-        var modalBodyInput = exampleModal.querySelector('#cautela')
-        modalBodyInput.value = recipient5
-        var modalBodyInput = exampleModal.querySelector('#obss')
-        modalBodyInput.value = recipient8
-        var modalBodyInput = exampleModal.querySelector('#id')
-        modalBodyInput.value = id
-        var modalBodyInput = exampleModal.querySelector('#idarma')
-        modalBodyInput.value = id
-
-      })
-    </script>
-
-  </div>
-
-  </div>
-
-  <div at-magnifier-wrapper="">
-
-    <div class="at-theme-light">
-
-      <div class="at-base notranslate" translate="no">
-
-        <div class="Z1-AJ" style="top: 0px; left: 0px;"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</body>
+<!-- JQUERY DO FILTRO DE TABELA -->
+<script>
+  $(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
 
 </html>

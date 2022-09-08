@@ -7,19 +7,20 @@ if (!isset($_SESSION['adm'])) {
   header("location:../login.php");
 }
 
+include_once "../../db/Conexao.php";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
   <?php include('../layouts/title_e_favicon.html') ?>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/buttom.css">
+
+  <link rel="stylesheet" href="../../css/buttom.css">
+
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
   <!-- CDN's -->
@@ -61,29 +62,39 @@ if (!isset($_SESSION['adm'])) {
           </div>
 
           <?php
-          if (isset($_SESSION['cadastrato'])) {
+          if (isset($_SESSION['success_edit'])) {
           ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 50%;">
-              Edição Realizada Com Sucesso!!!
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+
+            <script>
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edição Realizada com Sucesso!',
+                showConfirmButton: false,
+                confirmButtonColor: '#2ECC71',
+                timer: 3000
+              })
+            </script>
 
           <?php
-            unset($_SESSION['cadastrato']);
+            unset($_SESSION['success_edit']);
           }
-          if (isset($_SESSION['nao_cadastrato'])) {
+          if (isset($_SESSION['error_edit'])) {
           ?>
 
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 50%;">
-              Erro ao realizar edição tente novamente....
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <script>
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro ao realizar Edição! Tente novamente...',
+                showConfirmButton: false,
+                confirmButtonColor: '#2ECC71',
+                timer: 3000
+              })
+            </script>
+
           <?php
-            unset($_SESSION['nao_cadastrato']);
+            unset($_SESSION['error_edit']);
           }
 
           ?>
@@ -127,8 +138,6 @@ if (!isset($_SESSION['adm'])) {
 
             <?php
 
-            include('../../db/Conexao.php');
-
             $query = "SELECT  * FROM armas_gto";
 
             $result = mysqli_query($conexao, $query);
@@ -162,19 +171,7 @@ if (!isset($_SESSION['adm'])) {
                   <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button></td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" 
-                      data-id="<?= $linhas['id'] ?>" 
-                      data-foto-arma="<?= $linhas['foto'] ?>"
-                      data-tipo-arma ="<?= $linhas['tipo_arma'] ?>" 
-                      data-marca="<?= $linhas['marca'] ?>" 
-                      data-modelo="<?= $linhas['modelo'] ?>"
-                      data-numero-serie="<?= $linhas['n_serie'] ?>"
-                      data-patrimonio="<?= $linhas['patrimonio'] ?>"
-                      data-localizacao="<?= $linhas['localizacao'] ?>"
-                      data-situacao="<?= $linhas['situacao'] ?>"
-                      data-cautela="<?= $linhas['cautela'] ?>"
-                      data-observacao="<?= $linhas['obs'] ?>"
-                    > Editar </button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
 
                     <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?php echo $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
@@ -211,8 +208,6 @@ if (!isset($_SESSION['adm'])) {
 
                             <?php
 
-                            include('../../db/Conexao.php');
-
                             $query2 = "SELECT  * FROM historico_armas";
 
                             $result1 = mysqli_query($conexao, $query2);
@@ -242,9 +237,7 @@ if (!isset($_SESSION['adm'])) {
                             }
                             ?>
 
-
                         </div>
-
                       </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-danger">
@@ -283,13 +276,12 @@ if (!isset($_SESSION['adm'])) {
                       <div class="modal-body">
 
 
-                        <form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
+                        <!--<form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
 
                           <div class="form-group">
                             <label for="recipient-name" class="col-form-label"> Imagem da arma: </label><br>
 
-                            <!-- Arrumar isso -->
-                            <!--<input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" "> 
+                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" "> 
 
                             <img src="../../img/fotos_armas/5be74f4b74c3dd42d62e0f3aeda890ba.png">
 
@@ -363,11 +355,10 @@ if (!isset($_SESSION['adm'])) {
 
                             <hr>
                             <div class="form-group">
-                              <label>Selecione o tipo de edição: </label>
+                              <label>Selecione uma ação: </label>
                               <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
-                                <option value=""></option>
-                                <option value="correcao">Correção</option>
-                                <option value="mudanca">Mudança</option>
+                                <option value="correcao">Corrigir</option>
+                                <option value="mudanca">Mudar</option>
 
                               </select>
 
@@ -379,10 +370,9 @@ if (!isset($_SESSION['adm'])) {
 
                             <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
 
-                            <textarea id="obs" name="obs" cols="55" rows="4"> </textarea>
+                            <textarea id="obs" name="obs" cols="60" rows="2"> </textarea>
 
                           </div>
-
 
                           <input type="hidden" name="id" id="id" value="">
 
@@ -459,54 +449,41 @@ if (!isset($_SESSION['adm'])) {
 
   </div>
 
-  <div at-magnifier-wrapper="">
-
-    <div class="at-theme-light">
-
-      <div class="at-base notranslate" translate="no">
-
-        <div class="Z1-AJ" style="top: 0px; left: 0px;"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
 </body>
 
+<!-- MANIPULAÇÃO DE DADOS DO MODAL DE EDIÇÃO -->
 <script>
-    $(document).ready(function(){
-        $('#modalEdit').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          var id = button.data('id');
-          var foto_arma = button.data('foto-arma');
-          var tipo_arma = button.data('tipo-arma');
-          var marca = button.data('marca');
-          var modelo = button.data('modelo');
-          var n_serie = button.data('numero-serie');
-          var patrimonio = button.data('patrimonio');
-          var localizacao = button.data('localizacao');
-          var situacao = button.data('situacao');
-          var cautela = button.data('cautela');
-          var observacao = button.data('observacao');
-          
-          $('#id').val(id);
-          $('#foto_arma').val(foto_arma);
-          $('#tipo_arma').val(tipo_arma);
-          $('#marca').val(marca);
-          $('#modelo').val(modelo);
-          $('#n_serie').val(n_serie);
-          $('#patrimonio').val(patrimonio);
-          $('#localizacao').val(localizacao);
-          $('#situacao').val(situacao);
-          $('#cautela').val(cautela);
-          $('#obs').val(observacao);
-        })
+  $(document).ready(function() {
+    $('#modalEdit').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var foto_arma = button.data('foto-arma');
+      var tipo_arma = button.data('tipo-arma');
+      var marca = button.data('marca');
+      var modelo = button.data('modelo');
+      var n_serie = button.data('numero-serie');
+      var patrimonio = button.data('patrimonio');
+      var localizacao = button.data('localizacao');
+      var situacao = button.data('situacao');
+      var cautela = button.data('cautela');
+      var observacao = button.data('observacao');
+
+      $('#id').val(id);
+      $('#foto_arma').val(foto_arma);
+      $('#tipo_arma').val(tipo_arma);
+      $('#marca').val(marca);
+      $('#modelo').val(modelo);
+      $('#n_serie').val(n_serie);
+      $('#patrimonio').val(patrimonio);
+      $('#localizacao').val(localizacao);
+      $('#situacao').val(situacao);
+      $('#cautela').val(cautela);
+      $('#obs').val(observacao);
     })
+  })
 </script>
 
-<!-- MANIPULANDO DADOS EDITADOS/EDIÇÃO -->
+<!-- VALIDAÇÃO DO MODAL DE EDIÇÃO -->
 <script>
   function verificar() {
 
@@ -528,10 +505,10 @@ if (!isset($_SESSION['adm'])) {
 
     var obs = document.getElementById('obs')
 
-    if (modelo.value == "" || marca.value == "" || n_serie.value == "" || patrimonio.value == "" ||
-      localiza.value == "" || situacao.value == "" || cautela.value == "") {
+    if (modelo.value == "" && marca.value == "" && n_serie.value == "" && patrimonio.value == "" &&
+      localiza.value == "" && situacao.value == "" && cautela.value == "") {
 
-      alert("Campo/os em Branco, preencha todos os campos para realiza edição dos dados")
+      alert("TODOS OS CAMPOS EM BRANCO!")
 
       return false
 
@@ -543,68 +520,6 @@ if (!isset($_SESSION['adm'])) {
 
   }
 </script>
-
-<!--<script>
-  var editModal = document.getElementById('modalEdit')
-
-  editModal.addEventListener('show.bs.modal', function(event) {
-
-    var button = event.relatedTarget
-
-    var recipient = button.getAttribute('data-whatever')
-
-    var recipient1 = button.getAttribute('data-whatever2')
-
-    var recipient2 = button.getAttribute('data-whatever3')
-
-    var recipient3 = button.getAttribute('data-whatever4')
-
-    var recipient4 = button.getAttribute('data-whatever5')
-
-    var recipient5 = button.getAttribute('data-whatever6')
-
-    var recipient7 = button.getAttribute('data-whatever7')
-
-    var recipient8 = button.getAttribute('data-whatever8')
-
-    var id = button.getAttribute('data-whatever9')
-
-
-    var modalBodyInput = editModal.querySelector('#modelo')
-    modalBodyInput.value = recipient
-
-    var modalBodyInput = editModal.querySelector('#marca')
-    modalBodyInput.value = recipient1
-
-    var modalBodyInput = editModal.querySelector('#serie')
-    modalBodyInput.value = recipient2
-    var modalBodyInput = editModal.querySelector('#serie2')
-    modalBodyInput.value = recipient2
-
-
-    var modalBodyInput = editModal.querySelector('#patrimonio')
-    modalBodyInput.value = recipient3
-
-    var modalBodyInput = editModal.querySelector('#localiza')
-    modalBodyInput.value = recipient4
-
-    var modalBodyInput = editModal.querySelector('#situacao')
-    modalBodyInput.value = recipient7
-
-    var modalBodyInput = editModal.querySelector('#cautelar')
-    modalBodyInput.value = recipient5
-
-    var modalBodyInput = editModal.querySelector('#obs')
-    modalBodyInput.value = recipient8
-
-    var modalBodyInput = editModal.querySelector('#id')
-    modalBodyInput.value = id
-
-    var modalBodyInput = editModal.querySelector('#id_arma')
-    modalBodyInput.value = id
-
-  })
-</script> -->
 
 <!-- ALERTA DE OBSERVAÇÃO -->
 <script>

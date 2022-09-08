@@ -63,7 +63,7 @@ if (!isset($_SESSION['adm'])) {
                                         title: 'Munição Cadastrada com Sucesso!',
                                         showConfirmButton: false,
                                         confirmButtonColor: '#2ECC71',
-                                        timer: 2500
+                                        timer: 3000
                                     })
                                 </script>
                             <?php

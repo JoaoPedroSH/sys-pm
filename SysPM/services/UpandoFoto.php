@@ -22,11 +22,11 @@ if (isset($_FILES['fotoarma'])) {
   }
   if($result08==1){
       if($tipo=="gto"){
-        $_SESSION['cadastrato'] = true;
+        $_SESSION['success_edit'] = true;
         header('Location: ../pages/adm/consulta_armas_gto.php');
 
       }else{
-        $_SESSION['cadastrato'] = true;
+        $_SESSION['success_edit'] = true;
         header('Location: ../pages/adm/consulta_armas_ordinario');
       }
   }

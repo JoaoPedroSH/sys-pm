@@ -59,12 +59,12 @@ if ($tipo == "gto") {
 
 
   if ($result == 1) {
-    //criando sessão caso tenha cadastrato com sucesso
-    $_SESSION['cadastrato'] = true;
+    //criando sessão caso tenha success_edit com sucesso
+    $_SESSION['success_edit'] = true;
     header('Location: ../pages/adm/consulta_armas_gto.php');
   } else {
     //se der errado criando uma sessão
-    $_SESSION['nao_cadastrato'] = true;
+    $_SESSION['error_edit'] = true;
   }
 } else {
 
@@ -80,11 +80,11 @@ if ($tipo == "gto") {
 
 
   if ($result01 == 1) {
-    //criando sessão caso tenha cadastrato com sucesso
-    $_SESSION['cadastrato'] = true;
+    //criando sessão caso tenha success_edit com sucesso
+    $_SESSION['success_edit'] = true;
     header('Location: ../pages/adm/consulta_armas_ordinario.php');
   } else {
     //se der errado criando uma sessão
-    $_SESSION['nao_cadastrato'] = true;
+    $_SESSION['error_edit'] = true;
   }
 }
