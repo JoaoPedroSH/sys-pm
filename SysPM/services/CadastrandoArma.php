@@ -20,7 +20,7 @@ if (isset($_POST['n_serie'])) {
   $foto = $_FILES['foto']['name'];
   $extensao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
   $novo_nome = md5(time()) . "." . $extensao;
-  $diretorio = "../img/fotos_armas/";
+  $diretorio = "./store/img/";
   move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);
 
   //VERIFICANDO TIPO DE CADASTRO
