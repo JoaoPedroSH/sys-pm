@@ -154,35 +154,35 @@ include_once "../../db/Conexao.php";
 
                   <td><?= $x ?></td>
 
-                  <td><?php echo $linhas['marca'] ?></td>
+                  <td><?= $linhas['marca'] ?></td>
 
-                  <td><?php echo $linhas['modelo'] ?></td>
+                  <td><?= $linhas['modelo'] ?></td>
 
-                  <td><?php echo $linhas['n_serie'] ?></td>
+                  <td><?= $linhas['n_serie'] ?></td>
 
-                  <td><?php echo $linhas['patrimonio'] ?></td>
+                  <td><?= $linhas['patrimonio'] ?></td>
 
-                  <td><?php echo $linhas['localizacao'] ?></td>
+                  <td><?= $linhas['localizacao'] ?></td>
 
-                  <td><?php echo $linhas['situacao'] ?></td>
+                  <td><?= $linhas['situacao'] ?></td>
 
-                  <td><?php echo $linhas['cautela'] ?></td>
+                  <td><?= $linhas['cautela'] ?></td>
 
                   <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button></td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
 
-                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?php echo $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
+                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
                 </tr>
 
                 <!-- MODAL DO HISTÓRICO -->
-                <div class="modal fade bd-example-modal-lg" id="modalHistory<?php echo $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="modalHistory<?= $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="history">Histórico da arma ' <?php echo $linhas['marca'] ?> / <?php echo $linhas['modelo'] ?> '</h5>
+                        <h5 class="modal-title" id="history">Histórico da arma ' <?= $linhas['marca'] ?> / <?= $linhas['modelo'] ?> '</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                           <span aria-hidden="true">&times;</span>
 
@@ -193,7 +193,7 @@ include_once "../../db/Conexao.php";
                           <img src="./store/img/<? echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                         </div>
                         <div class="container">
-                          <h6 style="margin: 10px;">Nº SÉRIE : <?php echo $linhas['n_serie'] ?></h6>
+                          <h6 style="margin: 10px;">Nº SÉRIE : <?= $linhas['n_serie'] ?></h6>
                           <hr>
 
                           <div id="row_hist" style="display: flex;">
@@ -222,10 +222,10 @@ include_once "../../db/Conexao.php";
                                 <input type="hidden" name="n_serie" value="<?= $linhas1['n_serie'] ?>">
                                 <div id="historico_pdf">
                                   <div id="row_hist" style="display: flex;">
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo $linhas1['localizacao'] ?> </h6>
-                                    <h6 style="width: 40%;text-align: center;margin: 0;"> <?php echo $linhas1['cautela'] ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo date('d/m/Y'); ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo date('d/m/Y', strtotime($linhas1['data_inspecao'])); ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['localizacao'] ?> </h6>
+                                    <h6 style="width: 40%;text-align: center;margin: 0;"> <?= $linhas1['cautela'] ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= date('d/m/Y'); ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= date('d/m/Y', strtotime($linhas1['data_inspecao'])); ?> </h6>
                                   </div>
                                 </div>
                                 <hr>
