@@ -128,7 +128,7 @@ if (isset($_POST['usuario'])) {
         <div class="col-md-12" style="align-items: center;">
         <img  src="../img/brasao-pm-pa.png"  alt="" width="55" height="65">
             <img src="../img/marcauepa.png"  alt="" width="120" height="70">
-            <p class="mt-4 mb-3 text-muted"><b>Copyright © 2022 <a href="https://www.uepa.br/">UEPA</a>.</b></p>
+            <p class="mt-4 mb-3 text-muted"><b>Copyright © 2022 <a href="https://www.uepa.br/" target="_blank">UEPA</a>.</b></p>
         </div>
     </div>
 
