@@ -18,10 +18,15 @@ class ComposerStaticInitbd65ee2a77368b94931610c1b9af23bf
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
         ),
         'M' => 
         array (
             'Mpdf\\' => 5,
+        ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
         ),
         'D' => 
         array (
@@ -38,9 +43,17 @@ class ComposerStaticInitbd65ee2a77368b94931610c1b9af23bf
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Mpdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'DeepCopy\\' => 
         array (

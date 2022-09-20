@@ -4,7 +4,7 @@
 
 define('HOST', 'localhost');  //Serve
 define('USUARIO', 'root'); // user
-define('SENHA', '12345678');  //PassWord
+define('SENHA', '27072001');  //PassWord
 define('DB', 'db_pm'); //NameDataBase
 
 
