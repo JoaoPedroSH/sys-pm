@@ -14,13 +14,7 @@ if (!isset($_SESSION['adm'])) {
 
 <head>
 
-  <meta charset="utf-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <meta name="description" content="">
-
-  <meta name="author" content="">
+ 
 
   <?php include('../layouts/title_e_favicon.html') ?>
 
@@ -47,7 +41,7 @@ if (!isset($_SESSION['adm'])) {
 </head>
 
 <?php
-if (isset($_SESSION['cadastrato'])) {
+if (isset($_SESSION['success_edit'])) {
 ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 50%;">
     Edição Realizada Com Sucesso!!!
@@ -57,9 +51,9 @@ if (isset($_SESSION['cadastrato'])) {
   </div>
 
 <?php
-  unset($_SESSION['cadastrato']);
+  unset($_SESSION['success_edit']);
 }
-if (isset($_SESSION['nao_cadastrato'])) {
+if (isset($_SESSION['error_edit'])) {
 ?>
 
   <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 50%;">
@@ -69,7 +63,7 @@ if (isset($_SESSION['nao_cadastrato'])) {
     </button>
   </div>
 <?php
-  unset($_SESSION['nao_cadastrato']);
+  unset($_SESSION['error_edit']);
 }
 
 ?>
@@ -323,19 +317,7 @@ if (isset($_SESSION['nao_cadastrato'])) {
 
   </div>
 
-  <div at-magnifier-wrapper="">
-
-    <div class="at-theme-light">
-
-      <div class="at-base notranslate" translate="no">
-
-        <div class="Z1-AJ" style="top: 0px; left: 0px;"></div>
-
-      </div>
-
-    </div>
-
-  </div>
+ 
 
 </body>
 

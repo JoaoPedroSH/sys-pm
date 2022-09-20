@@ -81,7 +81,7 @@ if (isset($_POST['usuario'])) {
             max-width: 420px;
             background-color: #fff;
             border-radius: 10px;
-            margin-top: 100px;
+            margin-top: 70px;
             opacity: 0.99;
             position: absolute;
             left: 50%;
@@ -94,12 +94,10 @@ if (isset($_POST['usuario'])) {
 
 <body class="text-center vsc-initialized">
 
-    <strong style=" font-size:150px; color: red;">Sys</strong><strong style=" font-size:150px; color: blue;">PM</strong>
-
     <div class="col-6 pb-3 estilizacao">
-        <br>
         <form method="POST" action="" class="form-signin">
-            <img class="mb-3" src="../img/brasao-pm-pa.png" id="logologin" alt="" width="120" height="150">
+        <strong style=" font-size:100px; color: red;" block>Sys</strong><strong style=" font-size:100px; color: blue;" block>PM</strong>
+            
             <br>
             <br>
 
@@ -127,9 +125,10 @@ if (isset($_POST['usuario'])) {
 
         <hr>
 
-        <div class="col-md-12">
-            <img src="../img/marcauepa.png" id="logologin" alt="" width="120" height="70">
-            <p class="mt-4 mb-3 text-muted"><b>Copyright © 2022 <a href="https://www.uepa.br/">UEPA</a>.</b></p>
+        <div class="col-md-12" style="align-items: center;">
+        <img  src="../img/brasao-pm-pa.png"  alt="" width="55" height="65">
+            <img src="../img/marcauepa.png"  alt="" width="120" height="70">
+            <p class="mt-4 mb-3 text-muted"><b>Copyright © 2022 <a href="https://www.uepa.br/" target="_blank">UEPA</a>.</b></p>
         </div>
     </div>
 

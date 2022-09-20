@@ -9,7 +9,7 @@ if (isset($_FILES['fotoarma'])) {
     $foto1 = $_FILES['fotoarma']['name'];
     $extensao = strtolower(pathinfo($foto1, PATHINFO_EXTENSION));
     $novo_nome = md5(time()) . "." . $extensao;
-    $diretorio = "../img/fotos_armas/";
+    $diretorio = "./store/img/";
     move_uploaded_file($_FILES['fotoarma']['tmp_name'], $diretorio . $novo_nome);
     if ($tipo == 'gto') {
       $sql1 = "UPDATE `armas_gto` SET  `foto`='$novo_nome' WHERE `id`='$id'";
@@ -22,11 +22,11 @@ if (isset($_FILES['fotoarma'])) {
   }
   if($result08==1){
       if($tipo=="gto"){
-        $_SESSION['cadastrato'] = true;
+        $_SESSION['success_edit'] = true;
         header('Location: ../pages/adm/consulta_armas_gto.php');
 
       }else{
-        $_SESSION['cadastrato'] = true;
+        $_SESSION['success_edit'] = true;
         header('Location: ../pages/adm/consulta_armas_ordinario');
       }
   }

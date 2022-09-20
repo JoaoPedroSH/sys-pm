@@ -97,7 +97,7 @@ while ($hist = $resultHist->fetch_assoc()) {
 
       <tr>
 
-        <td><img src='../../img/fotos_armas/".$hist['foto']."'style='width: 170px;height: 150px;'></th>
+        <td><img src='./store/img/".$hist['foto']."'style='width: 170px;height: 150px;'></th>
 
       </tr>
 

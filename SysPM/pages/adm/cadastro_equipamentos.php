@@ -66,7 +66,7 @@ if (!isset($_SESSION['adm'])) {
                                         title: 'Equipamento Cadastrado com Sucesso!',
                                         showConfirmButton: false,
                                         confirmButtonColor: '#2ECC71',
-                                        timer: 2500
+                                        timer: 3000
                                     })
                                 </script>
                             <?php

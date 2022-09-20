@@ -12,10 +12,12 @@ if (!isset($_SESSION['adm'])) {
 
 <?php
 
-$date = date("d-m-y");
-$result = "1";
+$date = date("dmy_s");
+$caminho = "C:\BackupSysPM";
 
-shell_exec('C:\AppServ\MySQL\bin\mysqldump -u root -p12345678 db_pm > C:\Users\"João Pedro"\Downloads\Backups_SysPM\Backup_' . $date . '.sql');
+shell_exec('C:\AppServ\MySQL\bin\mysqldump -h localhost -u root -p27072001 db_pm > '. $caminho .'\Backup' . $date . '.sql');
+
+$result = "1";
 
 if ($result == "1") {
 

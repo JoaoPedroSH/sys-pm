@@ -13,13 +13,7 @@ if (!isset($_SESSION['adm'])) {
 
 <head>
 
-  <meta charset="utf-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <meta name="description" content="">
-
-  <meta name="author" content="">
+ 
 
   <!-- Favicon -->
   <?php include('../layouts/title_e_favicon.html') ?>
@@ -52,7 +46,7 @@ if (isset($_SESSION['edit_permissao'])) {
       title: 'Edição Realizada com Sucesso!',
       showConfirmButton: false,
       confirmButtonColor: '#2ECC71',
-      timer: 2500
+      timer: 3000
     })
   </script>
 
@@ -70,7 +64,7 @@ if (isset($_SESSION['nao_editado'])) {
       title: 'Erro ao Realizar Edição! Tente novamente...',
       showConfirmButton: false,
       confirmButtonColor: '#2ECC71',
-      timer: 2500
+      timer: 3000
     })
   </script>
 <?php
@@ -106,7 +100,7 @@ if (isset($_SESSION['nao_editado'])) {
                 title: 'Cadastro Realizado com Sucesso!',
                 showConfirmButton: false,
                 confirmButtonColor: '#2ECC71',
-                timer: 2500
+                timer: 3000
               })
             </script>
           <?php
@@ -125,7 +119,7 @@ if (isset($_SESSION['nao_editado'])) {
                 title: 'Usuário Excluido com Sucesso!',
                 showConfirmButton: false,
                 confirmButtonColor: '#2ECC71',
-                timer: 2500
+                timer: 3000
               })
             </script>
           <?php
