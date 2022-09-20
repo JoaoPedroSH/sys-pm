@@ -6,3 +6,7 @@
 
 ### Geração do Bachup
 #### Pré configuração necessária
+Alterar e adicionar no arquivo de configuração do mysql (my.ini) as seguintes linhas
+````sh
+#no-beep
+````
