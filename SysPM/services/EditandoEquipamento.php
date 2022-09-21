@@ -5,7 +5,7 @@ include("../db/Conexao.php");
 //recendo dado
 $modelo =  $_POST['modelo'];
 $marca =  $_POST['marca'];
-$serie =  $_POST['serie'];
+$serie =  $_POST['n_serie'];
 $patrimonio =  $_POST['patrimonio'];
 $localizacao =   $_POST['localizacao'];
 $situacao = $_POST['situacao'];
@@ -22,7 +22,7 @@ $id =  $_POST['id'];
 if ($tipo == "gto") {
 
   $query = "UPDATE `equip_gto` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
-         WHERE N='$id'";
+         WHERE `id`='$id'";
 
 
   echo $query;
@@ -40,7 +40,7 @@ if ($tipo == "gto") {
 } else {
 
   $query = "UPDATE `equip_ord` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
-         WHERE N='$id'";
+         WHERE `N`='$id'";
 
   echo $query;
   //Execultando Query
