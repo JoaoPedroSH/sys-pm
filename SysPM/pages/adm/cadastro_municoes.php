@@ -52,31 +52,12 @@ if (!isset($_SESSION['adm'])) {
                         <hr>
                         <div id="main" class="container-fluid">
 
-                            <!-- Alerta de Cadastro Realizado com Sucesso -->
-                            <?php
-                            if (isset($_SESSION['sucesso'])) {
-                            ?>
-                                <script>
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Munição Cadastrada com Sucesso!',
-                                        showConfirmButton: false,
-                                        confirmButtonColor: '#2ECC71',
-                                        timer: 3000
-                                    })
-                                </script>
-                            <?php
-                            }
-                            unset($_SESSION['sucesso'])
-                            ?>
-
                             <!-- Formulário de Cadastro -->
                             <form action="../../services/CadastrandoMunicao.php" method="POST">
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label>MARCA</label>
-                                        <input type="text" class="form-control" name="marca" placeholder="" required>
+                                        <input type="text" class="form-control" name="marca" placeholder="">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>MODELO</label>
@@ -85,11 +66,11 @@ if (!isset($_SESSION['adm'])) {
 
                                     <div class="form-group col-md-2">
                                         <label>QUANTIDADE</label>
-                                        <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="" required>
+                                        <input type="number" min="0" class="form-control" id="quantidade" name="quantidade" placeholder="" required>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label>VALIDADE</label>
-                                        <input type="date" class="form-control" id="validade" name="validade" placeholder="" required>
+                                        <input type="date" class="form-control" id="validade" name="validade" placeholder="">
                                     </div>
                                     <div class="form-group col-md-3" style="text-align: center;">
                                         <label>TIPO DE MUNIÇÃO</label>
@@ -99,8 +80,8 @@ if (!isset($_SESSION['adm'])) {
                                                 Química
                                             </label>
                                             <label>
-                                                <input value="Não Quimica" type="radio" name="tipo" style=" margin-left: 10px;" required checked>
-                                                Não quimica
+                                                <input value="Normal" type="radio" name="tipo" style=" margin-left: 10px;" required checked>
+                                                Normal
                                             </label>
                                         </div>
                                     </div>
@@ -144,4 +125,24 @@ if (!isset($_SESSION['adm'])) {
         </div>
     </div>
 </body>
+
+<!-- Alerta de Cadastro Realizado com Sucesso -->
+<?php
+if (isset($_SESSION['sucesso'])) {
+?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Munição Cadastrada com Sucesso!',
+            showConfirmButton: false,
+            confirmButtonColor: '#2ECC71',
+            timer: 3000
+        })
+    </script>
+<?php
+}
+unset($_SESSION['sucesso'])
+?>
+
 </html>

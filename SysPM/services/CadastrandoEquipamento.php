@@ -2,10 +2,10 @@
 session_start();
 
 //verificando se tever submit
-if (isset($_POST['modelo'])) {
+if (isset($_POST['n_serie'])) {
 
     //inclundo Conexao do Banco de Dados
-    include('../../db/Conexao.php');
+    include('../db/Conexao.php');
 
 
     //Recebendo Valores do Formulário (Para Edição)
@@ -22,10 +22,8 @@ if (isset($_POST['modelo'])) {
     $tamanho = $_POST['tamanho'];
     $validade = $_POST['validade'];
     $fabricacao = $_POST['fabricacao'];
-
-    /*$validade = date('d/m/Y',  strtotime($validade));
-    $fabricacao = date('d/m/Y',  strtotime($fabricacao));*/
-
+    $validade = date('d/m/Y',  strtotime($validade));
+    $fabricacao = date('d/m/Y',  strtotime($fabricacao));
     $obs = $_POST['obs'];
 
     //verificando o tipo de cadastro 

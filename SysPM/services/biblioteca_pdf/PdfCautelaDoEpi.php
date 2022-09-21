@@ -13,6 +13,8 @@ $diretorio = "assinaturas/";
 $caminho = $diretorio . $nomeassinatura ;
 move_uploaded_file($_FILES['assinatura']['tmp_name'], $diretorio . $novo_nome);
 
+$uuid = md5(md5($data));
+
 require_once __DIR__ . '/vendor/autoload.php';
 
   $documento = '
@@ -62,7 +64,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
             <br>
 
-            <p>ID: ' . md5(md5($data)) . '</p>
+            <p>ID: ' . $uuid . '</p>
 
           </td>
 
@@ -164,14 +166,14 @@ require_once __DIR__ . '/vendor/autoload.php';
     </div>
   ';
 
-$nomedoc = md5(date('d/m/Y \- H:i:s'));
-
 $mpdf = new \Mpdf\Mpdf();
 
 $mpdf->WriteHTML($documento);
 
 $mpdf->charset_in = 'UTF-8';
 
-$mpdf->Output('doc/cautelas_do_epi/' . $nomedoc . '.pdf', 'f'); // F => salvar / D => baixar / i => abrir
+$mpdf->Output('doc/cautelas_do_epi/' . $uuid . '.pdf', 'f');
+
+$mpdf->Output('doc/cautelas_do_epi/' . $uuid . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir
 
 header('Location: ../../pages/adm/caterinha_epi.php');

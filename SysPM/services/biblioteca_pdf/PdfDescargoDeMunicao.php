@@ -8,6 +8,8 @@ $quantidade = $_POST['quantidade'];
 $operacao = $_POST['operacao'];
 $observacao = $_POST['obs'];
 
+$uuid = md5(md5($data));
+
 require_once __DIR__ . '/vendor/autoload.php';
 
   $documento = '
@@ -57,7 +59,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
               <br>
 
-              <p>ID: ' . md5(md5($data)) . '</p>
+              <p>ID: ' . $uuid . '</p>
 
             </td>
 
@@ -120,7 +122,6 @@ require_once __DIR__ . '/vendor/autoload.php';
       </div>
       
     ';
-$nomedoc = md5(date('d/m/Y \- H:i:s'));
 
 $mpdf = new \Mpdf\Mpdf();
 
@@ -128,6 +129,8 @@ $mpdf->WriteHTML($documento);
 
 $mpdf->charset_in = 'UTF-8';
 
-$mpdf->Output('doc/descargo_de_municao/' . $nomedoc . '.pdf', 'f'); // F => salvar / D => baixar / i => abrir
+$mpdf->Output('doc/descargo_de_municao/' . $uuid . '.pdf', 'f');
+
+$mpdf->Output('doc/descargo_de_municao/' . $uuid . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir
 
 header('Location: ../../pages/adm/descargo_de_municao.php');

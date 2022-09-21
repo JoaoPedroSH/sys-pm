@@ -411,21 +411,39 @@ if (isset($_SESSION['error_edit'])) {
         })
     </script>
 
-    </div>
+    <!-- MANIPULAÇÃO DE DADOS DO MODAL DE EDIÇÃO -->
+<script>
+  $(document).ready(function() {
+    $('#modalEdit').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var foto_arma = button.data('foto-arma');
+      var tipo_arma = button.data('tipo-arma');
+      var marca = button.data('marca');
+      var modelo = button.data('modelo');
+      var n_serie = button.data('numero-serie');
+      var patrimonio = button.data('patrimonio');
+      var localizacao = button.data('localizacao');
+      var situacao = button.data('situacao');
+      var cautela = button.data('cautela');
+      var observacao = button.data('observacao');
+
+      $('#id').val(id);
+      $('#foto_arma').val(foto_arma);
+      $('#tipo_arma').val(tipo_arma);
+      $('#marca').val(marca);
+      $('#modelo').val(modelo);
+      $('#n_serie').val(n_serie);
+      $('#patrimonio').val(patrimonio);
+      $('#localizacao').val(localizacao);
+      $('#situacao').val(situacao);
+      $('#cautela').val(cautela);
+      $('#obs').val(observacao);
+    })
+  })
+</script>
 
     </div>
-
-    <div at-magnifier-wrapper="">
-
-        <div class="at-theme-light">
-
-            <div class="at-base notranslate" translate="no">
-
-                <div class="Z1-AJ" style="top: 0px; left: 0px;"></div>
-
-            </div>
-
-        </div>
 
     </div>
 

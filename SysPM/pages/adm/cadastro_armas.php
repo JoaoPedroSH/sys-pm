@@ -49,25 +49,6 @@ if (!isset($_SESSION['adm'])) {
             <hr>
             <div id="main" class="container-fluid">
 
-              <!-- Alerta de Sucesso ao Cadastrar a Arma -->
-              <?php
-              if (isset($_SESSION['sucesso'])) {
-              ?>
-                <script>
-                  Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Arma Cadastrada com Sucesso!',
-                    showConfirmButton: false,
-                    confirmButtonColor: '#2ECC71',
-                    timer: 3000
-                  })
-                </script>
-              <?php
-              }
-              unset($_SESSION['sucesso'])
-              ?>
-
               <!-- Formulário de Cadastro -->
               <form action="../../services/CadastrandoArma.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
@@ -103,13 +84,13 @@ if (!isset($_SESSION['adm'])) {
                   </div>
                   <div class="form-group col-md-3">
                     <label>CAUTELA</label>
-                    <input type="text" class="form-control" id="cautela" name="cautela" placeholder="" required>
+                    <input type="text" class="form-control" id="cautela" name="cautela" placeholder="">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-md-3">
                     <label>DATA ÙLT. INSPEÇÃO</label>
-                    <input type="date" class="form-control" name="data_inspecao" required>
+                    <input type="date" class="form-control" name="data_inspecao">
                   </div>
                   <div class="form-group col-md-6">
                     <label>OBSERVAÇÃO </label>
@@ -148,4 +129,24 @@ if (!isset($_SESSION['adm'])) {
     </div>
   </div>
 </body>
+
+<!-- Alerta de Sucesso ao Cadastrar a Arma -->
+<?php
+if (isset($_SESSION['sucesso'])) {
+?>
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Arma Cadastrada com Sucesso!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+<?php
+}
+unset($_SESSION['sucesso'])
+?>
+
 </html>

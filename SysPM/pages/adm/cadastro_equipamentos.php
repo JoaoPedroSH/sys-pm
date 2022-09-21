@@ -55,25 +55,6 @@ if (!isset($_SESSION['adm'])) {
                         <hr>
                         <div id="main" class="container-fluid">
 
-                            <!-- Alerta de Cadastro Realizado com sucesso -->
-                            <?php
-                            if (isset($_SESSION['sucesso'])) {
-                            ?>
-                                <script>
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Equipamento Cadastrado com Sucesso!',
-                                        showConfirmButton: false,
-                                        confirmButtonColor: '#2ECC71',
-                                        timer: 3000
-                                    })
-                                </script>
-                            <?php
-                            }
-                            unset($_SESSION['sucesso'])
-                            ?>
-
                             <!-- Formulário de Cadastro -->
                             <form action="../../services/CadastrandoEquipamento.php" method="POST">
                                 <div class="row">
@@ -169,5 +150,24 @@ if (!isset($_SESSION['adm'])) {
         </div>
     </div>
 </body>
+
+<!-- Alerta de Cadastro Realizado com sucesso -->
+<?php
+if (isset($_SESSION['sucesso'])) {
+?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Equipamento Cadastrado com Sucesso!',
+            showConfirmButton: false,
+            confirmButtonColor: '#2ECC71',
+            timer: 3000
+        })
+    </script>
+<?php
+}
+unset($_SESSION['sucesso'])
+?>
 
 </html>
