@@ -16,13 +16,6 @@ include_once "../../db/Conexao.php";
 
 <head>
 
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="">
-
-    <meta name="author" content="">
 
     <?php include('../layouts/title_e_favicon.html') ?>
 
@@ -103,8 +96,6 @@ include_once "../../db/Conexao.php";
 
                         <?php
 
-                        include('../../db/Conexao.php');
-
                         $query = "SELECT  * FROM  equip_ord";
 
                         $result = mysqli_query($conexao, $query);
@@ -126,8 +117,8 @@ include_once "../../db/Conexao.php";
                                     <td><?php echo $linhas['localizacao'] ?></td>
                                     <td><?php echo $linhas['situacao'] ?></td>
                                     <td><?php echo $linhas['cautela'] ?></td>
-                                    <td><?php $dat01 = date("d/m/Y", strtotime($linhas['validade']));
-                                        echo  $dat01; ?></td>
+                                    <td><?php $date01 = date("d/m/Y", strtotime($linhas['validade']));
+                                        echo  $date01; ?></td>
                                     <td><?php echo $linhas['nivel'] ?></td>
                                     <td><?php echo $linhas['tamanho'] ?></td>
                                     <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
@@ -195,11 +186,11 @@ include_once "../../db/Conexao.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">VALIDADE:</label>
-                                                    <input type="date" class="form-control" id="validade" name="validade">
+                                                    <input type="date" class="form-control" id="val" name="val">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">FABRICAÇÃO:</label>
-                                                    <input type="date" class="form-control" id="fabricacao" name="fabricacao">
+                                                    <input type="date" class="form-control" id="fab" name="fab">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label"> NÍVEL:</label>
@@ -215,7 +206,7 @@ include_once "../../db/Conexao.php";
                                                 </div>
 
                                                 <input type="hidden" name="id" id="id" value="">
-                                                <input type="hidden" name="tipo" id="tipo" value="gto">
+                                                <input type="hidden" name="tipo" id="tipo" value="ord">
 
                                         </div>
                                         <div class="modal-footer">
@@ -226,7 +217,7 @@ include_once "../../db/Conexao.php";
                                     </div>
                                 </div>
                             </div>
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -346,8 +337,8 @@ if (isset($_SESSION['error_edit'])) {
             $('#localizacao').val(localizacao);
             $('#situacao').val(situacao);
             $('#cautela').val(cautela);
-            $('#validade').val(validade);
-            $('#fabricacao').val(fabricacao);
+            $('#val').val(validade);
+            $('#fab').val(fabricacao);
             $('#nivel').val(nivel);
             $('#tamanho').val(tamanho);
             $('#obs').val(observacao);

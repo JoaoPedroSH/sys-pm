@@ -127,8 +127,9 @@ include_once "../../db/Conexao.php";
                                     <td><?= $linhas['localizacao'] ?></td>
                                     <td><?= $linhas['situacao'] ?></td>
                                     <td><?= $linhas['cautela'] ?></td>
-                                    <td><?php $dat01 = date("d/m/Y", strtotime($linhas['validade']));
-                                        echo  $dat01; ?></td>
+                                    <td><?php $date01 = date("d/m/Y", strtotime($linhas['validade']));
+                                        echo  $date01; ?></td>
+
                                     <td><?= $linhas['nivel'] ?></td>
                                     <td><?= $linhas['tamanho'] ?></td>
                                     <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
@@ -226,7 +227,7 @@ include_once "../../db/Conexao.php";
                                     </div>
                                 </div>
                             </div>
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>

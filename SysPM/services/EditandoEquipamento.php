@@ -10,8 +10,8 @@ $patrimonio =  $_POST['patrimonio'];
 $localizacao =   $_POST['localizacao'];
 $situacao = $_POST['situacao'];
 $cautela =  $_POST['cautela'];
-$validade =  $_POST['validade'];
-$fabricacao =  $_POST['fabricacao'];
+$validade =  $_POST['val'];
+$fabricacao =  $_POST['fab'];
 $nivel =  $_POST['nivel'];
 $tamanho =  $_POST['tamanho'];
 $obs =  $_POST['obs'];
@@ -22,11 +22,8 @@ $id =  $_POST['id'];
 if ($tipo == "gto") {
 
   $query = "UPDATE `equip_gto` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
-         WHERE `id`='$id'";
+    WHERE `id`='$id'";
 
-
-  echo $query;
-  //Execultando Query
   $result = mysqli_query($conexao, $query);
 
   if ($result == 1) {
@@ -40,10 +37,8 @@ if ($tipo == "gto") {
 } else {
 
   $query = "UPDATE `equip_ord` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
-         WHERE `N`='$id'";
+         WHERE `id`='$id'";
 
-  echo $query;
-  //Execultando Query
   $result = mysqli_query($conexao, $query);
 
   if ($result == 1) {
