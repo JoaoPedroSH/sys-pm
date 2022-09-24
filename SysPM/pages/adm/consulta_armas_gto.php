@@ -61,44 +61,6 @@ include_once "../../db/Conexao.php";
             <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
           </div>
 
-          <?php
-          if (isset($_SESSION['success_edit'])) {
-          ?>
-
-            <script>
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Edição Realizada com Sucesso!',
-                showConfirmButton: false,
-                confirmButtonColor: '#2ECC71',
-                timer: 3000
-              })
-            </script>
-
-          <?php
-            unset($_SESSION['success_edit']);
-          }
-          if (isset($_SESSION['error_edit'])) {
-          ?>
-
-            <script>
-              Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Erro ao realizar Edição! Tente novamente...',
-                showConfirmButton: false,
-                confirmButtonColor: '#2ECC71',
-                timer: 3000
-              })
-            </script>
-
-          <?php
-            unset($_SESSION['error_edit']);
-          }
-
-          ?>
-
           <!-- TABELA -->
           <table class="table table-bordered table-striped">
 
@@ -320,7 +282,7 @@ include_once "../../db/Conexao.php";
                             <label for="message-text" class="col-form-label">Nº SÉRIE:</label>
 
                             <input type="text" class="form-control" id="n_serie" name="n_serie">
-                            <input type="hidden" id="serie2" name="serie2">
+                            <input type="hidden" id="n_serie2" name="n_serie2">
                           </div>
 
                           <div class="form-group">
@@ -396,39 +358,6 @@ include_once "../../db/Conexao.php";
 
                 </div>
 
-                <!-- MODAL DE OBSERVAÇÕES -->
-                <div class="modal fade" id="obs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                  <div class="modal-dialog">
-
-                    <div class="modal-content">
-
-                      <div class="modal-header">
-
-                        <h5 class="modal-title" id="exampleModalLabel">Obervações</h5>
-
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-
-                      </div>
-
-                      <div class="modal-body">
-
-                        <span id="conteudo"></span>
-
-                      </div>
-
-                      <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
               <?php
 
               $x++;
@@ -450,6 +379,45 @@ include_once "../../db/Conexao.php";
   </div>
 
 </body>
+
+<!-- ALERTA DO STATUS FINAL DA EDIÇÃO -->
+<?php
+if (isset($_SESSION['success_edit'])) {
+?>
+
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Edição Realizada com Sucesso!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+
+<?php
+  unset($_SESSION['success_edit']);
+}
+if (isset($_SESSION['error_edit'])) {
+?>
+
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Erro ao realizar Edição! Tente novamente...',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+
+<?php
+  unset($_SESSION['error_edit']);
+}
+
+?>
 
 <!-- MANIPULAÇÃO DE DADOS DO MODAL DE EDIÇÃO -->
 <script>
@@ -521,26 +489,29 @@ include_once "../../db/Conexao.php";
   }
 </script>
 
-<!-- ALERTA DE OBSERVAÇÃO -->
+<!-- ALERTA DE OBSERVAÇÃO-->
 <script>
   $(document).ready(function() {
-
     $(document).on('click', '.obs', function() {
-
       var user_id = $(this).attr("id");
-
       if (user_id != "") {
-
-        alert(user_id);
-
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: user_id,
+          showConfirmButton: true,
+          confirmButtonColor: '#F8CA2F',
+        })
       } else {
-
-        alert("Armamento sem Observação!!!")
-
+        Swal.fire({
+          position: 'top-end',
+          icon: 'info',
+          title: 'Sem Observações!',
+          showConfirmButton: true,
+          confirmButtonColor: '#55B3F8',
+        })
       }
-
     });
-
   });
 </script>
 

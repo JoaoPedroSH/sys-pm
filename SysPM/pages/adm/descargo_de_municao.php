@@ -54,7 +54,7 @@ if (!isset($_SESSION['adm'])) {
                         <div id="main" class="container-fluid">
 
                             <!-- Formulário de geração do documento -->
-                            <form action="../../services/biblioteca_pdf/PdfDescargoDeMunicao.php" method="POST">
+                            <form action="../../services/biblioteca_pdf/PdfDescargoDeMunicao.php" target="_blank" method="POST">
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label>MUNIÇÂO</label>

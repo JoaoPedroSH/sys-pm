@@ -2,10 +2,10 @@
 session_start();
 
 //verificando se tever submit
-if (isset($_POST['modelo'])) {
+if (isset($_POST['n_serie'])) {
 
     //inclundo Conexao do Banco de Dados
-    include('../../db/Conexao.php');
+    include('../db/Conexao.php');
 
 
     //Recebendo Valores do Formulário (Para Edição)
@@ -22,19 +22,15 @@ if (isset($_POST['modelo'])) {
     $tamanho = $_POST['tamanho'];
     $validade = $_POST['validade'];
     $fabricacao = $_POST['fabricacao'];
-
-    /*$validade = date('d/m/Y',  strtotime($validade));
-    $fabricacao = date('d/m/Y',  strtotime($fabricacao));*/
-
     $obs = $_POST['obs'];
 
     //verificando o tipo de cadastro 
     if ($tipo == 'gto') {
         //SQl para execultar no Banco (GTO)
-        $query = "INSERT INTO `equip_gto`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `validade`, `nivel`, `tamanho`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$validade','$nivel','$tamanho','$fabricacao','$obs')";
+        $query = "INSERT INTO `equip_gto`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `validade`, `nivel`, `tamanho`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$nivel','$tamanho','$validade','$fabricacao','$obs')";
     } else {
         //SQl para execultar no Banco Ordinário()
-        $query = "INSERT INTO equip_ord (id, tipo, marca, modelo, n_serie, patrimonio, localizacao, situacao, cautela, nivel, tamanho, validade, fabricacao, obs) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela', '$nivel','$tamanho','$validade','$fabricacao','$obs')";
+        $query = "INSERT INTO `equip_ord`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `nivel`, `tamanho`, `validade`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$nivel','$tamanho','$validade','$fabricacao','$obs')";
     }
     $cadastrado = "show";
 
@@ -46,6 +42,7 @@ if (isset($_POST['modelo'])) {
     //vericando se trouxe houve algum cadastro
     if ($result > 0) {
         $_SESSION['sucesso'] = $cadastrado;
+        header('Location: ../pages/adm/cadastro_equipamentos.php');
     } else {
         echo "<script>alert('Erro ao Realizar Cadastro')</script>";
     }

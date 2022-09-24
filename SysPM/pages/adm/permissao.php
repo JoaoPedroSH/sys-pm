@@ -5,6 +5,7 @@ session_start();
 if (!isset($_SESSION['adm'])) {
   header("location:../login.php");
 }
+include_once "../../db/Conexao.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ if (!isset($_SESSION['adm'])) {
 
 <head>
 
- 
+
 
   <!-- Favicon -->
   <?php include('../layouts/title_e_favicon.html') ?>
@@ -24,53 +25,22 @@ if (!isset($_SESSION['adm'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
-  <!-- Cdn's -->
+  <!-- CDN's -->
   <script src="../../js/script.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
   <script src="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
+
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-
-<?php
-if (isset($_SESSION['edit_permissao'])) {
-?>
-  <!-- Alerta de edição realizada -->
-  <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Edição Realizada com Sucesso!',
-      showConfirmButton: false,
-      confirmButtonColor: '#2ECC71',
-      timer: 3000
-    })
-  </script>
-
-<?php
-  unset($_SESSION['edit_permissao']);
-}
-
-if (isset($_SESSION['nao_editado'])) {
-?>
-  <!-- Alerta de edição mal sucedida -->
-  <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'error',
-      title: 'Erro ao Realizar Edição! Tente novamente...',
-      showConfirmButton: false,
-      confirmButtonColor: '#2ECC71',
-      timer: 3000
-    })
-  </script>
-<?php
-  unset($_SESSION['nao_editado']);
-}
-?>
 
 <body>
 
@@ -88,44 +58,6 @@ if (isset($_SESSION['nao_editado'])) {
         <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
           <h2 style="text-align: center;"><u>Permissões</u></h2>
           <br>
-
-          <?php
-          if (isset($_SESSION['adcionado'])) {
-          ?>
-            <!-- Alerta de cadastro realizado -->
-            <script>
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Cadastro Realizado com Sucesso!',
-                showConfirmButton: false,
-                confirmButtonColor: '#2ECC71',
-                timer: 3000
-              })
-            </script>
-          <?php
-          }
-          unset($_SESSION['adcionado']);
-          ?>
-
-          <?php
-          if (isset($_SESSION['excluido'])) {
-          ?>
-            <!-- Alerta de exclusão realizada -->
-            <script>
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Usuário Excluido com Sucesso!',
-                showConfirmButton: false,
-                confirmButtonColor: '#2ECC71',
-                timer: 3000
-              })
-            </script>
-          <?php
-          }
-          unset($_SESSION['excluido']);
-          ?>
 
           <div class="col-md-12" style="display: flex;margin: 0 0 5px;justify-content: space-around;">
 
@@ -169,7 +101,6 @@ if (isset($_SESSION['nao_editado'])) {
                         </select>
                       </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fechar</button>
@@ -179,14 +110,6 @@ if (isset($_SESSION['nao_editado'])) {
               </div>
             </div>
           </div>
-
-
-          <!-- Abri modal de cadastro de usuário -->
-          <script>
-            function openModal() {
-              $('#adduser').modal('show')
-            }
-          </script>
 
           <!-- Tabela de Usuários -->
           <table class="table table-bordered table-striped">
@@ -209,7 +132,6 @@ if (isset($_SESSION['nao_editado'])) {
             </thead>
 
             <?php
-            include('../../db/Conexao.php');
             $query = "SELECT * FROM `usuario`";
             $result = mysqli_query($conexao, $query);
             $x = 1;
@@ -228,7 +150,7 @@ if (isset($_SESSION['nao_editado'])) {
                     <form action="../../services/ExcluindoUsuario.php" method="post">
 
                       <!-- Botão de ação de edição de usuário -->
-                      <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal" data-bs-whatever1="<?= $linhas['senha'] ?>" data-bs-whatever2="<?= $linhas['user'] ?>" data-bs-whatever3="adm" data-bs-whatever4="<?= $linhas['id_usuario'] ?>">
+                      <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-senha="<?= $linhas['senha'] ?>" data-user="<?= $linhas['user'] ?>" data-acesso="<?= $linhas['tipo_user'] ?>" data-id="<?= $linhas['id_usuario'] ?>">
                         Editar
                       </button>
 
@@ -249,104 +171,181 @@ if (isset($_SESSION['nao_editado'])) {
             }
             ?>
 
+            <!-- Modal de edição do usuário -->
+            <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="../../services/EditandoUsuario.php" method="post">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col -3">
+                            <label for="message-text" class="col-form-label">Usuário:</label>
+                            <input type="text" class="form-control" id="user" name="user" required>
+                          </div>
+                          <div class="col -3">
+                            <label for="recipient-name" class="col-form-label">Senha:</label>
+                            <input type="text" class="form-control" id="senha" name="senha" required>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style=" margin: auto;">
+                          <label for="recipient-name" class="col-form-label">Acesso: </label>
+                          <select id="acesso" name="acesso" required style="text-align: center;">
+                            <option value="adm">Adm</option>
+                            <option value="arm">Armeiro</option>
+                          </select>
+                        </div>
+                      </div>
+                      <input type="hidden" class="form-control" name="id" id="id">
+                      <br>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </table>
         </div>
       </div>
     </div>
   </div>
+</body>
 
-  <!-- Alerta de Exclusão -->
+<!-- MODAL DE CADASTRO -->
+<script>
+  function openModal() {
+    $('#adduser').modal('show')
+  }
+</script>
+
+<!-- ALERTA DE ATENÇÃO DE EXCLUSÃO -->
+<script>
+  $(document).ready(function() {
+    $(document).on('click.prevent', '.excluir', function() {
+      var resultado = confirm('Deseja realmente excluir este usuário?')
+      if (resultado == true) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  });
+</script>
+
+<!-- ALERTA DE STATUS DE CADASTRO -->
+<?php
+if (isset($_SESSION['adicionado'])) {
+?>
   <script>
-    $(document).ready(function() {
-      $(document).on('click.prevent', '.excluir', function() {
-        var resultado = confirm('Deseja realmente excluir este usuário?')
-        if (resultado == true) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-    });
-  </script>
-
-  <!-- Modal de edição do usuário -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Usuário</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="../../services/EditandoUsuario.php" method="post">
-            <div class="container">
-              <div class="row">
-                <div class="col -3">
-                  <label for="message-text" class="col-form-label">Usuário:</label>
-                  <input type="text" class="form-control" id="marca" name="user" required>
-                </div>
-                <div class="col -3">
-                  <label for="recipient-name" class="col-form-label">Senha:</label>
-                  <input type="text" class="form-control" id="modelo" name="senha" required>
-                </div>
-              </div>
-              <br>
-              <div class="row" style=" margin: auto;">
-                <label for="recipient-name" class="col-form-label">Acesso: </label>
-                <select name="acesso" required style="text-align: center;">
-                  <option value="">Selecione o tipo de Acesso</option>
-                  <option value="adm">Adm</option>
-                  <option value="arm">Armeiro</option>
-                </select>
-              </div>
-            </div>
-            <input type="hidden" class="form-control" name="id" id="modelo1">
-            <br>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--
-Edição deve ser alterada
-
-  <script>
-    var exampleModal = document.getElementById('exampleModal')
-    exampleModal.addEventListener('show.bs.modal', function(event) {
-
-      var button = event.relatedTarget
-      var recipient1 = button.getAttribute('data-bs-whatever1')
-      var recipient2 = button.getAttribute('data-bs-whatever2')
-      var id = button.getAttribute('data-bs-whatever4')
-      var modalBodyInput = exampleModal.querySelector('#modelo')
-      modalBodyInput.value = recipient1
-      var modalBodyInput = exampleModal.querySelector('#marca')
-      modalBodyInput.value = recipient2
-      var modalBodyInput = exampleModal.querySelector('#modelo1')
-      modalBodyInput.value = id
-
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Cadastro Realizado com Sucesso!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
     })
   </script>
-  -->
+<?php
+}
+unset($_SESSION['adicionado']);
+?>
 
+
+<!-- ALERTA DE STATUS DE EXCLUSÃO -->
+<?php
+if (isset($_SESSION['excluido'])) {
+?>
   <script>
-    // Jquery para fazer buscar na tabela
-    $(document).ready(function() {
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Usuário Excluido com Sucesso!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+<?php
+}
+unset($_SESSION['excluido']);
+?>
+
+<!-- ALERTA DE STATUS DE EDIÇÃO -->
+<?php
+if (isset($_SESSION['success_edit'])) {
+?>
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Edição Realizada com Sucesso!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
   </script>
 
-</body>
+<?php
+  unset($_SESSION['success_edit']);
+}
+
+if (isset($_SESSION['error_edit'])) {
+?>
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Erro ao Realizar Edição! Tente novamente...',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+<?php
+  unset($_SESSION['error_edit']);
+}
+?>
+
+<!-- MANIPULANDO DADOS EDITADOS/EDIÇÃO -->
+<script>
+  $(document).ready(function() {
+    $('#modalEdit').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var user = button.data('user');
+      var senha = button.data('senha');
+      var acesso = button.data('acesso');
+
+      $('#id').val(id);
+      $('#user').val(user);
+      $('#senha').val(senha);
+      $('#acesso').val(acesso);
+
+    })
+  })
+</script>
+
+<!-- FILTRO DA TABELA -->
+<script>
+  $(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+
 </html>

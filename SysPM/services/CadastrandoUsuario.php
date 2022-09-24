@@ -19,7 +19,7 @@ if (isset($_POST['novouser'])) {
   $result = mysqli_query($conexao, $sql);
 
   if ($result == 1) {
-    $_SESSION['adcionado'] = true;
+    $_SESSION['adicionado'] = true;
     header('Location: ../pages/adm/permissao.php');
   }
 }

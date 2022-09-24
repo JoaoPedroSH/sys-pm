@@ -6,8 +6,8 @@ include("../db/Conexao.php");
 //recebendo valores via metodo post
 $modelo =  $_POST['modelo'];
 $marca =  $_POST['marca'];
-$serie =  $_POST['serie'];
-$serie_antiga = $_POST['serie2'];
+$serie =  $_POST['n_serie'];
+$serie_antiga = $_POST['n_serie2'];
 $patrimonio =  $_POST['patrimonio'];
 $localizacao =   $_POST['localizacao'];
 $situacao = $_POST['situacao'];

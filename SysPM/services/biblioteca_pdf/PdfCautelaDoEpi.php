@@ -4,19 +4,21 @@ session_start();
 
 $data = date('d/m/Y');
 
-$nomeassinatura = $_POST['nome'];
-
-$foto = $_FILES['assinatura']['name'];
-$extensao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
-$novo_nome = $$nomeassinatura . "." . $extensao;
+$foto = $_FILES['assinaturafile']['name'];
+$novo_nome = md5(time()) . "_" . $foto;
 $diretorio = "assinaturas/";
-$caminho = $diretorio . $nomeassinatura ;
-move_uploaded_file($_FILES['assinatura']['tmp_name'], $diretorio . $novo_nome);
+move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);
+
+if ($foto == '') {
+  $novo_nome = "default.jpeg";
+}
+
+
+$uuid = md5(md5(time()));
 
 require_once __DIR__ . '/vendor/autoload.php';
 
   $documento = '
-
     <style>
 
       p {font-family:Arial;font-size:11.000000px;font-weight:bold;color:#000000;}
@@ -62,7 +64,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
             <br>
 
-            <p>ID: ' . md5(md5($data)) . '</p>
+            <p>ID: ' . $uuid . '</p>
 
           </td>
 
@@ -113,49 +115,65 @@ require_once __DIR__ . '/vendor/autoload.php';
 
         <tr>     
 
-          <th style="font-size: 15px; ">Parte:</th>
+          <th style="font-size: 15px; ">Parte</th>
 
         </tr>
 
         <tr>
 
-          <td style="text-align:justify; font-size: 12px; padding: 1em;">' . $_POST['parte'] . '</td>       
+          <td style="text-align:center; font-size: 12px; padding: 1em;">' . $_POST['parte'] . '</td>       
         
         </tr>
 
         <tr>
 
-          <th style="font-size: 15px; ">Termo:</th>
+          <th style="font-size: 15px; ">Termo</th>
 
         </tr>
 
         <tr>
 
-          <td style="text-align:justify; font-size: 12px; padding: 1em;">' . $_POST['termo'] . '</td>       
+          <td style="text-align:center; font-size: 12px; padding: 1em;">' . $_POST['termo'] . '</td>       
         
         </tr>
 
         <tr>
 
-          <th style="font-size: 15px; ">Declaração:</th>
+          <th style="font-size: 15px; ">Declaração</th>
 
         </tr>
 
         <tr>
 
-          <td style="text-align:justify; font-size: 12px; padding: 1em;">' . $_POST['declaracao'] . '</td>       
+          <td style="text-align:center; font-size: 12px; padding: 1em;">' . $_POST['declaracao'] . '</td>       
         
         </tr>
 
         <tr>
 
-          <th style="font-size: 15px; ">Assinatura:</th>
+          <th style="font-size: 15px; ">Oficial</th>
 
         </tr>
 
         <tr>
 
-          <td style="text-align:justify; font-size: 12px; padding: 1em;">' . $_POST['assinatura'] . '</td>       
+          <td style="text-align:center; font-size: 12px; padding: 1em;">' . $_POST['oficial'] . '</td>       
+        
+        </tr>
+
+        <tr>
+
+          <th style="font-size: 15px; ">Assinatura</th>
+
+        </tr>
+
+        <tr>
+
+          <td style="text-align:center; font-size: 12px; padding: 1em;">
+
+            <img style="max-height: 40px;" src='.$diretorio.$novo_nome.'>
+
+          </td>       
         
         </tr>
 
@@ -164,14 +182,12 @@ require_once __DIR__ . '/vendor/autoload.php';
     </div>
   ';
 
-$nomedoc = md5(date('d/m/Y \- H:i:s'));
-
 $mpdf = new \Mpdf\Mpdf();
 
 $mpdf->WriteHTML($documento);
 
 $mpdf->charset_in = 'UTF-8';
 
-$mpdf->Output('doc/cautelas_do_epi/' . $nomedoc . '.pdf', 'f'); // F => salvar / D => baixar / i => abrir
+$mpdf->Output('doc/cautelas_do_epi/' . $uuid . '.pdf', 'f');
 
-header('Location: ../../pages/adm/caterinha_epi.php');
+$mpdf->Output('doc/cautelas_do_epi/' . $uuid . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir

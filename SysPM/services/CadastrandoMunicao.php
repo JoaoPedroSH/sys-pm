@@ -2,10 +2,10 @@
 session_start();
 
 //verificando se tever submit
-if (isset($_POST['modelo'])) {
+if (isset($_POST['tipo'])) {
 
     //inclundo Conexao do Banco de Dados
-    include('../../db/Conexao.php');
+    include('../db/Conexao.php');
 
     //Recebendo Valores do Formulário (Para Edição)
     $marca = $_POST['marca'];
@@ -31,6 +31,7 @@ if (isset($_POST['modelo'])) {
     //vericando se trouxe houve algum cadastro
     if ($result > 0) {
         $_SESSION['sucesso'] = $cadastrado;
+        header('Location: ../pages/adm/cadastro_municoes.php');
     } else {
         echo "<script>alert('Erro ao Realizar Cadastro')</script>";
     }
