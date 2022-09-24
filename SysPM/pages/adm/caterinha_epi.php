@@ -56,13 +56,13 @@ if (!isset($_SESSION['adm'])) {
                             <form action="../../services/biblioteca_pdf/PdfCautelaDoEpi.php" method="POST" target="_blank" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="form-group col-md-4">
-                                        <label> EQUIPAMENTO <input class="form-control" type="text" name="obj" id="obj" placeholder="Ex: Capacete (123232) . . ." required></label>
+                                        <label> EQUIPAMENTO <input class="form-control" type="text" name="obj" id="obj" placeholder="" required></label>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label> ARMA <input class="form-control" type="text" name="obj2" id="obj2" placeholder="Ex: Glock (117283) " required></label>
+                                        <label> ARMA <input class="form-control" type="text" name="obj2" id="obj2" placeholder="" required></label>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label> MUNIÇÃO <input class="form-control" type="text" name="obj3" id="obj3" placeholder="Ex: 0.50 (20 PENTES)" required></label>
+                                        <label> MUNIÇÃO <input class="form-control" type="text" name="obj3" id="obj3" placeholder="" required></label>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label> PARTE </label>
@@ -76,9 +76,12 @@ if (!isset($_SESSION['adm'])) {
                                         <label> DECLARAÇÃO </label>
                                         <textarea class="form-control" name="declaracao" id="declaracao" cols="30" rows="2" placeholder="" required></textarea>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
+                                        <label> OFICIAL <input class="form-control" style="width:550px; " type="text" name="oficial" id="oficial" placeholder="" required></label>
+                                    </div>
+                                    <div class="form-group col-md-4">
                                         <label> ASSINATURA </label><br>
-                                        <input type="file" name="assinatura" id="" accept="image/*">
+                                        <input type="file" name="assinaturafile" id="assinaturafile" accept="image/*">
                                     </div>
                                 </div>
                                 <hr />
