@@ -152,7 +152,7 @@ include_once "../../db/Conexao.php";
                       </div>
                       <div class="modal-body" id="historico">
                         <div style="width: 100%;">
-                          <img src="./store/img/<? echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
+                          <img src="../../services/store/img/armas/<?=$linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                         </div>
                         <div class="container">
                           <h6 style="margin: 10px;">Nº SÉRIE : <?= $linhas['n_serie'] ?></h6>
@@ -245,7 +245,7 @@ include_once "../../db/Conexao.php";
 
                             <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" "> 
 
-                            <img src="./store/img/5be74f4b74c3dd42d62e0f3aeda890ba.png">
+                            <img src="./store/img/armas/5be74f4b74c3dd42d62e0f3aeda890ba.png">
 
                             <input type="text" id="foto_arma" name="foto_arma">
 

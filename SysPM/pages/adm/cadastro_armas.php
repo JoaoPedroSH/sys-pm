@@ -106,7 +106,7 @@ if (!isset($_SESSION['adm'])) {
                 </div>
                 <div>
                   <label for="imagem">ADICIONAR FOTO: </label>
-                  <input type="file" id="imagem" name="foto" accept="image/*">
+                  <input type="file" id="foto" name="foto" accept="image/*">
                 </div>
                 <hr />
 

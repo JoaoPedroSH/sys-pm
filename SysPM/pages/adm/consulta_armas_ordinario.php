@@ -131,7 +131,7 @@ include_once "../../db/Conexao.php";
                       </div>
                       <div class="modal-body" id="historico">
                         <div style="width: 100%;">
-                          <img src="./store/img/<?php echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
+                          <img src="./store/img/armas/<?php echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                         </div>
                         <div class="container">
                           <h6 style="margin: 10px;">Nº SÉRIE : <?php echo $linhas['n_serie'] ?></h6>

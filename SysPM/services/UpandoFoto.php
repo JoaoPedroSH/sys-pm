@@ -9,7 +9,7 @@ if (isset($_FILES['fotoarma'])) {
     $foto1 = $_FILES['fotoarma']['name'];
     $extensao = strtolower(pathinfo($foto1, PATHINFO_EXTENSION));
     $novo_nome = md5(time()) . "." . $extensao;
-    $diretorio = "./store/img/";
+    $diretorio = "./store/img/armas/";
     move_uploaded_file($_FILES['fotoarma']['tmp_name'], $diretorio . $novo_nome);
     if ($tipo == 'gto') {
       $sql1 = "UPDATE `armas_gto` SET  `foto`='$novo_nome' WHERE `id`='$id'";
