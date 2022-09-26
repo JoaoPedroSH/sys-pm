@@ -4,7 +4,7 @@
 
 ### Instalação e Configuração
 
-Passo 1 - Instalar PHP, Mysql e Apache (AppServ) 
+Passo 1 - Instalar PHP, Mysql e Apache (AppServ):
 https://www.appserv.org/en/download/
 
 Passo 2 - Clonar Projeto
