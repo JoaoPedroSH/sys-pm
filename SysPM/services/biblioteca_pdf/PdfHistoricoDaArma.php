@@ -16,7 +16,7 @@ $queryHist = "SELECT  * FROM historico_armas";
 
 $resultHist = mysqli_query($conexao, $queryHist);
 
-$data = date('d/m/Y \- H:i:s');
+$data = date('d/m/Y \- H:i:s');   
 
 $uuid = md5(md5(time()));
 
@@ -24,7 +24,7 @@ while ($hist = $resultHist->fetch_assoc()) {
 
   if ($hist['n_serie'] == $nSerie) {
 
-    $linhasTable .= "<hr/>".$hist['localizacao']." | ".$hist['cautela']." | ".date('d/m/Y', strtotime ($hist['data_inspecao']))."<hr/>";
+    $linhasTable .= "<hr/>".$hist['localizacao']." | ".$hist['cautela']." | ".$hist['data_atual']."<hr/>";
 
   $historico = "
   <style>
@@ -32,7 +32,7 @@ while ($hist = $resultHist->fetch_assoc()) {
     h4 {text-align: center; background-color: #ABB2B9;}
     p {font-family:Arial;font-size:11.000000px;font-weight:bold;color:#000000;}
     table, td, th, tfoot, {border:solid 1px #000; padding:5px; text-align: center;}
-    th {width:100%;background-color:#999;}
+    th {width:100%;background-color:#999;}  
     caption {font-size:x-large;}
     colgroup {background:#F60;}
     .coluna1 {background:#F66;}

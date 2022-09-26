@@ -13,21 +13,22 @@ $localizacao =   $_POST['localizacao'];
 $situacao = $_POST['situacao'];
 $cautela =  $_POST['cautela'];
 $tipo =  $_POST['tipo'];
-$obs = $_POST['obss'];
+$data_inspecao = $_POST['data_inspecao'];
+$obs = $_POST['obs'];
 $id = $_POST['id'];
 $alteracao = $_POST['tipoedicao'];
 $data = date("d/m/Y");
 
-if (isset($_FILES['fotoarma'])) {
-  $foto1 = $_FILES['fotoarma']['name'];
-  $extensao = strtolower(pathinfo($foto1, PATHINFO_EXTENSION));
-  $novo_nome = md5(time()) . "." . $extensao;
-  $diretorio = "fotos_armas/";
-  move_uploaded_file($_FILES['fotoarma']['tmp_name'], $diretorio . $novo_nome);
+if (isset($_FILES['foto_arma'])) {
+  $foto = $_FILES['foto_arma']['name'];
+  $novo_nome = md5(time()) . "_" . $foto;
+  $diretorio = "store/img/armas/";
+  move_uploaded_file($_FILES['foto_arma']['tmp_name'], $diretorio . $novo_nome);
+
   if ($tipo == 'gto') {
-    $sql1 = "UPDATE `armas_gto` SET  `foto`='$foto1' WHERE `id`='$id'";
+    $sql1 = "UPDATE `armas_gto` SET  `foto`='$novo_nome' WHERE `id`='$id'";
   } else {
-    $sql1 = "UPDATE `armas_ord` SET  `foto`='$foto1' WHERE `id`='$id'";
+    $sql1 = "UPDATE `armas_ord` SET  `foto`='$novo_nome' WHERE `id`='$id'";
   }
   $result08 = mysqli_query($conexao, $sql1);
 }
@@ -51,7 +52,7 @@ if ($tipo == "gto") {
 
   $data_atual = date('d/m/Y');
   $query = "UPDATE `armas_gto` SET  `marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',
-      `patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`obs`='$obs'
+      `patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`data_inspecao`='$data_inspecao',`obs`='$obs'
       WHERE `id`='$id'";
 
 
@@ -70,7 +71,7 @@ if ($tipo == "gto") {
 
   $data_atual = date('d/m/Y');
   $query = "UPDATE `armas_ord` SET  `marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',
-      `patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`obs`='$obs'
+      `patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`data_inspecao`='$data_inspecao',`obs`='$obs'
       WHERE `id`='$id'";
 
 

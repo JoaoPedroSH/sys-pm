@@ -101,29 +101,29 @@ include_once "../../db/Conexao.php";
               <tbody id="myTable">
                 <tr>
                   <td><?= $x ?></td>
-                  <td><?php echo $linhas['marca'] ?></td>
-                  <td><?php echo $linhas['modelo'] ?></td>
-                  <td><?php echo $linhas['n_serie'] ?></td>
-                  <td><?php echo $linhas['patrimonio'] ?></td>
-                  <td><?php echo $linhas['localizacao'] ?></td>
-                  <td><?php echo $linhas['situacao'] ?></td>
-                  <td><?php echo $linhas['cautela'] ?></td>
+                  <td><?= $linhas['marca'] ?></td>
+                  <td><?= $linhas['modelo'] ?></td>
+                  <td><?= $linhas['n_serie'] ?></td>
+                  <td><?= $linhas['patrimonio'] ?></td>
+                  <td><?= $linhas['localizacao'] ?></td>
+                  <td><?= $linhas['situacao'] ?></td>
+                  <td><?= $linhas['cautela'] ?></td>
                   <td><button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>"> OBS </button></td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
 
-                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#ModalLongoExemplo<?php echo $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
+                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#ModalLongoExemplo<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
 
                 </tr>
 
                 <!-- MODAL DO HISTÓRICO -->
-                <div class="modal fade bd-example-modal-lg" id="ModalLongoExemplo<?php echo $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="ModalLongoExemplo<?= $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="TituloModalLongoExemplo">Histórico da arma ' <?php echo $linhas['marca'] ?> / <?php echo $linhas['modelo'] ?> '</h5>
+                        <h5 class="modal-title" id="TituloModalLongoExemplo">Histórico da arma ' <?= $linhas['marca'] ?> / <?= $linhas['modelo'] ?> '</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                           <span aria-hidden="true">&times;</span>
 
@@ -131,10 +131,10 @@ include_once "../../db/Conexao.php";
                       </div>
                       <div class="modal-body" id="historico">
                         <div style="width: 100%;">
-                          <img src="./store/img/armas/<?php echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
+                          <img src="../../services/store/img/armas/<?= $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                         </div>
                         <div class="container">
-                          <h6 style="margin: 10px;">Nº SÉRIE : <?php echo $linhas['n_serie'] ?></h6>
+                          <h6 style="margin: 10px;">Nº SÉRIE : <?= $linhas['n_serie'] ?></h6>
                           <hr>
 
                           <div id="row_hist" style="display: flex;">
@@ -164,10 +164,9 @@ include_once "../../db/Conexao.php";
                             ?>
                                 <div id="historico_pdf">
                                   <div id="row_hist" style="display: flex;">
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo $linhas1['localizacao'] ?> </h6>
-                                    <h6 style="width: 40%;text-align: center;margin: 0;"> <?php echo $linhas1['cautela'] ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo date('d/m/Y'); ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?php echo date('d/m/Y', strtotime($linhas1['data_inspecao'])); ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['localizacao'] ?> </h6>
+                                    <h6 style="width: 40%;text-align: center;margin: 0;"> <?= $linhas1['cautela'] ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['data_atual'] ?> </h6>
                                   </div>
                                 </div>
                                 <hr>
@@ -208,60 +207,57 @@ include_once "../../db/Conexao.php";
                         </button>
                       </div>
                       <div class="modal-body">
-                        <!-- <form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
+
+                        <form action="../../services/EditandoArma.php" method="POST" enctype="multipart/form-data" onsubmit="return  verificar()">
 
                           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Imagem da arma:</label><br>
-                            <input type="file" name="fotoarma" accept="image/*" id="fotoarma" title=" ">
-                            <input type="hidden" name="id" id="idarma">
+                            <label for="recipient-name" class="col-form-label"> FOTO </label><br>
 
-                            <input type="hidden" name="tipo" value="ordinario">
-                            <button class="btn btn-outline-success" type="submit">Alterar</button>
+                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" ">
+
                           </div>
-                        </form> -->
-
-                        <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
 
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">Marca:</label>
+                            <label for="message-text" class="col-form-label">MARCA</label>
                             <input type="text" class="form-control" id="marca" name="marca">
                           </div>
                           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Modelo:</label>
+                            <label for="recipient-name" class="col-form-label">MODELO</label>
                             <input type="text" class="form-control" id="modelo" name="modelo">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">Nº Série:</label>
+                            <label for="message-text" class="col-form-label">Nº SÉRIE</label>
                             <input type="text" class="form-control" id="n_serie" name="n_serie">
                             <input type="hidden" id="n_serie2" name="n_serie2">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">PRATIMÔNIO:</label>
+                            <label for="message-text" class="col-form-label">PRATIMÔNIO</label>
                             <input type="text" class="form-control" id="patrimonio" name="patrimonio">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO:</label>
+                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO</label>
                             <input type="text" class="form-control" id="localizacao" name="localizacao">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">SITUAÇÃO:</label>
+                            <label for="message-text" class="col-form-label">SITUAÇÃO</label>
                             <input type="text" class="form-control" id="situacao" name="situacao">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">CAUTELA:</label>
+                            <label for="message-text" class="col-form-label">DATA ULT. INSPEÇÃO </label>
+                            <input type="date" class="form-control" id="data_inspecao" name="data_inspecao">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">CAUTELA
+                              <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
+                                <option value="correcao">Corrigir</option>
+                                <option value="mudanca">Mudar</option>
+                              </select>
+                            </label>
                             <input type="text" class="form-control" id="cautela" name="cautela">
-
-                            <hr>
-                            <label>Selecione uma ação: </label>
-                            <select class="form-select " aria-label="Default select example" style="text-align: center;" name="tipoedicao" required>
-                              <option value="correcao">Corrigir</option>
-                              <option value="mudanca">Mudar</option>
-                            </select>
-                            <hr>
                           </div>
                           <div>
-                            <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
-                            <textarea id="obs" name="obs" cols="60" rows="4"> </textarea>
+                            <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
+                            <textarea id="obs" name="obs" cols="60" rows="2"> </textarea>
                           </div>
 
                           <div class="form-group">
@@ -293,18 +289,6 @@ include_once "../../db/Conexao.php";
     </div>
   </div>
 </body>
-
-<!-- IMPRIME HISTÓRICO -->
-<script>
-  /*function historico() {
-      alert("Pressiona a Tecla (CTRL) + (P) para realizar a impressão!")
-      var divToPrint = document.getElementById('historico')
-      var popupWin = window.open('', '_blank', 'width=300,height=400,location=no,left=200px');
-      popupWin.document.open();
-      popupWin.document.write('<html style="text-align:left"><body onload="window.historico()">' + divToPrint.innerHTML + '</html>');
-      popupWin.document.close();
-    }*/
-</script>
 
 <!-- ALERTA DO STATUS FINAL DA EDIÇÃO -->
 <?php
@@ -350,7 +334,7 @@ if (isset($_SESSION['error_edit'])) {
     $('#modalEdit').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget);
       var id = button.data('id');
-      var foto_arma = button.data('foto-arma');
+      //var foto_arma = button.data('foto-arma');
       var tipo_arma = button.data('tipo-arma');
       var marca = button.data('marca');
       var modelo = button.data('modelo');
@@ -359,10 +343,11 @@ if (isset($_SESSION['error_edit'])) {
       var localizacao = button.data('localizacao');
       var situacao = button.data('situacao');
       var cautela = button.data('cautela');
+      var data_inspecao = button.data('ult-inspecao');
       var observacao = button.data('observacao');
 
       $('#id').val(id);
-      $('#foto_arma').val(foto_arma);
+      //$('#foto_arma').val(foto_arma);
       $('#tipo_arma').val(tipo_arma);
       $('#marca').val(marca);
       $('#modelo').val(modelo);
@@ -371,6 +356,7 @@ if (isset($_SESSION['error_edit'])) {
       $('#localizacao').val(localizacao);
       $('#situacao').val(situacao);
       $('#cautela').val(cautela);
+      $('#data_inspecao').val(data_inspecao);
       $('#obs').val(observacao);
     })
   })
