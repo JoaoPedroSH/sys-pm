@@ -233,16 +233,24 @@ include_once "../../db/Conexao.php";
 
                       </div>
 
+
+
                       <div class="modal-body">
 
-                        <form action="../../services/EditandoArma.php" method="POST" enctype="multipart/form-data" onsubmit="return  verificar()">
+                        <form action="../../services/UpandoFotoArma.php" method="POST" enctype="multipart/form-data">
 
                           <div class="form-group">
                             <label for="recipient-name" class="col-form-label"> FOTO </label><br>
+                            <input type="hidden" id="tipo" name="tipoArmaFoto" value="gto">
+                            <input type="hidden" id="idArmaFoto" name="idArmaFoto">
+                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg">
 
-                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" ">
+                            <button type="submit" class="btn btn-outline-primary"> Atualizar </button>
 
                           </div>
+                        </form>
+                          <hr>
+                        <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
 
                           <div class="form-group">
 
@@ -302,7 +310,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">CAUTELA 
+                            <label for="message-text" class="col-form-label">CAUTELA
                               <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
                                 <option value="correcao">Corrigir</option>
                                 <option value="mudanca">Mudar</option>
@@ -311,15 +319,15 @@ include_once "../../db/Conexao.php";
                             <input type="text" class="form-control" id="cautela" name="cautela">
                           </div>
 
-                          <div>
+                          <div class="form-group">
 
                             <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
 
-                            <textarea id="obs" name="obs" cols="60" rows="2"> </textarea>
+                            <textarea id="obs" class="form-control" name="obs" cols="60" rows="2"> </textarea>
 
                           </div>
 
-                          <input type="hidden" name="id" id="id" value="">
+                          <input type="hidden" name="id" id="id">
 
                           <input type="hidden" name="tipo" id="tipo" value="gto">
 
@@ -421,6 +429,7 @@ if (isset($_SESSION['error_edit'])) {
       var observacao = button.data('observacao');
 
       $('#id').val(id);
+      $('#idArmaFoto').val(id);
       //$('#foto_arma').val(foto_arma);
       $('#tipo_arma').val(tipo_arma);
       $('#marca').val(marca);
