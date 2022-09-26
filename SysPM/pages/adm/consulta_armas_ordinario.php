@@ -37,7 +37,7 @@ include_once "../../db/Conexao.php";
 
   <script src="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 

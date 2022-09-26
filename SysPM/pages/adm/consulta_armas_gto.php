@@ -34,7 +34,7 @@ include_once "../../db/Conexao.php";
 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -162,7 +162,6 @@ include_once "../../db/Conexao.php";
                             <h6 style="width: 30%;text-align: center;margin: 0;">LOCALIZAÇÃO</h6>
                             <h6 style="width: 40%;text-align: center;margin: 0;">CAUTELA</h6>
                             <h6 style="width: 30%;text-align: center;margin: 0;">DATA ATUAL </h6>
-                            <h6 style="width: 30%;text-align: center;margin: 0;">DATA INSPERÇÃO </h6>
                           </div>
                           <hr>
 
