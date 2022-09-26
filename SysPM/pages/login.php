@@ -47,7 +47,7 @@ if (isset($_POST['usuario'])) {
         }
     } else {
 
-        echo "<script>alert('Usuário ou Senha inválidos')</script>";
+        $_SESSION['error_adm'] = true;
     }
 }
 
@@ -67,8 +67,10 @@ if (isset($_POST['usuario'])) {
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    
     <link rel="stylesheet" href="../css/Login.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         body {
@@ -133,5 +135,24 @@ if (isset($_POST['usuario'])) {
     </div>
 
 </body>
+<?php
+if (isset($_SESSION['error_adm'])) {
+?>
 
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Ops! Usuário ou Senha Inválido.',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+
+<?php
+  unset($_SESSION['error_adm']);
+}
+
+?>
 </html>

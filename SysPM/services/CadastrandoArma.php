@@ -18,9 +18,8 @@ if (isset($_POST['n_serie'])) {
   $data_inspecao = $_POST['data_inspecao'];
   //UPLOAD FOTO
   $foto = $_FILES['foto']['name'];
-  $extensao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
-  $novo_nome = md5(time()) . "." . $extensao;
-  $diretorio = "./store/img/";
+  $novo_nome = md5(time()) . "_" . $foto;
+  $diretorio = "store/img/armas/";
   move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);
 
   //VERIFICANDO TIPO DE CADASTRO
@@ -52,4 +51,3 @@ if (isset($_POST['n_serie'])) {
     echo "<script>alert('Erro ao Realizar Cadastro')</script>";
   }
 }
-?>

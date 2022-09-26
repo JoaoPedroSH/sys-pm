@@ -16,13 +16,15 @@ $queryHist = "SELECT  * FROM historico_armas";
 
 $resultHist = mysqli_query($conexao, $queryHist);
 
-$data = date('d/m/Y \- H:i:s');
+$data = date('d/m/Y \- H:i:s');   
+
+$uuid = md5(md5(time()));
 
 while ($hist = $resultHist->fetch_assoc()) {
 
   if ($hist['n_serie'] == $nSerie) {
 
-    $linhasTable .= "<hr/>".$hist['localizacao']." | ".$hist['cautela']." | ".date('d/m/Y', strtotime ($hist['data_inspecao']))."<hr/>";
+    $linhasTable .= "<hr/>".$hist['localizacao']." | ".$hist['cautela']." | ".$hist['data_atual']."<hr/>";
 
   $historico = "
   <style>
@@ -30,7 +32,7 @@ while ($hist = $resultHist->fetch_assoc()) {
     h4 {text-align: center; background-color: #ABB2B9;}
     p {font-family:Arial;font-size:11.000000px;font-weight:bold;color:#000000;}
     table, td, th, tfoot, {border:solid 1px #000; padding:5px; text-align: center;}
-    th {width:100%;background-color:#999;}
+    th {width:100%;background-color:#999;}  
     caption {font-size:x-large;}
     colgroup {background:#F60;}
     .coluna1 {background:#F66;}
@@ -75,6 +77,8 @@ while ($hist = $resultHist->fetch_assoc()) {
 
               <br>
 
+              <p>ID:". $uuid ."</p>
+
             </td>
 
             <td><img style='width:15%;' src='../../img/logo2.png'></td>
@@ -97,7 +101,7 @@ while ($hist = $resultHist->fetch_assoc()) {
 
       <tr>
 
-        <td><img src='./store/img/".$hist['foto']."'style='width: 170px;height: 150px;'></th>
+        <td><img src='../store/img/armas/".$hist['foto']."'style='width: 170px;height: 150px;'></th>
 
       </tr>
 
@@ -133,12 +137,12 @@ while ($hist = $resultHist->fetch_assoc()) {
 
 }
 
-$data = date('d/m/Y \- H:i:s');
-
 $mpdf = new \Mpdf\Mpdf();
 
 $mpdf->WriteHTML($historico);
 
 $mpdf->charset_in = 'UTF-8';
 
-$mpdf->Output('historico/' . $data . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir
+$mpdf->Output('doc/historicos_de_armas/' . $uuid . '.pdf', 'f');
+
+$mpdf->Output('doc/historicos_de_armas/' . $uuid . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir

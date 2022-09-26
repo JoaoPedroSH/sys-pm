@@ -133,7 +133,7 @@ include_once "../../db/Conexao.php";
                   <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button></td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>"> Editar </button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> Editar </button>
 
                     <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
@@ -152,7 +152,7 @@ include_once "../../db/Conexao.php";
                       </div>
                       <div class="modal-body" id="historico">
                         <div style="width: 100%;">
-                          <img src="./store/img/<? echo $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
+                          <img src="../../services/store/img/armas/<?= $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                         </div>
                         <div class="container">
                           <h6 style="margin: 10px;">Nº SÉRIE : <?= $linhas['n_serie'] ?></h6>
@@ -186,8 +186,7 @@ include_once "../../db/Conexao.php";
                                   <div id="row_hist" style="display: flex;">
                                     <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['localizacao'] ?> </h6>
                                     <h6 style="width: 40%;text-align: center;margin: 0;"> <?= $linhas1['cautela'] ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= date('d/m/Y'); ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= date('d/m/Y', strtotime($linhas1['data_inspecao'])); ?> </h6>
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['data_atual'] ?> </h6>
                                   </div>
                                 </div>
                                 <hr>
@@ -237,33 +236,18 @@ include_once "../../db/Conexao.php";
 
                       <div class="modal-body">
 
-
-                        <!--<form action="../../services/UpandoFoto.php" method="post" enctype="multipart/form-data">
+                        <form action="../../services/EditandoArma.php" method="POST" enctype="multipart/form-data" onsubmit="return  verificar()">
 
                           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label"> Imagem da arma: </label><br>
+                            <label for="recipient-name" class="col-form-label"> FOTO </label><br>
 
-                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" "> 
+                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" title=" ">
 
-                            <img src="./store/img/5be74f4b74c3dd42d62e0f3aeda890ba.png">
-
-                            <input type="text" id="foto_arma" name="foto_arma">
-
-                            <input type="hidden" name="id" id="id">
-
-                            <input type="hidden" name="tipo" value="gto">
-
-                            <button class="btn btn-outline-success" type="submit">Alterar</button>
                           </div>
-                        </form>
-                        -->
-
-
-                        <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">MARCA:</label>
+                            <label for="message-text" class="col-form-label">MARCA</label>
 
                             <input type="text" class="form-control" id="marca" name="marca">
 
@@ -271,7 +255,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="recipient-name" class="col-form-label">MODELO:</label>
+                            <label for="recipient-name" class="col-form-label">MODELO</label>
 
                             <input type="text" class="form-control" id="modelo" name="modelo">
 
@@ -279,7 +263,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">Nº SÉRIE:</label>
+                            <label for="message-text" class="col-form-label">Nº SÉRIE</label>
 
                             <input type="text" class="form-control" id="n_serie" name="n_serie">
                             <input type="hidden" id="n_serie2" name="n_serie2">
@@ -287,7 +271,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">PRATIMÔNIO:</label>
+                            <label for="message-text" class="col-form-label">PRATIMÔNIO</label>
 
                             <input type="text" class="form-control" id="patrimonio" name="patrimonio">
 
@@ -295,7 +279,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO:</label>
+                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO</label>
 
                             <input type="text" class="form-control" id="localizacao" name="localizacao">
 
@@ -303,7 +287,7 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">SITUAÇÃO:</label>
+                            <label for="message-text" class="col-form-label">SITUAÇÃO</label>
 
                             <input type="text" class="form-control" id="situacao" name="situacao">
 
@@ -311,26 +295,26 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">CAUTELA:</label>
+                            <label for="message-text" class="col-form-label">DATA ULT. INSPEÇÃO </label>
 
-                            <input type="text" class="form-control" id="cautela" name="cautela">
+                            <input type="date" class="form-control" id="data_inspecao" name="data_inspecao">
 
-                            <hr>
-                            <div class="form-group">
-                              <label>Selecione uma ação: </label>
+                          </div>
+
+                          <div class="form-group">
+
+                            <label for="message-text" class="col-form-label">CAUTELA 
                               <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
                                 <option value="correcao">Corrigir</option>
                                 <option value="mudanca">Mudar</option>
-
                               </select>
-
-                            </div>
-                            <hr>
+                            </label>
+                            <input type="text" class="form-control" id="cautela" name="cautela">
                           </div>
 
                           <div>
 
-                            <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
+                            <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
 
                             <textarea id="obs" name="obs" cols="60" rows="2"> </textarea>
 
@@ -425,7 +409,7 @@ if (isset($_SESSION['error_edit'])) {
     $('#modalEdit').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget);
       var id = button.data('id');
-      var foto_arma = button.data('foto-arma');
+      //var foto_arma = button.data('foto-arma');
       var tipo_arma = button.data('tipo-arma');
       var marca = button.data('marca');
       var modelo = button.data('modelo');
@@ -434,10 +418,11 @@ if (isset($_SESSION['error_edit'])) {
       var localizacao = button.data('localizacao');
       var situacao = button.data('situacao');
       var cautela = button.data('cautela');
+      var data_inspecao = button.data('ult-inspecao');
       var observacao = button.data('observacao');
 
       $('#id').val(id);
-      $('#foto_arma').val(foto_arma);
+      //$('#foto_arma').val(foto_arma);
       $('#tipo_arma').val(tipo_arma);
       $('#marca').val(marca);
       $('#modelo').val(modelo);
@@ -446,6 +431,7 @@ if (isset($_SESSION['error_edit'])) {
       $('#localizacao').val(localizacao);
       $('#situacao').val(situacao);
       $('#cautela').val(cautela);
+      $('#data_inspecao').val(data_inspecao);
       $('#obs').val(observacao);
     })
   })

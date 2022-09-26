@@ -89,7 +89,7 @@ if (!isset($_SESSION['adm'])) {
                 </div>
                 <div class="row">
                   <div class="form-group col-md-3">
-                    <label>DATA ÙLT. INSPEÇÃO</label>
+                    <label>DATA ULT. INSPEÇÃO</label>
                     <input type="date" class="form-control" name="data_inspecao">
                   </div>
                   <div class="form-group col-md-6">
@@ -106,7 +106,7 @@ if (!isset($_SESSION['adm'])) {
                 </div>
                 <div>
                   <label for="imagem">ADICIONAR FOTO: </label>
-                  <input type="file" id="imagem" name="foto" accept="image/*">
+                  <input type="file" id="foto" name="foto" accept="image/*">
                 </div>
                 <hr />
 

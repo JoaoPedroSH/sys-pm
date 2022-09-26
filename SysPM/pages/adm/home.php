@@ -62,27 +62,7 @@ include_once "../../db/Conexao.php";
 
             <!--Main-->
             <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
-                <br><br>                                                    
-
-                <!-- Alerta de Backup feito com sucesso -->
-                <?php
-                if (isset($_SESSION['fez_backup'])) {
-                ?>
-                    <script>
-                        Swal.fire({
-                            position: 'top-start',
-                            icon: 'success',
-                            title: 'Backup bem sucedido!',
-                            text: 'Encontre o arquivo de backup em Downloads/Backups_SysPM',
-                            showConfirmButton: true,
-                            confirmButtonColor: '#2ECC71',
-                            timer: 6000
-                        })
-                    </script>
-                <?php
-                    unset($_SESSION['fez_backup']);
-                }
-                ?>
+                <br><br>
 
                 <br>
 
@@ -303,4 +283,25 @@ include_once "../../db/Conexao.php";
         </div>
     </div>
 </body>
+
+<!-- Alerta de Backup feito com sucesso -->
+<?php
+if (isset($_SESSION['fez_backup'])) {
+?>
+    <script>
+        Swal.fire({
+            position: 'top-start',
+            icon: 'success',
+            title: 'Backup bem sucedido!',
+            text: 'Encontre o arquivo de backup em Downloads/Backups_SysPM',
+            showConfirmButton: true,
+            confirmButtonColor: '#2ECC71',
+            timer: 6000
+        })
+    </script>
+<?php
+    unset($_SESSION['fez_backup']);
+}
+?>
+
 </html>
