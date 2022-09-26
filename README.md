@@ -9,7 +9,7 @@ https://www.appserv.org/en/download/
 
 Passo 2 - Clonar Projeto
 ````sh
-git clone 
+git clone https://github.com/JoaoPedroSH/SysPM.git
 ````
 
 Passo 3 - Instalar Dependencias
