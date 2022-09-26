@@ -46,7 +46,7 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
-
+  
    .sidebar {
     position: fixed;
     top: 35px;    
@@ -54,23 +54,31 @@
     width: 15%;    
   }
 
+  .canto {
+   background: url(../../img/marcauepa.png) no-repeat scroll left top;
+   position: fixed;
+   top: 248px;
+   height: 30px;
+   width: 35px;
+   z-index: 100;
+   left: 0pt;
+}
+
 </style>
 <div class="barra-lateral col-md-2" style="padding: 0;">
-  <div class="col-md-12 bg-light" style="padding-top: 0;height: 100%;">
-    <nav class="sidebar d-none mt-0 d-md-block">
+  <div class="col-md-12 bg-light" style="padding-top: 0; height: 100%;">
       <div class="sidebar-sticky">
 
         <ul class="nav flex-column">
-
+          <h1></h1><h1></h1>
           <li class="nav-item">
-            <center><img src="../../img/logo.png" alt="SysPM.png" style="margin-top: 20px; width: 160px; height: 50px;"></center>
               
             <!-- Home -->
 
-            <hr style="border-top: 1px solid rgb(255 255 255 / 37%)">
+            <hr style="border-top: 0px solid rgb(255 255 255 / 37%)">
 
             <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
-              <span>PAINEIS</span>
+              <span>PAINÉIS</span>
             </h6>
 
             <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm/home.php" style="margin-bottom: 10px; padding-right: 10px;">
@@ -247,10 +255,7 @@
           <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
           <center><img src="../../img/marcauepa.png" width="180px" height="80px"></center>
         </li>
-
         </ul>
-
       </div>
-    </nav>
   </div>
 </div>
