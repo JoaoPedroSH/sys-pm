@@ -87,8 +87,8 @@ include_once "../../db/Conexao.php";
                 <br>
 
                 <!-- Cartão de Estatísticas Geral -->
-                <div class="container" style="background-color: #F1948A; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
-                    <div class="row" style="justify-content: center; background-color: red; border-radius: 5px;">
+                <div class="container" style="background-color: #b22222; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                    <div class="row" style="justify-content: center; background-color: #dc143c; border-radius: 5px;">
                         <h1 style="color: white;">GERAL</h1>
                     </div>
                     <br>
@@ -165,8 +165,8 @@ include_once "../../db/Conexao.php";
                 <br><br>
 
                 <!-- Cartão de Estatística Inventário Ordinário -->
-                <div class="container" style="background-color: #7FB3D5; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
-                    <div class="row" style="justify-content: center; background-color: blue;">
+                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                    <div class="row" style="justify-content: center; background-color: #104E8B;">
                         <h1 style="color: white;">ORDINÁRIO</h1>
                     </div>
                     <br>
@@ -234,8 +234,8 @@ include_once "../../db/Conexao.php";
                 <br><br>
 
                 <!-- Cartão de Estatística Inventário Gto -->
-                <div class="container" style="background-color: #7FB3D5; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
-                    <div class="row" style="justify-content: center; background-color: blue;">
+                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                    <div class="row" style="justify-content: center; background-color: #104E8B;">
                         <h1 style="color: white;">GTO</h1>
                     </div>
                     <br>
