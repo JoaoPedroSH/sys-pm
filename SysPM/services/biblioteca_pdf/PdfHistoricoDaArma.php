@@ -4,29 +4,44 @@ session_start();
 
 $imprimir = $_POST['imprimir'];
 $nSerie = $_POST['n_serie'];
+$tipoEdicao = $_POST['tipo'];
 
 if (isset($_POST['imprimir'])) {
 
-require_once __DIR__ . '/vendor/autoload.php';
+  require_once __DIR__ . '/vendor/autoload.php';
 
-include_once('../../db/Conexao.php');
+  include_once('../../db/Conexao.php');
 
-//Get Arma
-$queryHist = "SELECT  * FROM historico_armas";
+  if ($tipoEdicao == 'gto') {
+    $queryGto = "SELECT foto, marca, modelo FROM armas_gto WHERE `n_serie`='$nSerie'";
 
-$resultHist = mysqli_query($conexao, $queryHist);
+    $resultGto = mysqli_query($conexao, $queryGto);
 
-$data = date('d/m/Y \- H:i:s');   
+    $dados = $resultGto->fetch_assoc();
+  }
+  if ($tipoEdicao == 'ord') {
+    $queryOrd = "SELECT foto, marca, modelo FROM armas_ord WHERE `n_serie`='$nSerie'";
 
-$uuid = md5(md5(time()));
+    $resultOrd = mysqli_query($conexao, $queryOrd);
 
-while ($hist = $resultHist->fetch_assoc()) {
+    $dados = $resultOrd->fetch_assoc();
+  }
 
-  if ($hist['n_serie'] == $nSerie) {
+  $queryHist = "SELECT  * FROM historico_armas";
 
-    $linhasTable .= "<hr/>".$hist['localizacao']." | ".$hist['cautela']." | ".$hist['data_atual']."<hr/>";
+  $resultHist = mysqli_query($conexao, $queryHist);
 
-  $historico = "
+  $data = date('d/m/Y \- H:i:s');
+
+  $uuid = md5(md5(time()));
+
+  while ($hist = $resultHist->fetch_assoc()) {
+
+    if ($hist['n_serie'] == $nSerie) {
+
+      $linhasTable .= "<hr/>" . $hist['localizacao'] . " | " . $hist['cautela'] . " | " . $hist['data_atual'] . "<hr/>";
+
+      $historico = "
   <style>
 
     h4 {text-align: center; background-color: #ABB2B9;}
@@ -67,17 +82,17 @@ while ($hist = $resultHist->fetch_assoc()) {
               
               <hr>
 
-              <h2 style='text-align:center'>HISTÓRICO DA ' ".$hist['marca']." / ".$hist['modelo']." '</h2>
+              <h2 style='text-align:center'>HISTÓRICO DA ' " . $dados['marca'] . " / " . $dados['modelo'] . " '</h2>
 
               <br>
 
               <p>DATA DE EMISSÃO</p>
 
-              <p>".$data."</p>
+              <p>" . $data . "</p>
 
               <br>
 
-              <p>ID:". $uuid ."</p>
+              <p>ID:" . $uuid . "</p>
 
             </td>
 
@@ -95,13 +110,13 @@ while ($hist = $resultHist->fetch_assoc()) {
           
       <tr>
 
-        <th>Nº SÉRIE : ".$hist['n_serie']."</td>
+        <th>Nº SÉRIE : " . $hist['n_serie'] . "</td>
 
       </tr>
 
       <tr>
 
-        <td><img src='../store/img/armas/".$hist['foto']."'style='width: 170px;height: 150px;'></th>
+        <td><img src='../store/img/armas/" . $dados['foto'] . "'style='width: 170px;height: 150px;'></th>
 
       </tr>
 
@@ -119,7 +134,7 @@ while ($hist = $resultHist->fetch_assoc()) {
 
         <hr>
 
-        <td> ".$linhasTable."  </td>
+        <td> " . $linhasTable . "  </td>
 
       </tr>
 
@@ -130,11 +145,8 @@ while ($hist = $resultHist->fetch_assoc()) {
 </html>
 
 ";
-
-}
-
-}
-
+    }
+  }
 }
 
 $mpdf = new \Mpdf\Mpdf();

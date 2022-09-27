@@ -310,6 +310,16 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
+                            <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
+
+                            <textarea id="obs" class="form-control" name="obs" cols="60" rows="1"> </textarea>
+
+                          </div>
+
+                          <hr>
+
+                          <div class="form-group">
+
                             <label for="message-text" class="col-form-label">CAUTELA
                               <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
                                 <option value="correcao">Corrigir</option>
@@ -317,14 +327,6 @@ include_once "../../db/Conexao.php";
                               </select>
                             </label>
                             <input type="text" class="form-control" id="cautela" name="cautela">
-                          </div>
-
-                          <div class="form-group">
-
-                            <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
-
-                            <textarea id="obs" class="form-control" name="obs" cols="60" rows="2"> </textarea>
-
                           </div>
 
                           <input type="hidden" name="id" id="id">
@@ -416,7 +418,6 @@ if (isset($_SESSION['error_edit'])) {
     $('#modalEdit').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget);
       var id = button.data('id');
-      //var foto_arma = button.data('foto-arma');
       var tipo_arma = button.data('tipo-arma');
       var marca = button.data('marca');
       var modelo = button.data('modelo');
@@ -430,11 +431,11 @@ if (isset($_SESSION['error_edit'])) {
 
       $('#id').val(id);
       $('#idArmaFoto').val(id);
-      //$('#foto_arma').val(foto_arma);
       $('#tipo_arma').val(tipo_arma);
       $('#marca').val(marca);
       $('#modelo').val(modelo);
       $('#n_serie').val(n_serie);
+      $('#n_serie2').val(n_serie);
       $('#patrimonio').val(patrimonio);
       $('#localizacao').val(localizacao);
       $('#situacao').val(situacao);

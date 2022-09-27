@@ -29,14 +29,14 @@ if (isset($_POST['n_serie'])) {
     $data_atual = date('d/m/Y');
     $query = "INSERT INTO `armas_gto` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
-    $query1 = "INSERT INTO `historico_armas` (`id`, `foto`, `situacao`, `patrimonio`, `marca`, `tipo`, `modelo`, `n_serie`, `localizacao`, `cautela`, `data_inspecao`, `data_atual`) VALUES (null,'$novo_nome','$situacao','$patrimonio','$marca','$tipo','$modelo','$n_serie','$localizacao','$cautela','$data_inspecao','$data_atual')";
+    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`,`data_atual`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual')";
   } else {
     $tipo = 'ordinario';
     $data_atual = date('d/m/Y');
     //ENVIA DADOS PARA BANCO DE ARMAS DO ORDINÁRIO
     $query = "INSERT INTO `armas_ord` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
-    $query1 = "INSERT INTO `historico_armas` (`id`, `foto`, `situacao`, `patrimonio`, `marca`, `tipo`, `modelo`, `n_serie`, `localizacao`, `cautela`, `data_inspecao`, `data_atual`) VALUES (null,'$novo_nome','$situacao','$patrimonio','$marca','$tipo','$modelo','$n_serie','$localizacao','$cautela','$data_inspecao','$data_atual')";
+    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual')";
   }
   $cadastrado = "show";
   //EXECUTANDO QUERY

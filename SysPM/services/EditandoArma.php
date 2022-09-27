@@ -35,9 +35,9 @@ if (isset($_FILES['foto_arma'])) {
 
 
 if ($alteracao == "mudanca") {
-  $sql = "INSERT INTO `historico_armas`(`id`, `tipo`, `modelo`, `n_serie`, `localizacao`, `cautela`, `data_atual`) VALUES (null,'$tipo','$modelo','$serie','$localizacao','$cautela','$data')";
+  $sql = "INSERT INTO `historico_armas`(`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`) VALUES (null,'$serie','$localizacao','$cautela','$data')";
 } elseif ($alteracao == "correcao") {
-  $sql = "UPDATE `historico_armas` SET  `tipo`='$tipo',`modelo`='$modelo',`n_serie`='$serie',`localizacao`='$localizacao',`cautela`='$cautela' WHERE `n_serie`='$serie_antiga' ";
+  $sql = "UPDATE `historico_armas` SET  `n_serie`='$serie',`localizacao`='$localizacao',`cautela`='$cautela' WHERE `n_serie`='$serie_antiga' ";
 }
 
 
