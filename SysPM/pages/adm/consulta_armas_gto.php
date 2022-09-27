@@ -12,6 +12,7 @@ include_once "../../db/Conexao.php";
 ?>
 
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -39,7 +40,7 @@ include_once "../../db/Conexao.php";
 </head>
 
 <body>
-  <!-- INCLUSÃO DOS NAV'S -->
+
   <?php include('../layouts/navbar_superior.html') ?>
 
   <div class="container-fluid" style="margin-top: 3vh;">
@@ -130,13 +131,32 @@ include_once "../../db/Conexao.php";
 
                   <td><?= $linhas['cautela'] ?></td>
 
-                  <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button></td>
+                  <td>
+                    <Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">
+                    OBS
+                    </Button>
+                  </td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> Editar </button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" 
+                    data-id="<?= $linhas['id'] ?>" 
+                    data-foto-arma="<?= $linhas['foto'] ?>" 
+                    data-tipo-arma="<?= $linhas['tipo_arma'] ?>" 
+                    data-marca="<?= $linhas['marca'] ?>" 
+                    data-modelo="<?= $linhas['modelo'] ?>" 
+                    data-numero-serie="<?= $linhas['n_serie'] ?>" 
+                    data-patrimonio="<?= $linhas['patrimonio'] ?>" 
+                    data-localizacao="<?= $linhas['localizacao'] ?>" 
+                    data-situacao="<?= $linhas['situacao'] ?>" 
+                    data-cautela="<?= $linhas['cautela'] ?>" 
+                    data-observacao="<?= $linhas['obs'] ?>" 
+                    data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> 
+                      Editar 
+                    </button>
 
                     <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
+
                 </tr>
 
                 <!-- MODAL DO HISTÓRICO -->
@@ -144,25 +164,49 @@ include_once "../../db/Conexao.php";
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="history">Histórico da arma ' <?= $linhas['marca'] ?> / <?= $linhas['modelo'] ?> '</h5>
+
+                        <h5 class="modal-title" id="history">
+                          Histórico da arma ' <?= $linhas['marca'] ?> / <?= $linhas['modelo'] ?> '
+                        </h5>
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+
                           <span aria-hidden="true">&times;</span>
 
                         </button>
+
                       </div>
+
                       <div class="modal-body" id="historico">
                         <div style="width: 100%;">
+
                           <img src="../../services/store/img/armas/<?= $linhas['foto'] ?>" alt="Sem Foto!" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
+
                         </div>
                         <div class="container">
-                          <h6 style="margin: 10px;">Nº SÉRIE : <?= $linhas['n_serie'] ?></h6>
+
+                          <h6 style="margin: 10px;">
+                            Nº SÉRIE : <?= $linhas['n_serie'] ?>
+                          </h6>
+
                           <hr>
 
                           <div id="row_hist" style="display: flex;">
-                            <h6 style="width: 30%;text-align: center;margin: 0;">LOCALIZAÇÃO</h6>
-                            <h6 style="width: 40%;text-align: center;margin: 0;">CAUTELA</h6>
-                            <h6 style="width: 30%;text-align: center;margin: 0;">DATA ATUAL </h6>
+
+                            <h6 style="width: 30%;text-align: center;margin: 0;">
+                              LOCALIZAÇÃO
+                            </h6>
+
+                            <h6 style="width: 40%;text-align: center;margin: 0;">
+                              CAUTELA
+                            </h6>
+
+                            <h6 style="width: 30%;text-align: center;margin: 0;">
+                              DATA ATUAL 
+                            </h6>
+
                           </div>
+
                           <hr>
 
                           <form action="../../services/biblioteca_pdf/PdfHistoricoDaArma.php" method="POST" target="_blank" enctype="multipart/form-data">
@@ -181,17 +225,28 @@ include_once "../../db/Conexao.php";
 
                             ?>
                                 <input type="hidden" name="n_serie" value="<?= $linhas1['n_serie'] ?>">
+
                                 <div id="historico_pdf">
                                   <div id="row_hist" style="display: flex;">
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['localizacao'] ?> </h6>
-                                    <h6 style="width: 40%;text-align: center;margin: 0;"> <?= $linhas1['cautela'] ?> </h6>
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> <?= $linhas1['data_atual'] ?> </h6>
+
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> 
+                                      <?= $linhas1['localizacao'] ?> 
+                                    </h6>
+
+                                    <h6 style="width: 40%;text-align: center;margin: 0;"> 
+                                      <?= $linhas1['cautela'] ?> 
+                                    </h6>
+
+                                    <h6 style="width: 30%;text-align: center;margin: 0;"> 
+                                      <?= $linhas1['data_atual'] ?> 
+                                    </h6>
+
                                   </div>
                                 </div>
+
                                 <hr>
 
                             <?php
-
                                 $y++;
                               }
                             }
@@ -200,6 +255,7 @@ include_once "../../db/Conexao.php";
                         </div>
                       </div>
                       <div class="modal-footer">
+
                         <button type="submit" class="btn btn-outline-danger">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-pdf-fill" viewBox="0 0 20 20">
                             <path d="M5.523 12.424c.14-.082.293-.162.459-.238a7.878 7.878 0 0 1-.45.606c-.28.337-.498.516-.635.572a.266.266 0 0 1-.035.012.282.282 0 0 1-.026-.044c-.056-.11-.054-.216.04-.36.106-.165.319-.354.647-.548zm2.455-1.647c-.119.025-.237.05-.356.078a21.148 21.148 0 0 0 .5-1.05 12.045 12.045 0 0 0 .51.858c-.217.032-.436.07-.654.114zm2.525.939a3.881 3.881 0 0 1-.435-.41c.228.005.434.022.612.054.317.057.466.147.518.209a.095.095 0 0 1 .026.064.436.436 0 0 1-.06.2.307.307 0 0 1-.094.124.107.107 0 0 1-.069.015c-.09-.003-.258-.066-.498-.256zM8.278 6.97c-.04.244-.108.524-.2.829a4.86 4.86 0 0 1-.089-.346c-.076-.353-.087-.63-.046-.822.038-.177.11-.248.196-.283a.517.517 0 0 1 .145-.04c.013.03.028.092.032.198.005.122-.007.277-.038.465z" />
@@ -207,7 +263,9 @@ include_once "../../db/Conexao.php";
                           </svg>
                           Imprimir
                         </button>
+
                         <input type="hidden" name="imprimir" value="inprimir">
+
                       </div>
                       </form>
                     </div>
@@ -216,11 +274,8 @@ include_once "../../db/Conexao.php";
 
                 <!-- MODAL DE EDIÇÃO -->
                 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-
                   <div class="modal-dialog">
-
                     <div class="modal-content">
-
                       <div class="modal-header">
 
                         <h5 class="modal-title" id="edit">Editar Dados</h5>
@@ -233,28 +288,40 @@ include_once "../../db/Conexao.php";
 
                       </div>
 
-
-
                       <div class="modal-body">
 
                         <form action="../../services/UpandoFotoArma.php" method="POST" enctype="multipart/form-data">
 
                           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label"> FOTO </label><br>
+
+                            <label for="recipient-name" class="col-form-label"> 
+                              FOTO 
+                            </label>
+
+                            <br>
+
                             <input type="hidden" id="tipo" name="tipoArmaFoto" value="gto">
+
                             <input type="hidden" id="idArmaFoto" name="idArmaFoto">
+
                             <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg">
 
-                            <button type="submit" class="btn btn-outline-primary"> Atualizar </button>
+                            <button type="submit" class="btn btn-outline-primary">      
+                              Atualizar 
+                            </button>
 
                           </div>
                         </form>
-                          <hr>
+
+                        <hr>
+
                         <form action="../../services/EditandoArma.php" method="POST" onsubmit="return  verificar()">
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">MARCA</label>
+                            <label for="message-text" class="col-form-label">
+                              MARCA
+                            </label>
 
                             <input type="text" class="form-control" id="marca" name="marca">
 
@@ -262,7 +329,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="recipient-name" class="col-form-label">MODELO</label>
+                            <label for="recipient-name" class="col-form-label">
+                              MODELO
+                            </label>
 
                             <input type="text" class="form-control" id="modelo" name="modelo">
 
@@ -270,7 +339,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">Nº SÉRIE</label>
+                            <label for="message-text" class="col-form-label">
+                              Nº SÉRIE
+                            </label>
 
                             <input type="text" class="form-control" id="n_serie" name="n_serie">
                             <input type="hidden" id="n_serie2" name="n_serie2">
@@ -278,7 +349,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">PRATIMÔNIO</label>
+                            <label for="message-text" class="col-form-label">
+                              PRATIMÔNIO
+                            </label>
 
                             <input type="text" class="form-control" id="patrimonio" name="patrimonio">
 
@@ -286,7 +359,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">LOCALIZAÇÃO</label>
+                            <label for="message-text" class="col-form-label">
+                              LOCALIZAÇÃO
+                            </label>
 
                             <input type="text" class="form-control" id="localizacao" name="localizacao">
 
@@ -294,7 +369,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">SITUAÇÃO</label>
+                            <label for="message-text" class="col-form-label">
+                              SITUAÇÃO
+                            </label>
 
                             <input type="text" class="form-control" id="situacao" name="situacao">
 
@@ -302,7 +379,9 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">DATA ULT. INSPEÇÃO </label>
+                            <label for="message-text" class="col-form-label">
+                              DATA ULT. INSPEÇÃO 
+                            </label>
 
                             <input type="date" class="form-control" id="data_inspecao" name="data_inspecao">
 
@@ -310,9 +389,13 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
+                            <label for="message-text" class="col-form-label">
+                              OBERVAÇÕES
+                            </label>
+                            
+                            <br>
 
-                            <textarea id="obs" class="form-control" name="obs" cols="60" rows="1"> </textarea>
+                            <textarea id="obs" class="form-control" name="obs" cols="60" rows="1"></textarea>
 
                           </div>
 
@@ -320,13 +403,25 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="message-text" class="col-form-label">CAUTELA
-                              <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
-                                <option value="correcao">Corrigir</option>
-                                <option value="mudanca">Mudar</option>
+                            <label for="message-text" class="col-form-label">
+                              CAUTELA
+
+                              <select class="form-select " aria-label="Default select example" style="text-align: center;"  required name="tipoedicao">
+
+                                <option value="correcao">
+                                  Corrigir
+                                </option>
+
+                                <option value="mudanca">
+                                  Mudar
+                                </option>
+
                               </select>
+
                             </label>
+
                             <input type="text" class="form-control" id="cautela" name="cautela">
+
                           </div>
 
                           <input type="hidden" name="id" id="id">
@@ -337,18 +432,18 @@ include_once "../../db/Conexao.php";
 
                       <div class="modal-footer">
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                          Fecha
+                        </button>
 
-                        <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
+                        <button type="submit" class="btn btn-primary ">
+                          Salvar Alterações
+                        </button>
 
                       </div>
-
                       </form>
-
                     </div>
-
                   </div>
-
                 </div>
 
               <?php
@@ -358,19 +453,12 @@ include_once "../../db/Conexao.php";
               ?>
 
               </tbody>
-
           </table>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
   </div>
-
 </body>
 
 <!-- ALERTA DO STATUS FINAL DA EDIÇÃO -->

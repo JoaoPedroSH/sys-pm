@@ -18,8 +18,9 @@ if (isset($_POST['imprimir'])) {
     $resultGto = mysqli_query($conexao, $queryGto);
 
     $dados = $resultGto->fetch_assoc();
-  }
-  if ($tipoEdicao == 'ord') {
+
+  } else {
+    
     $queryOrd = "SELECT foto, marca, modelo FROM armas_ord WHERE `n_serie`='$nSerie'";
 
     $resultOrd = mysqli_query($conexao, $queryOrd);
