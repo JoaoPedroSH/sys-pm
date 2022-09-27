@@ -1,8 +1,18 @@
 <?php
 
 session_start();
+include("../../db/Conexao.php");
 
 $data = date('d/m/Y');
+$uuid = md5(md5(time()));
+
+$oficial = $_POST['oficial'];
+$data_geracao = $data;
+$carteirinha = $uuid .'.pdf';
+
+$sql = "INSERT INTO `cautela_do_epi`(`id`, `data_geracao`, `oficial`, `documento`) VALUES (null,'$data_geracao','$oficial','$carteirinha')";
+
+$result = mysqli_query($conexao, $sql);
 
 $foto = $_FILES['assinaturafile']['name'];
 $novo_nome = md5(time()) . "_" . $foto;
@@ -12,9 +22,6 @@ move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nom
 if ($foto == '') {
   $novo_nome = "default.jpeg";
 }
-
-
-$uuid = md5(md5(time()));
 
 require_once __DIR__ . '/vendor/autoload.php';
 
