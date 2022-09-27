@@ -67,7 +67,7 @@ CREATE TABLE `armas_ord` (
   `data_inspecao` varchar(255) NOT NULL,
   `obs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=361 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,6 +77,31 @@ CREATE TABLE `armas_ord` (
 LOCK TABLES `armas_ord` WRITE;
 /*!40000 ALTER TABLE `armas_ord` DISABLE KEYS */;
 /*!40000 ALTER TABLE `armas_ord` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cautela_do_epi`
+--
+
+DROP TABLE IF EXISTS `cautela_do_epi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cautela_do_epi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_geracao` varchar(255) NOT NULL,
+  `oficial` varchar(255) NOT NULL,
+  `documento` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cautela_do_epi`
+--
+
+LOCK TABLES `cautela_do_epi` WRITE;
+/*!40000 ALTER TABLE `cautela_do_epi` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cautela_do_epi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -164,7 +189,7 @@ CREATE TABLE `historico_acesso` (
   `hora_entrada` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hora_saida` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +198,6 @@ CREATE TABLE `historico_acesso` (
 
 LOCK TABLES `historico_acesso` WRITE;
 /*!40000 ALTER TABLE `historico_acesso` DISABLE KEYS */;
-INSERT INTO `historico_acesso` VALUES (70,'joao','adm','26/09/2022','04:07:42',''),(71,'joao','adm','26/09/2022','05:26:01','05:28:14'),(72,'joao','adm','26/09/2022','05:28:18',''),(73,'joao','adm','26/09/2022','05:53:42',''),(74,'joao','adm','26/09/2022','06:16:39','');
 /*!40000 ALTER TABLE `historico_acesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +215,7 @@ CREATE TABLE `historico_armas` (
   `localizacao` varchar(255) NOT NULL,
   `data_atual` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-27  2:19:12
+-- Dump completed on 2022-09-27  4:36:52
