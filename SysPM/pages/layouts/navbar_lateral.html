@@ -153,12 +153,13 @@
           </li>
 
           <li class="nav-item">
-            <!-- Cautela do EPI -->
+            <!-- Consultar -->
 
-            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
-              style="margin-bottom: 10px; padding-right: 10px;" href="../adm/caterinha_epi.php">
+            <div class="btn-group dropright">
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 31px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-layers">
 
@@ -169,10 +170,15 @@
                 <polyline points="2 12 12 17 22 12"></polyline>
 
               </svg>
+                Cautela do EPI
+              </a>
 
-              Cautela do EPI
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../adm/caterinha_epi.php">Gerar Documento</a>
+                <a class="dropdown-item" href="../adm/ver_caterinha_epi.php">Visualizar Documentos</a>
+              </div>
 
-            </a>
+            </div>
 
           </li>
 
