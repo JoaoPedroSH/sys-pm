@@ -42,11 +42,11 @@ if (!isset($_SESSION['adm'])) {
       <!-- Templete Sidebar -->
       <?php include('../layouts/navbar_lateral.html') ?>
 
-      <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+      <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover; min-height: 97vh; height: auto;">
         <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
           <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
             <h2 class="page-header" id="titulo" style="text-align: center;">Cadastro de Armas</h2>
-            <hr>
+            <hr style="border-top: 1px solid rgb(212, 0, 0);">
             <div id="main" class="container-fluid">
 
               <!-- Formulário de Cadastro -->
@@ -108,7 +108,7 @@ if (!isset($_SESSION['adm'])) {
                   <label for="imagem">ADICIONAR FOTO: </label>
                   <input type="file" id="imagem" name="foto" accept="image/*">
                 </div>
-                <hr />
+                <hr style="border-top: 1px solid rgb(212, 0, 0);"/>
 
                 <!-- Botões de Ação do Formulário -->
                 <div class="row">

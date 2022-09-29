@@ -13,6 +13,13 @@ if (!isset($_SESSION['adm'])) {
 
 <head>
 
+<style>
+.textcolor {
+	color: rgb(212, 0, 0);
+}
+
+</style>
+
     <meta charset="utf-8">
 
     <!-- Favicon -->
@@ -51,8 +58,8 @@ if (!isset($_SESSION['adm'])) {
 
                     <!--Main-->
                     <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
-                        <h3 class="page-header" id="titulo" style="text-align: center;">Cadastro de Equipamentos</h3>
-                        <hr>
+                        <h3 class="page-header textcolor" id="titulo" style="text-align: center;">Cadastro de Equipamentos</h3>
+                        <hr style="border-top: 1px solid rgb(212, 0, 0);">
                         <div id="main" class="container-fluid">
 
                             <!-- Formulário de Cadastro -->
@@ -131,7 +138,7 @@ if (!isset($_SESSION['adm'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
+                                <hr style="border-top: 1px solid rgb(212, 0, 0);">
 
                                 <!-- Botões de ação do formulário -->
                                 <div class="row">
