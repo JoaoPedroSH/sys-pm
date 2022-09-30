@@ -1,12 +1,11 @@
 <?php
 session_start();
-//VERIFICANDO SE FOI ENVIADO ALGO
+
 if (isset($_POST['n_serie'])) {
 
-  //INCLUINDO CONEXÃO COM O BANCO DE DADOS
   include('../db/Conexao.php');
 
-  //RECEBENDO VALORES DO FORMULÁRIO
+  $tipo_arma = $POST['tipo_arma'];
   $marca = $_POST['marca'];
   $modelo = $_POST['modelo'];
   $n_serie = $_POST['n_serie'];
@@ -16,38 +15,39 @@ if (isset($_POST['n_serie'])) {
   $cautela = $_POST['cautela'];
   $observacao = $_POST['observacao'];
   $data_inspecao = $_POST['data_inspecao'];
-  //UPLOAD FOTO
+
   $foto = $_FILES['foto']['name'];
   $novo_nome = md5(time()) . "_" . $foto;
   $diretorio = "store/img/armas/";
   move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);
 
-  //VERIFICANDO TIPO DE CADASTRO
   if ($_POST['cadastro'] == 'gto') {
-    //ENVIA DADOS PARA BANCO DE ARMAS DO GTO
+
     $tipo = 'gto';
     $data_atual = date('d/m/Y');
-    $query = "INSERT INTO `armas_gto` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
-    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`,`data_atual`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual')";
+    $query = "INSERT INTO `armas_gto` (`id`, `foto`, `tipo_arma`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$tipo_arma','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
+
+    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`, `tipo_inventario`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual', '$tipo')";
+
   } else {
-    $tipo = 'ordinario';
+
+    $tipo = 'ord';
     $data_atual = date('d/m/Y');
-    //ENVIA DADOS PARA BANCO DE ARMAS DO ORDINÁRIO
-    $query = "INSERT INTO `armas_ord` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
-    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual')";
+    $query = "INSERT INTO `armas_ord` (`id`, `foto`, `tipo_arma`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$tipo_arma','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
+
+    $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`, `tipo_inventario`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual','$tipo')";
   }
-  $cadastrado = "show";
-  //EXECUTANDO QUERY
-  $result = mysqli_query($conexao, $query);
-  $result = mysqli_query($conexao, $query1);
 
-  //VERIFICANDO SE OCORREU O CADASTRO
-  if ($result > 0) {
-    $_SESSION['sucesso'] = $cadastrado;
+
+  $result = mysqli_query($conexao, $query);
+  $result1 = mysqli_query($conexao, $query1);
+
+  if ($result > 0 && $result1 > 0 ) {
+    $_SESSION['success_created'] = true;
     header('Location: ../pages/adm/cadastro_armas.php');
   } else {
-    echo "<script>alert('Erro ao Realizar Cadastro')</script>";
+    $_SESSION['error_created'] = true;
   }
 }

@@ -54,7 +54,7 @@ if (!isset($_SESSION['adm'])) {
                 <div class="row">
                   <div class="form-group col-md-3">
                     <label>TIPO DE ARMA</label>
-                    <input type="text" class="form-control" name="" placeholder="">
+                    <input type="text" class="form-control" name="tipo_arma" placeholder="">
                   </div>
                   <div class="form-group col-md-3">
                     <label>MARCA</label>
@@ -66,7 +66,7 @@ if (!isset($_SESSION['adm'])) {
                   </div>
                   <div class="form-group col-md-3">
                     <label>Nº SÉRIE</label>
-                    <input type="text" class="form-control" name="n_serie" placeholder="" required>
+                    <input type="text" class="form-control" name="n_serie" id="n_serie" placeholder="" required>
                   </div>
                 </div>
                 <div class="row">
@@ -100,7 +100,7 @@ if (!isset($_SESSION['adm'])) {
                     <label>TIPO DE INVENTÁRIO</label>
                     <div class="form-check">
                       <label><input value="gto" type="radio" name="cadastro" required> GTO</label>
-                      <label><input value="ordi" type="radio" style=" margin-left: 10px;" name="cadastro" required> ORDINÁRIO</label>
+                      <label><input value="ordinario" type="radio" style=" margin-left: 10px;" name="cadastro" required> ORDINÁRIO</label>
                     </div>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ if (!isset($_SESSION['adm'])) {
 
 <!-- Alerta de Sucesso ao Cadastrar a Arma -->
 <?php
-if (isset($_SESSION['sucesso'])) {
+if (isset($_SESSION['success_created'])) {
 ?>
   <script>
     Swal.fire({
@@ -146,7 +146,24 @@ if (isset($_SESSION['sucesso'])) {
   </script>
 <?php
 }
-unset($_SESSION['sucesso'])
+unset($_SESSION['success_created'])
+?>
+<?php
+if (isset($_SESSION['error_created'])) {
+?>
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Erro ao Cadastrar Arma!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+<?php
+}
+unset($_SESSION['error_created'])
 ?>
 
 </html>

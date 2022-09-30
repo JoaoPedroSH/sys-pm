@@ -139,29 +139,29 @@ include_once "../../db/Conexao.php";
                   </td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                  <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" 
-                    data-id="<?= $linhas['id'] ?>" 
-                    data-foto-arma="<?= $linhas['foto'] ?>" 
-                    data-tipo-arma="<?= $linhas['tipo_arma'] ?>" 
-                    data-marca="<?= $linhas['marca'] ?>" 
-                    data-modelo="<?= $linhas['modelo'] ?>" 
-                    data-numero-serie="<?= $linhas['n_serie'] ?>" 
-                    data-patrimonio="<?= $linhas['patrimonio'] ?>" 
-                    data-localizacao="<?= $linhas['localizacao'] ?>" 
-                    data-situacao="<?= $linhas['situacao'] ?>" 
-                    data-cautela="<?= $linhas['cautela'] ?>" 
-                    data-observacao="<?= $linhas['obs'] ?>" 
-                    data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> 
-                      Editar 
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" 
+                      data-id="<?= $linhas['id'] ?>" 
+                      data-foto-arma="<?= $linhas['foto'] ?>" 
+                      data-tipo-arma="<?= $linhas['tipo_arma'] ?>" 
+                      data-marca="<?= $linhas['marca'] ?>" 
+                      data-modelo="<?= $linhas['modelo'] ?>" 
+                      data-numero-serie="<?= $linhas['n_serie'] ?>" 
+                      data-patrimonio="<?= $linhas['patrimonio'] ?>" 
+                      data-localizacao="<?= $linhas['localizacao'] ?>" 
+                      data-situacao="<?= $linhas['situacao'] ?>" 
+                      data-cautela="<?= $linhas['cautela'] ?>" 
+                      data-observacao="<?= $linhas['obs'] ?>" 
+                      data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> 
+                        Editar 
                     </button>
 
-                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#ModalLongoExemplo<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
+                    <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
                   </td>
 
                 </tr>
 
                 <!-- MODAL DO HISTÓRICO -->
-                <div class="modal fade bd-example-modal-lg" id="ModalLongoExemplo<?= $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="modalHistory<?= $linhas['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -273,8 +273,8 @@ include_once "../../db/Conexao.php";
                   </div>
                 </div>
 
-                 <!-- MODAL DE EDIÇÃO -->
-                 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+                <!-- MODAL DE EDIÇÃO -->
+                <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -301,7 +301,7 @@ include_once "../../db/Conexao.php";
 
                             <br>
 
-                            <input type="hidden" id="tipo" name="tipoArmaFoto" value="gto">
+                            <input type="hidden" id="tipo" name="tipoArmaFoto" value="ord">
 
                             <input type="hidden" id="idArmaFoto" name="idArmaFoto">
 
@@ -500,10 +500,11 @@ if (isset($_SESSION['error_edit'])) {
 
 ?>
 
-<!-- MANIPULANDO DADOS DE EDIÇÃO -->
+<!-- MANIPULAÇÃO DE DADOS DO MODAL DE EDIÇÃO -->
 <script>
   $(document).ready(function() {
     $('#modalEdit').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget);
       var id = button.data('id');
       var tipo_arma = button.data('tipo-arma');
       var marca = button.data('marca');

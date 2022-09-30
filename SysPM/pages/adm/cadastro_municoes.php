@@ -128,7 +128,7 @@ if (!isset($_SESSION['adm'])) {
 
 <!-- Alerta de Cadastro Realizado com Sucesso -->
 <?php
-if (isset($_SESSION['sucesso'])) {
+if (isset($_SESSION['success_created'])) {
 ?>
     <script>
         Swal.fire({
@@ -142,7 +142,24 @@ if (isset($_SESSION['sucesso'])) {
     </script>
 <?php
 }
-unset($_SESSION['sucesso'])
+unset($_SESSION['success_created'])
+?>
+<?php
+if (isset($_SESSION['error_created'])) {
+?>
+  <script>
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Erro ao Cadastrar Munição!',
+      showConfirmButton: false,
+      confirmButtonColor: '#2ECC71',
+      timer: 3000
+    })
+  </script>
+<?php
+}
+unset($_SESSION['error_created'])
 ?>
 
 </html>

@@ -133,25 +133,13 @@ include_once "../../db/Conexao.php";
 
                   <td>
                     <Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">
-                    OBS
+                      OBS
                     </Button>
                   </td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" 
-                    data-id="<?= $linhas['id'] ?>" 
-                    data-foto-arma="<?= $linhas['foto'] ?>" 
-                    data-tipo-arma="<?= $linhas['tipo_arma'] ?>" 
-                    data-marca="<?= $linhas['marca'] ?>" 
-                    data-modelo="<?= $linhas['modelo'] ?>" 
-                    data-numero-serie="<?= $linhas['n_serie'] ?>" 
-                    data-patrimonio="<?= $linhas['patrimonio'] ?>" 
-                    data-localizacao="<?= $linhas['localizacao'] ?>" 
-                    data-situacao="<?= $linhas['situacao'] ?>" 
-                    data-cautela="<?= $linhas['cautela'] ?>" 
-                    data-observacao="<?= $linhas['obs'] ?>" 
-                    data-ult-inspecao="<?= $linhas['data_inspecao'] ?>"> 
-                      Editar 
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>">
+                      Editar
                     </button>
 
                     <button type="button" class="btn btn-od btn-outline-dark" data-toggle="modal" data-target="#modalHistory<?= $linhas['id'] ?>" style="margin-left: 5px;"> Ver Histórico </button>
@@ -202,7 +190,7 @@ include_once "../../db/Conexao.php";
                             </h6>
 
                             <h6 style="width: 30%;text-align: center;margin: 0;">
-                              DATA ATUAL 
+                              DATA ATUAL
                             </h6>
 
                           </div>
@@ -229,16 +217,16 @@ include_once "../../db/Conexao.php";
                                 <div id="historico_pdf">
                                   <div id="row_hist" style="display: flex;">
 
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> 
-                                      <?= $linhas1['localizacao'] ?> 
+                                    <h6 style="width: 30%;text-align: center;margin: 0;">
+                                      <?= $linhas1['localizacao'] ?>
                                     </h6>
 
-                                    <h6 style="width: 40%;text-align: center;margin: 0;"> 
-                                      <?= $linhas1['cautela'] ?> 
+                                    <h6 style="width: 40%;text-align: center;margin: 0;">
+                                      <?= $linhas1['cautela'] ?>
                                     </h6>
 
-                                    <h6 style="width: 30%;text-align: center;margin: 0;"> 
-                                      <?= $linhas1['data_atual'] ?> 
+                                    <h6 style="width: 30%;text-align: center;margin: 0;">
+                                      <?= $linhas1['data_atual'] ?>
                                     </h6>
 
                                   </div>
@@ -294,8 +282,8 @@ include_once "../../db/Conexao.php";
 
                           <div class="form-group">
 
-                            <label for="recipient-name" class="col-form-label"> 
-                              FOTO 
+                            <label for="recipient-name" class="col-form-label">
+                              FOTO
                             </label>
 
                             <br>
@@ -306,8 +294,8 @@ include_once "../../db/Conexao.php";
 
                             <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg">
 
-                            <button type="submit" class="btn btn-outline-primary">      
-                              Atualizar 
+                            <button type="submit" class="btn btn-outline-primary">
+                              Atualizar
                             </button>
 
                           </div>
@@ -380,7 +368,7 @@ include_once "../../db/Conexao.php";
                           <div class="form-group">
 
                             <label for="message-text" class="col-form-label">
-                              DATA ULT. INSPEÇÃO 
+                              DATA ULT. INSPEÇÃO
                             </label>
 
                             <input type="date" class="form-control" id="data_inspecao" name="data_inspecao">
@@ -392,7 +380,7 @@ include_once "../../db/Conexao.php";
                             <label for="message-text" class="col-form-label">
                               OBERVAÇÕES
                             </label>
-                            
+
                             <br>
 
                             <textarea id="obs" class="form-control" name="obs" cols="60" rows="1"></textarea>
@@ -406,7 +394,7 @@ include_once "../../db/Conexao.php";
                             <label for="message-text" class="col-form-label">
                               CAUTELA
 
-                              <select class="form-select " aria-label="Default select example" style="text-align: center;"  required name="tipoedicao">
+                              <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
 
                                 <option value="correcao">
                                   Corrigir
