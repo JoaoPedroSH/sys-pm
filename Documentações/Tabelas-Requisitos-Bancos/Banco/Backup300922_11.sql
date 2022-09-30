@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `armas_gto`;
 CREATE TABLE `armas_gto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) NOT NULL,
+  `tipo_arma` varchar(255) NOT NULL,
   `marca` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `modelo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `n_serie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE `armas_gto` (
   `data_inspecao` varchar(255) NOT NULL,
   `obs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,6 +58,7 @@ DROP TABLE IF EXISTS `armas_ord`;
 CREATE TABLE `armas_ord` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) NOT NULL,
+  `tipo_arma` varchar(255) NOT NULL,
   `marca` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `modelo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `n_serie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
@@ -67,7 +69,7 @@ CREATE TABLE `armas_ord` (
   `data_inspecao` varchar(255) NOT NULL,
   `obs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=361 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=365 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +94,7 @@ CREATE TABLE `cautela_do_epi` (
   `oficial` varchar(255) NOT NULL,
   `documento` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +164,7 @@ CREATE TABLE `equip_ord` (
   `fabricacao` text,
   `obs` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +191,7 @@ CREATE TABLE `historico_acesso` (
   `hora_entrada` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hora_saida` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,12 +212,13 @@ DROP TABLE IF EXISTS `historico_armas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `historico_armas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `n_serie` int(11) NOT NULL,
+  `n_serie` varchar(255) NOT NULL,
   `cautela` varchar(255) NOT NULL,
   `localizacao` varchar(255) NOT NULL,
   `data_atual` varchar(255) NOT NULL,
+  `tipo_inventario` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +246,7 @@ CREATE TABLE `municao_gto` (
   `obs` varchar(255) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
   `tipo` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=armscii8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-27  4:36:52
+-- Dump completed on 2022-09-30  4:06:12
