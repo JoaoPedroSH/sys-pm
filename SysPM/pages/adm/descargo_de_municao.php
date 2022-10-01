@@ -2,7 +2,7 @@
 /* Criando e Verificando sessão */
 session_start();
 
-if (!isset($_SESSION['adm'])) {
+if (!isset($_SESSION)) {
     header("location:../login.php");
 }
 ?>
@@ -42,7 +42,15 @@ if (!isset($_SESSION['adm'])) {
         <div class="row">
 
             <!-- Templete Sidebar -->
-            <?php include('../layouts/navbar_lateral.html') ?>
+            <?php
+            if(isset($_SESSION['arm'])) {
+            include '../layouts/navbar_lateral_armeiro.html';
+            }
+            
+            if (isset($_SESSION['adm'])){
+            include '../layouts/navbar_lateral.html';
+            }
+            ?>
 
             <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">

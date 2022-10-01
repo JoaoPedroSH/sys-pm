@@ -5,196 +5,197 @@
     background-image: none;
     border-color: #343a40;
   }
-  
+
   .btn-group,
   .btn-outline-dark {
     width: 100%;
   }
+
   .btn-outline-dark {
     color: #fff;
     background-color: #343a40;
     border-color: #343a40;
   }
+
   a:not([href]):not([tabindex]) {
     color: #fff;
   }
+
   .bg-light {
     background-color: #0a0a0a !important;
+    width: auto;
   }
+
   .text-muted {
     color: #e7e7e7 !important;
-  }  
-  .barra-lateral.mostra{
+  }
+
+  .barra-lateral.mostra {
     display: none;
   }
-  .btn-abre.some{
+
+  .btn-abre.some {
     display: none;
   }
-  .barra-lateral.ocultar{
+
+  .barra-lateral.ocultar {
     display: none;
   }
-  .corpo-painel.expandir{
+
+  .corpo-painel.expandir {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
+  .sidebar {
+    position: fixed;
+    top: 35px;
+    z-index: 2;
+    width: 15%;
+  }
+
+  .canto {
+    background: url(../../img/marcauepa.png) no-repeat scroll left top;
+    position: fixed;
+    top: 248px;
+    height: 30px;
+    width: 35px;
+    z-index: 100;
+    left: 0pt;
+  }
 </style>
 <div class="barra-lateral col-md-2" style="padding: 0;">
-  <div class="col-md-12 bg-light" style="padding-top: 0;height: 100%;">
-    <nav class="d-none mt-0 d-md-block sidebar" style="width:100%;padding: 0 0 100%;">
-      <div class="sidebar-sticky">
+  <div class="col-md-12 bg-light" style="padding-top: 0; height: 100%;">
+    <div class="sidebar-sticky">
 
-        <ul class="nav flex-column">
+      <ul class="nav flex-column">
+        <h1></h1>
+        <h1></h1>
+        <li class="nav-item">
 
-          <li class="nav-item">
-            <!-- Home -->
+          <!-- Home -->
 
-            <br>
+          <hr style="border-top: 0px solid rgb(255 255 255 / 37%)">
 
-            <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../armeiro/home.php">
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-home">
-
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-
-              </svg>
-
-              Home
-
-            </a>
-
-          </li>
-
-          <li class="nav-item">
-            <!-- Cadastrar -->
-          
-          <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
-
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 text-muted"
-            style="margin: 0 0 -8px 30%;">
-
-            <span>Ações</span>
-
+          <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+            <span>VISÃO GERAL</span>
           </h6>
 
-          <br>
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm/home.php"
+            style="margin-bottom: 10px; padding-right: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;" width="22" height="22"
+              fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+              <path
+                d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+              <path fill-rule="evenodd"
+                d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z" />
+            </svg>
+            Painel
+          </a>
 
-            <div class="btn-group dropright">
+        </li>
 
-              <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 31px;">
+        <li class="nav-item">
+          <!-- Cadastrar -->
 
-                <svg xmlns="img/cadastrar.svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+          <hr style="border-top: 1px solid rgb(255 255 255 / 37%)">
 
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+          <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+            <span>AÇÕES</span>
+          </h6>
 
-                  <polyline points="13 2 13 9 20 9"></polyline>
+          <div class="btn-group dropright">
 
-                </svg>
-
-                Cadastrar
-
-              </a>
-
-              <div class="dropdown-menu">
-
-                <a class="dropdown-item" href="../armeiro/cadastro_armas.php">Armas</a>
-
-                <a class="dropdown-item" href="../armeiro/cadastro_municoes.php">Munições</a>
-
-                <a class="dropdown-item" href="../armeiro/cadastro_equipamentos.php">Equipamentos</a>
-
-              </div>
-
-            </div>
-
-          </li>
-
-          <li class="nav-item">
-            <!-- Consultar -->
-
-            <div class="btn-group dropright">
-
-              <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 31px;">
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-
-                Consultar
-
-              </a>
-
-              <div class="dropdown-menu">
-
-                <a class="dropdown-item" href="../armeiro/consulta_armas_gto.php">Armas GTO</a>
-
-                <a class="dropdown-item" href="../armeiro/consulta_armas_ordinario.php">Armas Ordinário</a>
-
-                <a class="dropdown-item" href="../armeiro/consulta_municao_gto.php">Munições GTO</a>
-
-                <a class="dropdown-item" href="../armeiro/consulta_municao_ordinario.php">Munições Ordinário</a>
-
-                <a class="dropdown-item" href="../armeiro/consulta_equipamento_gto.php">Equipamentos GTO</a>
-
-                <a class="dropdown-item" href="../armeiro/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
-
-              </div>
-
-            </div>
-
-          </li>
-
-      
-
-          <li class="nav-item">
-            <!-- Cautela do EPI -->
-
-            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
-              style="margin-bottom: 10px; padding-right: 10px;" href="../armeiro/caterinha_epi.php">
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-layers">
-
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-
-                <polyline points="2 17 12 22 22 17"></polyline>
-
-                <polyline points="2 12 12 17 22 12"></polyline>
-
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;" width="22" height="22"
+                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
+              Cadastros
+            </a>
 
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../adm/cadastro_armas.php">Armas</a>
+              <a class="dropdown-item" href="../adm/cadastro_municoes.php">Munições</a>
+              <a class="dropdown-item" href="../adm/cadastro_equipamentos.php">Equipamentos</a>
+            </div>
+
+          </div>
+
+        </li>
+
+        <li class="nav-item">
+          <!-- Consultar -->
+
+          <div class="btn-group dropright">
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;" width="22" height="22"
+                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
+              Consultas
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../adm/inventario_geral.php">Inventário Geral</a>
+              <a class="dropdown-item" href="../adm/consulta_armas_gto.php">Armas GTO</a>
+              <a class="dropdown-item" href="../adm/consulta_armas_ordinario.php">Armas Ordinário</a>
+              <a class="dropdown-item" href="../adm/consulta_municao_gto.php">Munições GTO</a>
+              <a class="dropdown-item" href="../adm/consulta_municao_ordinario.php">Munições Ordinário</a>
+              <a class="dropdown-item" href="../adm/consulta_equipamento_gto.php">Equipamentos GTO</a>
+              <a class="dropdown-item" href="../adm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
+            </div>
+
+          </div>
+
+        </li>
+
+        <li class="nav-item">
+          <!-- Consultar -->
+
+          <div class="btn-group dropright">
+
+            <a role="button" aria-pressed="true" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px; padding-right: 10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
+                fill="currentColor" class="bi bi-person-video2" viewBox="0 0 16 16">
+                <path d="M10 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                <path
+                  d="M2 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2ZM1 3a1 1 0 0 1 1-1h2v2H1V3Zm4 10V2h9a1 1 0 0 1 1 1v9c0 .285-.12.543-.31.725C14.15 11.494 12.822 10 10 10c-3.037 0-4.345 1.73-4.798 3H5Zm-4-2h3v2H2a1 1 0 0 1-1-1v-1Zm3-1H1V8h3v2Zm0-3H1V5h3v2Z" />
+              </svg>
               Cautela do EPI
-
             </a>
 
-          </li>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../adm/caterinha_epi.php">Gerar Documento</a>
+              <a class="dropdown-item" href="../adm/visualiza_carteirinha_epi.php">Visualizar Documentos</a>
+            </div>
 
-          <li class="nav-item">
-            <!-- Descargo de Munição -->
-            <a role="button" aria-pressed="true" class="btn btn-outline-dark"
-              style="margin-bottom: 10px; padding-right: 10px;" href="../armeiro/descargo_de_municao.php">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bullseye"
-                viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
-                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-                <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
-              </svg>
-              Descargo de Munição
-            </a>
-          </li>
-        </ul>
+          </div>
 
-        <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
+        </li>
 
-      </div>
-    </nav>
+        <li class="nav-item">
+          <!-- Descargo de Munição -->
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+            style="margin-bottom: 10px; padding-right: 10px;" href="../adm/descargo_de_municao.php">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
+              fill="currentColor" class="bi bi-bullseye" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+              <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+              <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+            </svg>
+            Descargo de Munição
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

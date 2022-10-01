@@ -30,10 +30,10 @@ if (isset($_POST['tipo'])) {
 
     //vericando se trouxe houve algum cadastro
     if ($result > 0) {
-        $_SESSION['sucesso'] = $cadastrado;
+        $_SESSION['success_created'] = $cadastrado;
         header('Location: ../pages/adm/cadastro_municoes.php');
     } else {
-        echo "<script>alert('Erro ao Realizar Cadastro')</script>";
+        $_SESSION['error_created'] = true;
     }
 }
 ?>

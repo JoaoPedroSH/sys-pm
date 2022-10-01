@@ -36,18 +36,21 @@ if (isset($_POST['usuario'])) {
     // Verificando se acho algo
     if ($row > 0) {
 
-        //verificando o tipo de usuário
-        if ($_POST['tipo'] == "adm") {
+        if ($_POST['tipo'] == "adm") {  
 
-            //criando sesão com     
             $_SESSION['adm'] = true;
-
-            //redirecionado user
             header("location:adm/home.php");
+
+        } elseif ($_POST['tipo'] == "arm") {
+
+            $_SESSION['arm'] = true;
+            header("location:adm/home.php");
+
         }
     } else {
 
         $_SESSION['error_adm'] = true;
+
     }
 }
 
@@ -67,7 +70,7 @@ if (isset($_POST['usuario'])) {
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="../css/Login.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -98,8 +101,8 @@ if (isset($_POST['usuario'])) {
 
     <div class="col-6 pb-3 estilizacao">
         <form method="POST" action="" class="form-signin">
-        <strong style=" font-size:100px; color: red;" block>Sys</strong><strong style=" font-size:100px; color: blue;" block>PM</strong>
-            
+            <strong style=" font-size:100px; color: red;" block>Sys</strong><strong style=" font-size:100px; color: blue;" block>PM</strong>
+
             <br>
             <br>
 
@@ -107,8 +110,7 @@ if (isset($_POST['usuario'])) {
                 <label class="mb-1"><b> Tipo de Permissão </b></label>
             </div>
 
-            <label><input type="radio" name="tipo" value="armeiro" required=""> Armeiro </label>
-            <label> </label>
+            <label><input type="radio" name="tipo" value="arm" required> Armeiro </label>
             <label><input type="radio" name="tipo" value="adm"> Administrador </label>
 
             <br>
@@ -128,8 +130,8 @@ if (isset($_POST['usuario'])) {
         <hr>
 
         <div class="col-md-12" style="align-items: center;">
-        <img  src="../img/brasao-pm-pa.png"  alt="" width="55" height="65">
-            <img src="../img/Brasaouepa.png"  alt="" width="85" height="80">
+            <img src="../img/brasao-pm-pa.png" alt="" width="55" height="65">
+            <img src="../img/Brasaouepa.png" alt="" width="85" height="80">
             <p class="mt-4 mb-3 text-muted"><b>Copyright © 2022 <a href="https://www.uepa.br/" target="_blank">UEPA</a>.</b></p>
         </div>
     </div>
@@ -139,20 +141,21 @@ if (isset($_POST['usuario'])) {
 if (isset($_SESSION['error_adm'])) {
 ?>
 
-  <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'error',
-      title: 'Ops! Usuário ou Senha Inválido.',
-      showConfirmButton: false,
-      confirmButtonColor: '#2ECC71',
-      timer: 3000
-    })
-  </script>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Ops! Usuário ou Senha Inválido.',
+            showConfirmButton: false,
+            confirmButtonColor: '#2ECC71',
+            timer: 3000
+        })
+    </script>
 
 <?php
-  unset($_SESSION['error_adm']);
+    unset($_SESSION['error_adm']);
 }
 
 ?>
+
 </html>
