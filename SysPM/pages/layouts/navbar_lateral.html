@@ -30,21 +30,8 @@
     color: #e7e7e7 !important;
   }
 
-  .barra-lateral.mostra {
-    display: none;
-  }
-
   .btn-abre.some {
     display: none;
-  }
-
-  .barra-lateral.ocultar {
-    display: none;
-  }
-
-  .corpo-painel.expandir {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 
   .sidebar {
@@ -65,8 +52,8 @@
   }
 </style>
 <div class="barra-lateral col-md-2" style="padding: 0;">
-  <div class="col-md-12 bg-light" style="padding-top: 0; height: 100%;">
-    <div class="sidebar-sticky">
+  <div class="col-md-2 bg-light" style="position: fixed; padding-top: 0; height: 100%; width: 100%;">
+    <div class="sidebar-sticky" >
 
       <ul class="nav flex-column">
         <h1></h1>
@@ -81,7 +68,7 @@
             <span>VISÃO GERAL</span>
           </h6>
 
-          <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm/home.php"
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm_arm/home.php"
             style="margin-bottom: 10px; padding-right: 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;" width="22" height="22"
               fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
@@ -118,9 +105,9 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/cadastro_armas.php">Armas</a>
-              <a class="dropdown-item" href="../adm/cadastro_municoes.php">Munições</a>
-              <a class="dropdown-item" href="../adm/cadastro_equipamentos.php">Equipamentos</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_armas.php">Armas</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_municoes.php">Munições</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_equipamentos.php">Equipamentos</a>
             </div>
 
           </div>
@@ -143,13 +130,13 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/inventario_geral.php">Inventário Geral</a>
-              <a class="dropdown-item" href="../adm/consulta_armas_gto.php">Armas GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_armas_ordinario.php">Armas Ordinário</a>
-              <a class="dropdown-item" href="../adm/consulta_municao_gto.php">Munições GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_municao_ordinario.php">Munições Ordinário</a>
-              <a class="dropdown-item" href="../adm/consulta_equipamento_gto.php">Equipamentos GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/inventario_geral.php">Inventário Geral</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_armas_gto.php">Armas GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_armas_ordinario.php">Armas Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_municao_gto.php">Munições GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_municao_ordinario.php">Munições Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_equipamento_gto.php">Equipamentos GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
             </div>
 
           </div>
@@ -173,8 +160,8 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/caterinha_epi.php">Gerar Documento</a>
-              <a class="dropdown-item" href="../adm/visualiza_carteirinha_epi.php">Visualizar Documentos</a>
+              <a class="dropdown-item" href="../adm_arm/caterinha_epi.php">Gerar Documento</a>
+              <a class="dropdown-item" href="../adm_arm/visualiza_carteirinha_epi.php">Visualizar Documentos</a>
             </div>
 
           </div>
@@ -184,7 +171,7 @@
         <li class="nav-item">
           <!-- Descargo de Munição -->
           <a role="button" aria-pressed="true" class="btn btn-outline-dark"
-            style="margin-bottom: 10px; padding-right: 10px;" href="../adm/descargo_de_municao.php">
+            style="margin-bottom: 10px; padding-right: 10px;" href="../adm_arm/descargo_de_municao.php">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
               fill="currentColor" class="bi bi-bullseye" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

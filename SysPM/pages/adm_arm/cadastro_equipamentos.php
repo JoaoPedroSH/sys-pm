@@ -34,6 +34,16 @@ if (!isset($_SESSION)) {
 
 </head>
 
+<style>
+    .col,
+    .col-md-10,
+    .col-md-12,
+    .col-md-3,
+    .col-md-6 {
+        position: static;
+    }
+</style>
+
 <body>
 
     <!-- Navbar -->
@@ -45,16 +55,16 @@ if (!isset($_SESSION)) {
 
             <!-- Sidebar -->
             <?php
-            if(isset($_SESSION['arm'])) {
-            include '../layouts/navbar_lateral_armeiro.html';
+            if (isset($_SESSION['arm'])) {
+                include '../layouts/navbar_lateral_armeiro.html';
             }
-            
-            if (isset($_SESSION['adm'])){
-            include '../layouts/navbar_lateral.html';
+
+            if (isset($_SESSION['adm'])) {
+                include '../layouts/navbar_lateral.html';
             }
             ?>
 
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
 
                     <!--Main-->
@@ -144,7 +154,7 @@ if (!isset($_SESSION)) {
                                 <!-- Botões de ação do formulário -->
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" id="salvar" class="btn btn-primary" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">Salvar</button>
+                                        <button type="submit" id="salvar" class="btn btn-primary" style="position: static; box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">Salvar</button>
                                         <a href="home.php"> <button style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589); margin-left: 10px;" class="btn btn-danger"> Cancelar</button> </a>
                                     </div>
                                     <br><br><br>
@@ -180,18 +190,19 @@ unset($_SESSION['success_created'])
 <?php
 if (isset($_SESSION['error_created'])) {
 ?>
-  <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'error',
-      title: 'Erro ao Cadastrar Equipamento!',
-      showConfirmButton: false,
-      confirmButtonColor: '#2ECC71',
-      timer: 3000
-    })
-  </script>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Erro ao Cadastrar Equipamento!',
+            showConfirmButton: false,
+            confirmButtonColor: '#2ECC71',
+            timer: 3000
+        })
+    </script>
 <?php
 }
 unset($_SESSION['error_created'])
 ?>
+
 </html>

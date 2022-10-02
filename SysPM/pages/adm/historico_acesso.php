@@ -15,9 +15,6 @@ if (!isset($_SESSION['adm'])) {
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <?php include('../layouts/title_e_favicon.html') ?>
 
@@ -42,6 +39,16 @@ if (!isset($_SESSION['adm'])) {
 
 </head>
 
+<style>
+    .col,
+    .col-md-10,
+    .col-md-12,
+    .col-md-3,
+    .col-md-6 {
+        position: static;
+    }
+</style>
+
 <body>
     <!-- INCLUSÃO DOS NAV'S -->
     <?php include('../layouts/navbar_superior.html') ?>
@@ -52,21 +59,22 @@ if (!isset($_SESSION['adm'])) {
 
             <?php include('../layouts/navbar_lateral.html') ?>
 
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <!-- TABELA PARA CONSULTA -->
-                <div class="table-responsive pt-3" style="min-width: 480px;">
+                <div class="table table-hover-responsive pt-3" style="min-width: 480px;">
 
                     <h2 style="text-align: center;"><u>Histórico de Acesso</u></h2>
                     <br>
 
-                    <div class="col-md-12" style="display: flex;width: 100%;margin: 0 0 5px;padding-left: 9%;">
-                        <p style="margin-right: 10px; margin-top:7px;"> </p>
-                        <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+                    <!-- FILTRO -->
+                    <div class="col-md-12 justify-content-center" style="display: flex;margin: 0 0 5px;">
+                        <input style="width: 40%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
                     </div>
+                    <br>
 
                     <br>
 
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-hover table-bordered table-striped">
 
                         <thead>
 
@@ -151,46 +159,29 @@ if (!isset($_SESSION['adm'])) {
 
         </div>
 
-        <!-- BUSCA DA TABELA -->
-        <script>
-            $(document).ready(function() {
-
-                $("#myInput").on("keyup", function() {
-
-                    var value = $(this).val().toLowerCase();
-
-                    $("#myTable tr").filter(function() {
-
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-
-                    });
-
-                });
-
-            });
-        </script>
-
     </div>
 
     </div>
-
-    <div at-magnifier-wrapper="">
-
-        <div class="at-theme-light">
-
-            <div class="at-base notranslate" translate="no">
-
-                <div class="Z1-AJ" style="top: 0px; left: 0px;">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
 
 </body>
+
+<!-- BUSCA DA TABELA -->
+<script>
+    $(document).ready(function() {
+
+        $("#myInput").on("keyup", function() {
+
+            var value = $(this).val().toLowerCase();
+
+            $("#myTable tr").filter(function() {
+
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+            });
+
+        });
+
+    });
+</script>
 
 </html>

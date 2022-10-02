@@ -33,6 +33,16 @@ if (!isset($_SESSION)) {
 
 </head>
 
+<style>
+    .col,
+    .col-md-10,
+    .col-md-12,
+    .col-md-3,
+    .col-md-6 {
+        position: static;
+    }
+</style>
+
 <body>
 
     <!-- Navbar -->
@@ -51,11 +61,11 @@ if (!isset($_SESSION)) {
             include '../layouts/navbar_lateral.html';
             }
             ?>
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
 
                     <!-- Main -->
-                    <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
+                    <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="position: static; box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
                         <h3 class="page-header" id="titulo" style="text-align: center;">Cadastro de Munições</h3>
                         <hr>
                         <div id="main" class="container-fluid">
@@ -119,7 +129,7 @@ if (!isset($_SESSION)) {
                                 <!-- Botões de ação do formulário -->
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" id="salvar" class="btn btn-primary" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">Salvar</button>
+                                        <button type="submit" id="salvar" class="btn btn-primary" style="position: static; box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">Salvar</button>
                                         <a href="home.php"> <button style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589); margin-left: 10px;" class="btn btn-danger"> Cancelar</button> </a>
                                     </div>
                                     <br><br><br>

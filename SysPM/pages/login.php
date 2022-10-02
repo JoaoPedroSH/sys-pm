@@ -39,12 +39,12 @@ if (isset($_POST['usuario'])) {
         if ($_POST['tipo'] == "adm") {  
 
             $_SESSION['adm'] = true;
-            header("location:adm/home.php");
+            header("location:adm_arm/home.php");
 
         } elseif ($_POST['tipo'] == "arm") {
 
             $_SESSION['arm'] = true;
-            header("location:adm/home.php");
+            header("location:adm_arm/home.php");
 
         }
     } else {
@@ -110,7 +110,7 @@ if (isset($_POST['usuario'])) {
                 <label class="mb-1"><b> Tipo de Permissão </b></label>
             </div>
 
-            <label><input type="radio" name="tipo" value="arm" required> Armeiro </label>
+            <label><input type="radio" name="tipo" value="arm" required checked> Armeiro </label>
             <label><input type="radio" name="tipo" value="adm"> Administrador </label>
 
             <br>

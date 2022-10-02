@@ -69,7 +69,7 @@ include_once "../../db/Conexao.php";
             ?>
 
             <!--Main-->
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <br><br>
 
                 <br>

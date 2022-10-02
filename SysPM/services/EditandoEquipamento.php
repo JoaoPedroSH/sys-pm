@@ -29,7 +29,7 @@ if ($tipo == "gto") {
   if ($result == 1) {
     //criando sessão caso tenha success_edit com sucesso
     $_SESSION['success_edit'] = true;
-    header('Location: ../pages/adm/consulta_equipamento_gto.php');
+    header('Location: ../pages/adm_arm/consulta_equipamento_gto.php');
   } else {
     //se der errado criando uma sessão
     $_SESSION['error_edit'] = true;
@@ -44,7 +44,7 @@ if ($tipo == "gto") {
   if ($result == 1) {
     //criando sessão caso tenha success_edit com sucesso
     $_SESSION['success_edit'] = true;
-    header('Location: ../pages/adm/consulta_equipamento_ordinario.php');
+    header('Location: ../pages/adm_arm/consulta_equipamento_ordinario.php');
   } else {
     //se der errado criando uma sessão
     $_SESSION['error_edit'] = true;

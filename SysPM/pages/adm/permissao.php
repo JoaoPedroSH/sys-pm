@@ -14,12 +14,9 @@ include_once "../../db/Conexao.php";
 
 <head>
 
-
-
   <!-- Favicon -->
   <?php include('../layouts/title_e_favicon.html') ?>
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -42,6 +39,16 @@ include_once "../../db/Conexao.php";
 
 </head>
 
+<style>
+  .col,
+  .col-md-10,
+  .col-md-12,
+  .col-md-3,
+  .col-md-6 {
+    position: static;
+  }
+</style>
+
 <body>
 
   <!-- Templete Navbar -->
@@ -54,19 +61,23 @@ include_once "../../db/Conexao.php";
       <!-- Templete Sidebar -->
       <?php include('../layouts/navbar_lateral.html') ?>
 
-      <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+      <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
         <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
           <h2 style="text-align: center;"><u>Permissões</u></h2>
           <br>
 
           <div class="col-md-12" style="display: flex;margin: 0 0 5px;justify-content: space-around;">
-
-            <!-- Filtro da tabela -->
-            <input style="box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+            <div class="col-md-1"></div>
+            <!-- FILTRO -->
+            <div class="col-md-9 justify-content-center" style="display: flex;margin: 0 0 5px;">
+              <input style="width: 55%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+            </div>
+            <br>
 
             <!-- Botão de ação de cadastro -->
-            <button class="btn btn-success" onclick="openModal()" style="box-shadow: 2px 2px 2px black;margin-left: 10px;height: 37px;"><i class="bi bi-person-check-fill"></i> Adicionar Usuário</button>
-
+            <div class="col-md-1">
+              <button class="btn btn-success" onclick="openModal()" style="box-shadow: 2px 2px 2px black;margin-left: 10px;height: 37px;"> Adicionar Usuário </button>
+            </div>
           </div>
 
           <!-- Modal de Cadastro de usuário -->
@@ -112,7 +123,7 @@ include_once "../../db/Conexao.php";
           </div>
 
           <!-- Tabela de Usuários -->
-          <table class="table table-bordered table-striped">
+          <table class="table table-hover table-bordered table-striped">
 
             <thead>
               <style>
@@ -122,13 +133,12 @@ include_once "../../db/Conexao.php";
                 }
               </style>
 
-              <tr>
                 <th>#</th>
-                <th>Usuário</th>
-                <th>Senha</th>
-                <th>Permissão</th>
-                <th>Ação</th>
-              </tr>
+                <th>USUÁRIO</th>
+                <th>SENHA</th>
+                <th>PERMISSÃO</th>
+                <th>AÇÃO</th>
+
             </thead>
 
             <?php

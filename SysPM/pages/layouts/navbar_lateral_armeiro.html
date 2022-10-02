@@ -30,21 +30,8 @@
     color: #e7e7e7 !important;
   }
 
-  .barra-lateral.mostra {
-    display: none;
-  }
-
   .btn-abre.some {
     display: none;
-  }
-
-  .barra-lateral.ocultar {
-    display: none;
-  }
-
-  .corpo-painel.expandir {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 
   .sidebar {
@@ -65,7 +52,7 @@
   }
 </style>
 <div class="barra-lateral col-md-2" style="padding: 0;">
-  <div class="col-md-12 bg-light" style="padding-top: 0; height: 100%;">
+  <div class="col-md-2 bg-light" style="position: fixed; padding-top: 0; height: 100%; width: 100%;">
     <div class="sidebar-sticky">
 
       <ul class="nav flex-column">
@@ -81,7 +68,7 @@
             <span>VISÃO GERAL</span>
           </h6>
 
-          <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm/home.php"
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark" href="../adm_arm/home.php"
             style="margin-bottom: 10px; padding-right: 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;" width="22" height="22"
               fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
@@ -118,9 +105,9 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/cadastro_armas.php">Armas</a>
-              <a class="dropdown-item" href="../adm/cadastro_municoes.php">Munições</a>
-              <a class="dropdown-item" href="../adm/cadastro_equipamentos.php">Equipamentos</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_armas.php">Armas</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_municoes.php">Munições</a>
+              <a class="dropdown-item" href="../adm_arm/cadastro_equipamentos.php">Equipamentos</a>
             </div>
 
           </div>
@@ -143,13 +130,13 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/inventario_geral.php">Inventário Geral</a>
-              <a class="dropdown-item" href="../adm/consulta_armas_gto.php">Armas GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_armas_ordinario.php">Armas Ordinário</a>
-              <a class="dropdown-item" href="../adm/consulta_municao_gto.php">Munições GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_municao_ordinario.php">Munições Ordinário</a>
-              <a class="dropdown-item" href="../adm/consulta_equipamento_gto.php">Equipamentos GTO</a>
-              <a class="dropdown-item" href="../adm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/inventario_geral.php">Inventário Geral</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_armas_gto.php">Armas GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_armas_ordinario.php">Armas Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_municao_gto.php">Munições GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_municao_ordinario.php">Munições Ordinário</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_equipamento_gto.php">Equipamentos GTO</a>
+              <a class="dropdown-item" href="../adm_arm/consulta_equipamento_ordinario.php">Equipamentos Ordinário</a>
             </div>
 
           </div>
@@ -173,8 +160,8 @@
             </a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="../adm/caterinha_epi.php">Gerar Documento</a>
-              <a class="dropdown-item" href="../adm/visualiza_carteirinha_epi.php">Visualizar Documentos</a>
+              <a class="dropdown-item" href="../adm_arm/caterinha_epi.php">Gerar Documento</a>
+              <a class="dropdown-item" href="../adm_arm/visualiza_carteirinha_epi.php">Visualizar Documentos</a>
             </div>
 
           </div>
@@ -184,7 +171,7 @@
         <li class="nav-item">
           <!-- Descargo de Munição -->
           <a role="button" aria-pressed="true" class="btn btn-outline-dark"
-            style="margin-bottom: 10px; padding-right: 10px;" href="../adm/descargo_de_municao.php">
+            style="margin-bottom: 10px; padding-right: 10px;" href="../adm_arm/descargo_de_municao.php">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
               fill="currentColor" class="bi bi-bullseye" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -194,6 +181,35 @@
             </svg>
             Descargo de Munição
           </a>
+        </li>
+
+        <li style="position: bottom;">
+
+          <hr style="border-top: 1px solid rgb(255 255 255 / 37%);">
+
+          <h6 class="sidebar-heading d-flex justify-content-center align-items-center px-3 mt-3 text-muted">
+
+            <span>SUPORTE</span>
+
+          </h6>
+
+        <li class="nav-item">
+          <!-- Documentação -->
+
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+            style="margin-bottom: 10px; padding-right: 10px;" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
+              fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+              <path
+                d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+            </svg>
+
+            Documentação
+
+          </a>
+
+        </li>
+        <center><img src="../../img/marcauepa.png" style="margin-top: 50px;" width="170px" height="70px"></center>
         </li>
       </ul>
     </div>

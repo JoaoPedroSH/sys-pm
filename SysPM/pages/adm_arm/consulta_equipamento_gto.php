@@ -1,8 +1,10 @@
 <?php
 session_start();
 
+//verifando se foi criando a sessão
 if (!isset($_SESSION)) {
 
+    //redirecionando para login
     header("location:../login.php");
 }
 
@@ -16,11 +18,20 @@ include_once "../../db/Conexao.php";
 
 <head>
 
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
 
     <?php include('../layouts/title_e_favicon.html') ?>
 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="../../css/buttom.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
@@ -42,7 +53,9 @@ include_once "../../db/Conexao.php";
 
 </head>
 
-<body>
+
+
+<body style="background-color: #0a0a0a">
 
     <?php include('../layouts/navbar_superior.html') ?>
 
@@ -51,31 +64,30 @@ include_once "../../db/Conexao.php";
         <div class="row">
 
             <?php
-            if(isset($_SESSION['arm'])) {
-            include '../layouts/navbar_lateral_armeiro.html';
+            if (isset($_SESSION['arm'])) {
+                include '../layouts/navbar_lateral_armeiro.html';
             }
-            
-            if (isset($_SESSION['adm'])){
-            include '../layouts/navbar_lateral.html';
+
+            if (isset($_SESSION['adm'])) {
+                include '../layouts/navbar_lateral.html';
             }
             ?>
 
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
 
-                <div class="table-responsive pt-3" style="min-width: 480px;">
+                <div class="table table-hover-responsive pt-3" style="min-width: 480px;">
 
-                    <h2 style="text-align: center;"><u>Consutar Equipamentos - ORDINÁRIO</u></h2>
+                    <h2 style="text-align: center;"><u> Equipamentos - Tático </u></h2>
 
                     <br>
-
                     <!-- FILTRO -->
-                    <div class="col-md-12" style="display: flex;width: 100%;margin: 0 0 5px;padding-left: 9%;">
-
-                        <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+                    <div class="col-md-12 justify-content-center" style="display: flex;margin: 0 0 5px;">
+                        <input style="width: 40%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
                     </div>
+                    <br>
 
                     <!-- TABELA -->
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-hover table-bordered table-striped">
 
                         <thead>
                             <style>
@@ -104,7 +116,7 @@ include_once "../../db/Conexao.php";
 
                         <?php
 
-                        $query = "SELECT  * FROM  equip_ord";
+                        $query = "SELECT  * FROM  equip_gto";
 
                         $result = mysqli_query($conexao, $query);
 
@@ -117,18 +129,19 @@ include_once "../../db/Conexao.php";
                             <tbody id="myTable">
                                 <tr>
                                     <td><?= $x ?></td>
-                                    <td><?php echo $linhas['tipo'] ?></td>
-                                    <td><?php echo $linhas['marca'] ?></td>
-                                    <td><?php echo $linhas['modelo'] ?></td>
-                                    <td><?php echo $linhas['n_serie'] ?></td>
-                                    <td><?php echo $linhas['patrimonio'] ?></td>
-                                    <td><?php echo $linhas['localizacao'] ?></td>
-                                    <td><?php echo $linhas['situacao'] ?></td>
-                                    <td><?php echo $linhas['cautela'] ?></td>
+                                    <td><?= $linhas['tipo'] ?></td>
+                                    <td><?= $linhas['marca'] ?></td>
+                                    <td><?= $linhas['modelo'] ?></td>
+                                    <td><?= $linhas['n_serie'] ?></td>
+                                    <td><?= $linhas['patrimonio'] ?></td>
+                                    <td><?= $linhas['localizacao'] ?></td>
+                                    <td><?= $linhas['situacao'] ?></td>
+                                    <td><?= $linhas['cautela'] ?></td>
                                     <td><?php $date01 = date("d/m/Y", strtotime($linhas['validade']));
                                         echo  $date01; ?></td>
-                                    <td><?php echo $linhas['nivel'] ?></td>
-                                    <td><?php echo $linhas['tamanho'] ?></td>
+
+                                    <td><?= $linhas['nivel'] ?></td>
+                                    <td><?= $linhas['tamanho'] ?></td>
                                     <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
                                         echo  $date02; ?></td>
 
@@ -138,7 +151,6 @@ include_once "../../db/Conexao.php";
                                         <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-tipo="<?= $linhas['tipo'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-marca="<?= $linhas['marca'] ?>" data-n_serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-validade="<?= $linhas['validade'] ?>" data-fabricacao="<?= $linhas['fabricacao'] ?>" data-nivel="<?= $linhas['nivel'] ?> " data-tamanho="<?= $linhas['tamanho'] ?> " data-obs="<?= $linhas['obs'] ?>">Editar</button>
                                     </td>
 
-
                                 </tr>
 
                             <?php
@@ -147,13 +159,13 @@ include_once "../../db/Conexao.php";
                         }
                             ?>
 
-                            <!--MODAL EDITAR-->
+                            <!-- MODAL EDITAR -->
                             <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
 
-                                            <h5 class="modal-title" id="">Editar Dados</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar Dados</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -194,11 +206,11 @@ include_once "../../db/Conexao.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">VALIDADE:</label>
-                                                    <input type="date" class="form-control" id="val" name="val">
+                                                    <input type="date" class="form-control" id="validade" name="validade">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">FABRICAÇÃO:</label>
-                                                    <input type="date" class="form-control" id="fab" name="fab">
+                                                    <input type="date" class="form-control" id="fabricacao" name="fabricacao">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label"> NÍVEL:</label>
@@ -214,18 +226,18 @@ include_once "../../db/Conexao.php";
                                                 </div>
 
                                                 <input type="hidden" name="id" id="id" value="">
-                                                <input type="hidden" name="tipo" id="tipo" value="ord">
+                                                <input type="hidden" name="tipo" id="tipo" value="gto">
 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                            <button type="submit"class="btn btn-primary ">Salvar Alterações</button>
+                                            <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
                                         </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
@@ -271,7 +283,6 @@ if (isset($_SESSION['error_edit'])) {
 }
 
 ?>
-
 
 <!-- VALIDAÇÃO DO MODAL DE EDIÇÃO -->
 <script>
@@ -345,8 +356,8 @@ if (isset($_SESSION['error_edit'])) {
             $('#localizacao').val(localizacao);
             $('#situacao').val(situacao);
             $('#cautela').val(cautela);
-            $('#val').val(validade);
-            $('#fab').val(fabricacao);
+            $('#validade').val(validade);
+            $('#fabricacao').val(fabricacao);
             $('#nivel').val(nivel);
             $('#tamanho').val(tamanho);
             $('#obs').val(observacao);

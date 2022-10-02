@@ -133,4 +133,4 @@ $mpdf->Output('doc/descargo_de_municao/' . $uuid . '.pdf', 'f');
 
 $mpdf->Output('doc/descargo_de_municao/' . $uuid . '.pdf', 'i'); // F => salvar / D => baixar / i => abrir
 
-header('Location: ../../pages/adm/descargo_de_municao.php');
+header('Location: ../../pages/adm_arm/descargo_de_municao.php');

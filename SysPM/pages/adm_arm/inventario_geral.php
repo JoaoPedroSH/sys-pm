@@ -53,8 +53,8 @@ if (!isset($_SESSION)) {
             }
             ?>
 
-            <div id="inventario" class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
-                <div class="table-responsive pt-3" style="min-width: 480px;">
+            <div id="inventario" class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+                <div class="table table-hover-responsive pt-3" style="min-width: 480px;">
                     <h2 style="text-align: center;"><u>Inventário Geral</u></h2>
                     <br>
 
@@ -83,7 +83,7 @@ if (!isset($_SESSION)) {
                         <br>
 
                         <!-- GET ARMAS GTO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">ARMAS GTO</h4>
@@ -136,7 +136,7 @@ if (!isset($_SESSION)) {
                         </table>
 
                         <!-- GET ARMAS ORDINÁRIO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">ARMAS ORDINÁRIO</h4>
@@ -188,7 +188,7 @@ if (!isset($_SESSION)) {
                         </table>
 
                         <!-- GET MUNIÇÃO GTO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">MUNIÇÕES GTO</h4>
@@ -242,7 +242,7 @@ if (!isset($_SESSION)) {
                         </table>
 
                         <!-- GET MUNIÇÃO ORDINÁRIO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">MUNIÇÕES ORDINÁRIO</h4>
@@ -295,7 +295,7 @@ if (!isset($_SESSION)) {
                         </table>
 
                         <!-- GET EQUIPAMENTOS GTO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">EQUIPAMENTOS GTO</h4>
@@ -361,7 +361,7 @@ if (!isset($_SESSION)) {
                         </table>
 
                         <!-- GET EQUIPAMENTOS ORDINÁRIO -->
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-hover table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <h4 style="text-align: center; background-color: #ABB2B9;">EQUIPAMENTOS ORDINÁRIO</h4>

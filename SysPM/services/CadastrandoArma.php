@@ -46,7 +46,7 @@ if (isset($_POST['n_serie'])) {
 
   if ($result > 0 && $result1 > 0 ) {
     $_SESSION['success_created'] = true;
-    header('Location: ../pages/adm/cadastro_armas.php');
+    header('Location: ../pages/adm_arm/cadastro_armas.php');
   } else {
     $_SESSION['error_created'] = true;
   }

@@ -32,7 +32,7 @@ if (isset($_POST['n_serie'])) {
 
     if ($result > 0) {
         $_SESSION['success_created'] = true;
-        header('Location: ../pages/adm/cadastro_equipamentos.php');
+        header('Location: ../pages/adm_arm/cadastro_equipamentos.php');
     } else {
         $_SESSION['error_created'] = true;
     }

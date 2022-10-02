@@ -22,7 +22,7 @@ $result = "1";
 if ($result == "1") {
 
 	$_SESSION['fez_backup'] = true;
-	header("location:../pages/adm/home.php");
+	header("location:../pages/adm_arm/home.php");
 }
 
 ?>

@@ -31,7 +31,7 @@ if (isset($_POST['tipo'])) {
     //vericando se trouxe houve algum cadastro
     if ($result > 0) {
         $_SESSION['success_created'] = $cadastrado;
-        header('Location: ../pages/adm/cadastro_municoes.php');
+        header('Location: ../pages/adm_arm/cadastro_municoes.php');
     } else {
         $_SESSION['error_created'] = true;
     }

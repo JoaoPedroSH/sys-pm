@@ -22,9 +22,9 @@ if (isset($_FILES['foto_arma'])) {
     if ($result08 == 1 && $tipo == 'gto') {
         //criando sessão caso tenha success_edit com sucesso
         $_SESSION['success_edit'] = true;
-        header('Location: ../pages/adm/consulta_armas_gto.php');
+        header('Location: ../pages/adm_arm/consulta_armas_gto.php');
     } else if ($result08 == 1 && $tipo != 'gto') {
-        header('Location: ../pages/adm/consulta_armas_ordinario.php');
+        header('Location: ../pages/adm_arm/consulta_armas_ordinario.php');
     } else {
         $_SESSION['error_edit'] = true;
     }

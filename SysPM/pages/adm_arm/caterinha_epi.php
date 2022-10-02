@@ -28,10 +28,21 @@ if (!isset($_SESSION)) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
+<style>
+    .col,
+    .col-md-12,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6 {
+        position: static;
+    }
+</style>
 
 <body>
 
@@ -43,55 +54,59 @@ if (!isset($_SESSION)) {
 
             <!-- Templete Sidebar -->
             <?php
-            if(isset($_SESSION['arm'])) {
-            include '../layouts/navbar_lateral_armeiro.html';
+            if (isset($_SESSION['arm'])) {
+                include '../layouts/navbar_lateral_armeiro.html';
             }
-            
-            if (isset($_SESSION['adm'])){
-            include '../layouts/navbar_lateral.html';
+
+            if (isset($_SESSION['adm'])) {
+                include '../layouts/navbar_lateral.html';
             }
             ?>
 
-            <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+            <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
                 <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
 
-                    <!-- Main -->
-                    <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
-                        <h3 class="page-header" id="titulo" style="text-align: center;">Descargo de Munição</h3>
+                    <!--Main-->
+                    <main role="main" class="col-md-12 col-lg-12 pt-3 px-4" style="position: static; box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);">
+                        <h3 class="page-header" id="titulo" style="text-align: center;">Documentação Cautela EPI</h3>
                         <hr>
                         <div id="main" class="container-fluid">
 
-                            <!-- Formulário de geração do documento -->
-                            <form action="../../services/biblioteca_pdf/PdfDescargoDeMunicao.php" target="_blank" method="POST">
+                            <!-- Formulário de criação do documento -->
+                            <form action="../../services/biblioteca_pdf/PdfCautelaDoEpi.php" method="POST" target="_blank" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="form-group col-md-2">
-                                        <label>MUNIÇÂO</label>
-                                        <input type="text" class="form-control" name="tipo" placeholder="" required>
+                                    <div class="form-group col-md-4">
+                                        <label> EQUIPAMENTO <input class="form-control" type="text" name="obj" id="obj" placeholder="" required></label>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label>QUANTIDADE</label>
-                                        <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="" required>
+                                    <div class="form-group col-md-4">
+                                        <label> ARMA <input class="form-control" type="text" name="obj2" id="obj2" placeholder="" required></label>
                                     </div>
-                                    <div class="form-group col-md-5">
-                                        <label>OFICIAL</label>
-                                        <input type="text" class="form-control" name="oficial" placeholder="" required>
+                                    <div class="form-group col-md-4">
+                                        <label> MUNIÇÃO <input class="form-control" type="text" name="obj3" id="obj3" placeholder="" required></label>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label>DATA</label>
-                                        <input type="date" class="form-control" id="dia" name="dia" placeholder="" required>
+                                    <div class="form-group col-md-4">
+                                        <label> PARTE </label>
+                                        <textarea class="form-control" name="parte" id="parte" cols="30" rows="2" placeholder="" required></textarea>
                                     </div>
-                                </div>
-                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label> TERMO </label>
+                                        <textarea class="form-control" name="termo" id="termo" cols="30" rows="2" placeholder="" required></textarea>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label> DECLARAÇÃO </label>
+                                        <textarea class="form-control" name="declaracao" id="declaracao" cols="30" rows="2" placeholder="" required></textarea>
+                                    </div>
                                     <div class="form-group col-md-6">
-                                        <label>OPERAÇÃO </label><textarea class="form-control" name="operacao" id="operacao" cols="30" rows="2" placeholder=""></textarea>
+                                        <label> OFICIAL <input class="form-control" style="width:550px; " type="text" name="oficial" id="oficial" placeholder="" required></label>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label>OBSERVAÇÃO</label><textarea class="form-control" name="obs" id="observacao" cols="30" rows="2" placeholder=""></textarea>
+                                    <div class="form-group col-md-4">
+                                        <label> ASSINATURA </label><br>
+                                        <input type="file" name="assinaturafile" id="assinaturafile" accept="image/*">
                                     </div>
                                 </div>
                                 <hr />
 
-                                <!-- Botão de ação do formulário -->
+                                <!-- Botão de Ação do formulário -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button type="submit" id="salvar" class="btn btn-outline-danger" style="box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.589);width: 250px;">
@@ -101,8 +116,7 @@ if (!isset($_SESSION)) {
                                             </svg>
                                             Gerar Documento
                                         </button>
-
-                                    </div> 
+                                    </div>
                                     <br><br><br>
                                 </div>
 
@@ -114,4 +128,5 @@ if (!isset($_SESSION)) {
         </div>
     </div>
 </body>
+
 </html>

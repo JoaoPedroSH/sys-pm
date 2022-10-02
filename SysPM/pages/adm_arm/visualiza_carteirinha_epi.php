@@ -60,21 +60,21 @@ include_once "../../db/Conexao.php";
             }
             ?>
 
-      <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+      <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
 
-        <div class="table-responsive pt-3" style="min-width: 480px;">
+        <div class="table table-hover-responsive pt-3" style="min-width: 480px;">
 
           <h2 style="text-align: center;"><u>Documentos de Cautelas do EPI</u></h2>
 
           <br>
           <!-- FILTRO -->
-          <div class="col-md-12" style="display: flex;width: 100%;margin: 0 0 5px;padding-left: 9%;">
-
-            <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+          <div class="col-md-12 justify-content-center" style="display: flex;margin: 0 0 5px;">
+            <input style="width: 40%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
           </div>
+          <br>
 
           <!-- TABELA -->
-          <table class="table table-bordered table-striped">
+          <table class="table table-hover table-bordered table-striped">
 
             <thead>
               <style>

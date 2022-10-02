@@ -6,6 +6,8 @@ if (!isset($_SESSION)) {
   header("location:../login.php");
 }
 
+include_once "../../db/Conexao.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,7 @@ if (!isset($_SESSION)) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
 
   <!-- CDN's -->
   <script src="../../js/script.js"></script>
@@ -57,22 +60,21 @@ if (!isset($_SESSION)) {
             }
             ?>
 
-      <div class="corpo-painel col-md-10" style="background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
+      <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
 
-        <div class="table-responsive pt-3" style="min-width: 480px;">
+        <div class="table table-hover-responsive pt-3" style="min-width: 480px;">
 
-          <h2 style="text-align: center;"><u>Consutar Munições - Ordinário</u></h2>
+          <h2 style="text-align: center;"><u> Munições - Tático</u></h2>
 
           <br>
-
           <!-- FILTRO -->
-          <div class="col-md-12" style="display: flex;width: 100%;margin: 0 0 5px;padding-left: 9%;">
-
-            <input style="width: 80%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
+          <div class="col-md-12 justify-content-center" style="display: flex;margin: 0 0 5px;">
+            <input style="width: 40%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
           </div>
+          <br>
 
           <!-- TABELA -->
-          <table class="table table-bordered table-striped">
+          <table class="table table-hover table-bordered table-striped">
 
             <thead>
               <style>
@@ -85,7 +87,7 @@ if (!isset($_SESSION)) {
               <th>MARCA</th>
               <th>MODELO</th>
               <th>VALIDADE</th>
-              <th>TIPO </th>
+              <th>TIPO</th>
               <th>QUANTIDADE</th>
               <th>OBS</th>
               <th>AÇÕES</th>
@@ -94,9 +96,7 @@ if (!isset($_SESSION)) {
 
             <?php
 
-            include('../../db/Conexao.php');
-
-            $query = "SELECT  * FROM municao_ord";
+            $query = "SELECT  * FROM municao_gto";
 
             $result = mysqli_query($conexao, $query);
 
@@ -131,7 +131,7 @@ if (!isset($_SESSION)) {
             }
               ?>
 
-              <!-- MODAL EDITAR -->
+              <!--MODAL EDITAR -->
               <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -165,7 +165,7 @@ if (!isset($_SESSION)) {
                         </div>
 
                         <input type="hidden" name="id" id="id" value="">
-                        <input type="hidden" name="tipo" id="tipo" value="ord">
+                        <input type="hidden" name="tipo" id="tipo" value="gto">
 
                     </div>
                     <div class="modal-footer">
