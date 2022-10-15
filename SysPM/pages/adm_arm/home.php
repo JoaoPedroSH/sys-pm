@@ -99,6 +99,10 @@ include_once "../../db/Conexao.php";
                                                 $armasGtoGeral = $resultArmaGtoGeral->fetch_assoc();
 
                                                 $totalArmas = $armasOrdGeral['arma_geral'] + $armasGtoGeral['arma_geral'];
+
+                                                $parcialArmaOrd = $armasOrdGeral['arma_geral'];
+                                                $parcialArmaGto = $armasGtoGeral['arma_geral'];
+
                                                 ?>
 
                                                 <h1 class="card-title"><?= $totalArmas ?></h1>
@@ -121,6 +125,9 @@ include_once "../../db/Conexao.php";
 
                                                 $totalMunicao = $munOrdGeral['mun_geral'] + $munGtoGeral['mun_geral'];
 
+                                                $parcialMunOrd = $munOrdGeral['mun_geral'];
+                                                $parcialMunGto = $munGtoGeral['mun_geral'];
+
                                                 ?>
 
                                                 <h1 class="card-title"><?= $totalMunicao ?></h1>
@@ -142,6 +149,9 @@ include_once "../../db/Conexao.php";
 
                                                 $totalEquipamento =  $equipOrdGeral['equip_geral'] + $equipGtoGeral['equip_geral'];
 
+                                                $parcialEquipOrd = $equipOrdGeral['equip_geral'];
+                                                $parcialEquipGto = $equipGtoGeral['equip_geral'];
+
                                                 ?>
 
                                                 <h1 class="card-title"><?= $totalEquipamento ?></h1>
@@ -156,230 +166,239 @@ include_once "../../db/Conexao.php";
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div id="donutchart" style="align-items:center; width: 900px; height: 500px;"></div>
-                            <?php ?>
-                            <script type="text/javascript">
-                                google.charts.load("current", {
-                                    packages: ["corechart"]
-                                });
-                                google.charts.setOnLoadCallback(drawChart);
-
-                                function drawChart() {
-                                    var data = google.visualization.arrayToDataTable([
-                                        ['Task', 'Hours per Day'],
-                                        ['Work', 11],
-                                        ['Eat', 2],
-                                        ['Commute', 2],
-                                        ['Watch TV', 2],
-                                        ['Sleep', 7]
-                                    ]);
-
-                                    var options = {
-                                        title: 'My Daily Activities',
-                                        pieHole: 0.4,
-                                    };
-
-                                    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-                                    chart.draw(data, options);
-                                }
-                            </script>
-                            <?php ?>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselInformationGeral" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" id="styleGeral" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselInformationGeral" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" id="styleGeral" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
-                <br><br>
-
-                <!-- Carousel ORD -->
-                <div id="carouselInformationOrd" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <!-- Cartão de Estatística Inventário Ordinário -->
-                            <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
-                                <div class="row" style="justify-content: center; background-color: #104E8B;">
-                                    <h1 style="color: white;">ORDINÁRIO</h1>
-                                </div>
-                                <br>
-                                <div class="row" style="justify-content: center;">
+                            <div class="container" style="background-color: #b22222; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                                <div class="row" style="justify-content: center;align-items:center;">
                                     <div class="card-deck col-md-11">
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
-
-                                                <?php
-                                                //COUNT ARMAS ORDINARIO
-                                                $queryArmaOrd = "SELECT COUNT(*) AS total FROM armas_ord";
-                                                $resultArmaOrd = mysqli_query($conexao, $queryArmaOrd);
-                                                $armasOrd = $resultArmaOrd->fetch_assoc();
-
-                                                $totalArmaOrd = $armasOrd['total'];
-
-                                                ?>
-
-                                                <h1 class="card-title"><?= $totalArmaOrd ?></h1>
-                                                <h3 class="card-text">Armas</h3>
-
+                                        <div class="card border-danger">
+                                            <div class="card-body text-danger">
+                                                <div id="piechart_3d" style="width: 400px; height: 198px;"></div>
                                             </div>
                                         </div>
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselInformationGeral" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" id="styleGeral" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselInformationGeral" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" id="styleGeral" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
 
-                                                <?php
-                                                //COUNT MUNIÇÃO ORDINARIO
-                                                $queryMunOrd = "SELECT COUNT(*) AS total FROM municao_ord";
-                                                $resultMunOrd = mysqli_query($conexao, $queryMunOrd);
-                                                $munOrd = $resultMunOrd->fetch_assoc();
+                    <br><br>
 
-                                                $totalMunOrd = $munOrd['total'];
+                    <!-- Carousel ORD -->
+                    <div id="carouselInformationOrd" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <!-- Cartão de Estatística Inventário Ordinário -->
+                                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                                    <div class="row" style="justify-content: center; background-color: #104E8B;">
+                                        <h1 style="color: white;">ORDINÁRIO</h1>
+                                    </div>
+                                    <br>
+                                    <div class="row" style="justify-content: center;">
+                                        <div class="card-deck col-md-11">
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
 
-                                                ?>
+                                                    <?php
+                                                    //COUNT ARMAS ORDINARIO
+                                                    $queryArmaOrd = "SELECT COUNT(*) AS total FROM armas_ord";
+                                                    $resultArmaOrd = mysqli_query($conexao, $queryArmaOrd);
+                                                    $armasOrd = $resultArmaOrd->fetch_assoc();
 
-                                                <h1 class="card-title"><?= $totalMunOrd ?></h1>
-                                                <h3 class="card-text">Munições</h3>
+                                                    $totalArmaOrd = $armasOrd['total'];
 
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalArmaOrd ?></h1>
+                                                    <h3 class="card-text">Armas</h3>
+
+                                                </div>
+                                            </div>
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
+
+                                                    <?php
+                                                    //COUNT MUNIÇÃO ORDINARIO
+                                                    $queryMunOrd = "SELECT COUNT(*) AS total FROM municao_ord";
+                                                    $resultMunOrd = mysqli_query($conexao, $queryMunOrd);
+                                                    $munOrd = $resultMunOrd->fetch_assoc();
+
+                                                    $totalMunOrd = $munOrd['total'];
+
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalMunOrd ?></h1>
+                                                    <h3 class="card-text">Munições</h3>
+
+                                                </div>
+                                            </div>
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
+
+                                                    <?php
+                                                    //COUNT MUNIÇÃO ORDINARIO
+                                                    $queryEquipOrd = "SELECT COUNT(*) AS total FROM equip_ord";
+                                                    $resultEquipOrd = mysqli_query($conexao, $queryEquipOrd);
+                                                    $equipOrd = $resultEquipOrd->fetch_assoc();
+
+                                                    $totalEquipOrd = $equipOrd['total'];
+
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalEquipOrd ?></h1>
+                                                    <h3 class="card-text">Equipamentos</h3>
+
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
+                                        <br>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="..." alt="Second slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselInformationOrd" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" id="styleOrd" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselInformationOrd" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" id="styleOrd" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
 
-                                                <?php
-                                                //COUNT MUNIÇÃO ORDINARIO
-                                                $queryEquipOrd = "SELECT COUNT(*) AS total FROM equip_ord";
-                                                $resultEquipOrd = mysqli_query($conexao, $queryEquipOrd);
-                                                $equipOrd = $resultEquipOrd->fetch_assoc();
+                    <br><br>
 
-                                                $totalEquipOrd = $equipOrd['total'];
+                    <!-- Carousel GTO -->
+                    <div id="carouselInformationGto" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <!-- Cartão de Estatística Inventário Gto -->
+                                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                                    <div class="row" style="justify-content: center; background-color: #104E8B;">
+                                        <h1 style="color: white;">GTO</h1>
+                                    </div>
+                                    <br>
+                                    <div class="row" style="justify-content: center;">
+                                        <div class="card-deck col-md-11">
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
 
-                                                ?>
+                                                    <?php
+                                                    //COUNT ARMAS GTO
+                                                    $queryArmaGto = "SELECT COUNT(*) AS total FROM armas_gto";
+                                                    $resultArmaGto = mysqli_query($conexao, $queryArmaGto);
+                                                    $armaGto = $resultArmaGto->fetch_assoc();
 
-                                                <h1 class="card-title"><?= $totalEquipOrd ?></h1>
-                                                <h3 class="card-text">Equipamentos</h3>
+                                                    $totalArmaGto = $armaGto['total'];
 
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalArmaGto ?></h1>
+                                                    <h3 class="card-text">Armas</h3>
+
+                                                </div>
+                                            </div>
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
+
+                                                    <?php
+                                                    //COUNT MUNIÇÃO GTO 
+                                                    $queryMunGto = "SELECT COUNT(*) AS total FROM municao_gto";
+                                                    $resultMunGto = mysqli_query($conexao, $queryMunGto);
+                                                    $munGto = $resultMunGto->fetch_assoc();
+
+                                                    $totalMunGto = $munGto['total'];
+
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalMunGto ?></h1>
+                                                    <h3 class="card-text">Munições</h3>
+
+                                                </div>
+                                            </div>
+                                            <div class="card border-primary">
+                                                <div class="card-body text-primary">
+
+                                                    <?php
+                                                    //COUNT EQUIPAMENTO GTO
+                                                    $queryEquipGto = "SELECT COUNT(*) AS total FROM equip_gto";
+                                                    $resultEquipGto = mysqli_query($conexao, $queryEquipGto);
+                                                    $equipGto = $resultEquipGto->fetch_assoc();
+
+                                                    $totalEquipGto = $equipGto['total'];
+
+                                                    ?>
+
+                                                    <h1 class="card-title"><?= $totalEquipGto ?></h1>
+                                                    <h3 class="card-text">Equipamentos</h3>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
                                 </div>
-                                <br>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="..." alt="Second slide">
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Second slide">
-                        </div>
+                        <a class="carousel-control-prev" href="#carouselInformationGto" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" id="styleGto" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselInformationGto" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" id="styleGto" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselInformationOrd" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" id="styleOrd" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselInformationOrd" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" id="styleOrd" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+
                 </div>
-
-                <br><br>
-
-                <!-- Carousel GTO -->
-                <div id="carouselInformationGto" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <!-- Cartão de Estatística Inventário Gto -->
-                            <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
-                                <div class="row" style="justify-content: center; background-color: #104E8B;">
-                                    <h1 style="color: white;">GTO</h1>
-                                </div>
-                                <br>
-                                <div class="row" style="justify-content: center;">
-                                    <div class="card-deck col-md-11">
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
-
-                                                <?php
-                                                //COUNT ARMAS GTO
-                                                $queryArmaGto = "SELECT COUNT(*) AS total FROM armas_gto";
-                                                $resultArmaGto = mysqli_query($conexao, $queryArmaGto);
-                                                $armaGto = $resultArmaGto->fetch_assoc();
-
-                                                $totalArmaGto = $armaGto['total'];
-
-                                                ?>
-
-                                                <h1 class="card-title"><?= $totalArmaGto ?></h1>
-                                                <h3 class="card-text">Armas</h3>
-
-                                            </div>
-                                        </div>
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
-
-                                                <?php
-                                                //COUNT MUNIÇÃO GTO 
-                                                $queryMunGto = "SELECT COUNT(*) AS total FROM municao_gto";
-                                                $resultMunGto = mysqli_query($conexao, $queryMunGto);
-                                                $munGto = $resultMunGto->fetch_assoc();
-
-                                                $totalMunGto = $munGto['total'];
-
-                                                ?>
-
-                                                <h1 class="card-title"><?= $totalMunGto ?></h1>
-                                                <h3 class="card-text">Munições</h3>
-
-                                            </div>
-                                        </div>
-                                        <div class="card border-primary">
-                                            <div class="card-body text-primary">
-
-                                                <?php
-                                                //COUNT EQUIPAMENTO GTO
-                                                $queryEquipGto = "SELECT COUNT(*) AS total FROM equip_gto";
-                                                $resultEquipGto = mysqli_query($conexao, $queryEquipGto);
-                                                $equipGto = $resultEquipGto->fetch_assoc();
-
-                                                $totalEquipGto = $equipGto['total'];
-
-                                                ?>
-
-                                                <h1 class="card-title"><?= $totalEquipGto ?></h1>
-                                                <h3 class="card-text">Equipamentos</h3>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Second slide">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselInformationGto" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" id="styleGto" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselInformationGto" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" id="styleGto" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
             </div>
         </div>
-    </div>
 </body>
 
 <script>
     $('.carousel').carousel({
         interval: false
     })
+</script>
+
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Inventário'],
+            ['Armas Tático', <?= $parcialArmaGto ?>],
+            ['Armas Ordinário', <?= $parcialArmaOrd ?>],
+            ['Munições Tático', <?= $parcialMunGto ?>],
+            ['Munições Ordinário', <?= $parcialMunOrd ?>],
+            ['Equipamento Tático', <?= $parcialEquipGto ?>],
+            ['Equipamento Ordinário', <?= $parcialEquipOrd ?>]
+        ]);
+
+        var options = {
+            title: 'Composição do Inventário Geral (%)',
+            is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+    }
 </script>
 
 <!-- Alerta de Backup feito com sucesso -->
