@@ -168,11 +168,9 @@ include_once "../../db/Conexao.php";
                         <div class="carousel-item">
                             <div class="container" style="background-color: #b22222; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
                                 <div class="row" style="justify-content: center;align-items:center;">
-                                    <div class="card-deck col-md-11">
+                                    <div class="card-deck col-md-5">
                                         <div class="card border-danger">
-                                            <div class="card-body text-danger">
-                                                <div id="piechart_3d" style="width: 400px; height: 198px;"></div>
-                                            </div>
+                                            <div id="piechart_3d"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +261,16 @@ include_once "../../db/Conexao.php";
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="..." alt="Second slide">
+                                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                                    <div class="row" style="justify-content: center;align-items:center;">
+                                        <div class="card-deck col-md-5">
+                                            <div class="card border-blue">
+                                                <div id="columnchart_ord"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselInformationOrd" role="button" data-slide="prev">
@@ -350,7 +357,15 @@ include_once "../../db/Conexao.php";
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="..." alt="Second slide">
+                                <div class="container" style="background-color: #000080; text-align: center; border-radius: 10px; border-color: black; border-style: double;">
+                                    <div class="row" style="justify-content: center;align-items:center;">
+                                        <div class="card-deck col-md-5">
+                                            <div class="card border-blue">
+                                                <div id="columnchart_gto"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselInformationGto" role="button" data-slide="prev">
@@ -374,6 +389,97 @@ include_once "../../db/Conexao.php";
     })
 </script>
 
+<!-- Grafico GTO -->
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", {
+                role: "style"
+            }],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"],
+            ["Gold", 19.30, "gold"],
+            ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2
+        ]);
+
+        var options = {
+            title: "Density of Precious Metals, in g/cm^3",
+            width: 400,
+            height: 300,
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_gto"));
+        chart.draw(view, options);
+    }
+</script>
+
+<!-- Grafico ORD -->
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", {
+                role: "style"
+            }],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"],
+            ["Gold", 19.30, "gold"],
+            ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2
+        ]);
+
+        var options = {
+            title: "Density of Precious Metals, in g/cm^3",
+            width: 400,
+            height: 300,
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_ord"));
+        chart.draw(view, options);
+    }
+</script>
+
+<!-- Grafico GERAL -->
 <script type="text/javascript">
     google.charts.load("current", {
         packages: ["corechart"]
@@ -393,6 +499,8 @@ include_once "../../db/Conexao.php";
 
         var options = {
             title: 'Composição do Inventário Geral (%)',
+            width: 400,
+            height: 300,
             is3D: true,
         };
 
