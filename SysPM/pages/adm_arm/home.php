@@ -163,6 +163,9 @@ include_once "../../db/Conexao.php";
                                     <br>
                                 </div>
                                 <br>
+                                <a style="text-decoration:none" href="#carouselInformationGeral" role="button" data-slide="next">
+                                    <span id="styleGeral" aria-hidden="true" style="color:black;"> <strong> Visualizar Gráfico </strong> </span>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -171,19 +174,14 @@ include_once "../../db/Conexao.php";
                                     <div class="card-deck col-md-5">
                                         <div class="card border-danger">
                                             <div id="piechart_3d"></div>
+                                            <a style="text-decoration:none" href="#carouselInformationGeral" role="button" data-slide="prev">
+                                                <span id="styleGeral" aria-hidden="true" style="color:black;"> <strong> Visualizar Contadores </strong> </span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselInformationGeral" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" id="styleGeral" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselInformationGeral" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" id="styleGeral" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
 
                     <br><br>
@@ -258,6 +256,9 @@ include_once "../../db/Conexao.php";
                                         <br>
                                     </div>
                                     <br>
+                                    <a style="text-decoration:none" href="#carouselInformationOrd" role="button" data-slide="next">
+                                        <span id="styleOrd" aria-hidden="true" style="color:black;"> <strong> Visualizar Gráfico </strong> </span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="carousel-item">
@@ -266,6 +267,9 @@ include_once "../../db/Conexao.php";
                                         <div class="card-deck col-md-5">
                                             <div class="card border-blue">
                                                 <div id="columnchart_ord"></div>
+                                                <a style="text-decoration:none" href="#carouselInformationOrd" role="button" data-slide="prev">
+                                                    <span id="styleOrd" aria-hidden="true" style="color:black;"> <strong> Visualizar Contadores </strong> </span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -273,14 +277,6 @@ include_once "../../db/Conexao.php";
 
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselInformationOrd" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" id="styleOrd" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselInformationOrd" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" id="styleOrd" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
 
                     <br><br>
@@ -354,6 +350,9 @@ include_once "../../db/Conexao.php";
                                         </div>
                                     </div>
                                     <br>
+                                    <a style="text-decoration:none" href="#carouselInformationGto" role="button" data-slide="next">
+                                        <span id="styleGto" aria-hidden="true" style="color:black;"> <strong> Visualizar Gráfico </strong> </span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="carousel-item">
@@ -362,20 +361,15 @@ include_once "../../db/Conexao.php";
                                         <div class="card-deck col-md-5">
                                             <div class="card border-blue">
                                                 <div id="columnchart_gto"></div>
+                                                <a style="text-decoration:none" href="#carouselInformationGto" role="button" data-slide="prev">
+                                                    <span id="styleGto" aria-hidden="true" style="color:black;"> <strong> Visualizar Contadores </strong> </span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselInformationGto" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" id="styleGto" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselInformationGto" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" id="styleGto" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
 
                 </div>
@@ -398,13 +392,12 @@ include_once "../../db/Conexao.php";
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", {
+            ["Element", "Unidades", {
                 role: "style"
             }],
-            ["Copper", 8.94, "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 21.45, "color: #e5e4e2"]
+            ["Armas", <?= $totalArmaGto ?>, "grey"],
+            ["Munições", <?= $totalMunGto ?>, "green"],
+            ["Equipamentos", <?= $totalEquipGto ?>, "gold"]
         ]);
 
         var view = new google.visualization.DataView(data);
@@ -419,7 +412,7 @@ include_once "../../db/Conexao.php";
         ]);
 
         var options = {
-            title: "Density of Precious Metals, in g/cm^3",
+            title: "Composição do Inventário Tático",
             width: 400,
             height: 300,
             bar: {
@@ -443,13 +436,12 @@ include_once "../../db/Conexao.php";
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", {
+            ["Element", "Unidades", {
                 role: "style"
             }],
-            ["Copper", 8.94, "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 21.45, "color: #e5e4e2"]
+            ["Armas", <?= $totalArmaOrd ?>, "grey"],
+            ["Munições", <?= $totalMunOrd ?>, "green"],
+            ["Equipamentos", <?= $totalEquipOrd ?>, "gold"]
         ]);
 
         var view = new google.visualization.DataView(data);
@@ -464,7 +456,7 @@ include_once "../../db/Conexao.php";
         ]);
 
         var options = {
-            title: "Density of Precious Metals, in g/cm^3",
+            title: "Composição Inventário Ordinário",
             width: 400,
             height: 300,
             bar: {
@@ -531,8 +523,12 @@ if (isset($_SESSION['fez_backup'])) {
 
 <style>
     #styleGeral {
-        background-color: #dc3545;
+        background-color: #FF5252;
         border-radius: 5px;
+    }
+
+    #styleGeral:hover {
+        background-color: silver;
     }
 
     #styleOrd {
@@ -540,9 +536,17 @@ if (isset($_SESSION['fez_backup'])) {
         border-radius: 5px;
     }
 
+    #styleOrd:hover {
+        background-color: silver;
+    }
+
     #styleGto {
         background-color: #007bff;
         border-radius: 5px;
+    }
+
+    #styleGto:hover {
+        background-color: silver;
     }
 </style>
 
