@@ -8,8 +8,12 @@ $acesso =  $_POST['acesso'];
 $id = $_POST['id'];
 
 if (isset($user)) {
+  $foto = $_FILES['editassinaturafile']['name'];
+  $novo_nome = md5(time()) . "_" . $foto;
+  $diretorio = "store/img/assinaturas_usuarios/";
+  move_uploaded_file($_FILES['editassinaturafile']['tmp_name'], $diretorio . $novo_nome);
 
-  $query = "UPDATE `usuario` SET  `user`= '$user',`senha`='$senha',`tipo_user`='$acesso' WHERE id_usuario='$id'";
+  $query = "UPDATE `usuario` SET  `user`= '$user',`senha`='$senha',`tipo_user`='$acesso', `assinatura`='$novo_nome' WHERE id_usuario='$id'";
 
   $result = mysqli_query($conexao, $query);
 

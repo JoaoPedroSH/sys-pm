@@ -7,25 +7,42 @@ $data = date('d/m/Y');
 $uuid = md5(md5(time()));
 
 $oficial = $_POST['oficial'];
+$user_assinatura = $_POST['user_assinatura'];
+$modo_de_assinatura = $_POST['selecionaModo'];
+
 $data_geracao = $data;
-$carteirinha = $uuid .'.pdf';
+$carteirinha = $uuid . '.pdf';
 
 $sql = "INSERT INTO `cautela_do_epi`(`id`, `data_geracao`, `oficial`, `documento`) VALUES (null,'$data_geracao','$oficial','$carteirinha')";
 
 $result = mysqli_query($conexao, $sql);
 
-$foto = $_FILES['assinaturafile']['name'];
-$novo_nome = md5(time()) . "_" . $foto;
-$diretorio = "assinaturas/";
-move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);
+if ($modo_de_assinatura == 'auto') {
 
-if ($foto == '') {
-  $novo_nome = "default.jpeg";
+  $sqlAssinatura = "SELECT * FROM `usuario` WHERE `user` LIKE '$user_assinatura'";
+  $resultSqlAssinatura = mysqli_query($conexao, $sqlAssinatura);
+
+  
+
+  while ($row = $resultSqlAssinatura->fetch_assoc()) {
+    $novo_nome = $row['assinatura'];
+  }
+  $diretorio = "../store/img/assinaturas_usuarios/";
+} else if ($modo_de_assinatura == 'manual') {
+
+  $foto = $_FILES['assinaturafile']['name'];
+  $novo_nome = md5(time()) . "_" . $foto;
+  $diretorio = "assinaturas/";
+  move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);
+
+  if ($foto == '') {
+    $novo_nome = "default.jpeg";
+  }
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-  $documento = '
+$documento = '
     <style>
 
       p {font-family:Arial;font-size:11.000000px;font-weight:bold;color:#000000;}
@@ -177,9 +194,7 @@ require_once __DIR__ . '/vendor/autoload.php';
         <tr>
 
           <td style="text-align:center; font-size: 12px; padding: 1em;">
-
-            <img style="max-height: 40px;" src='.$diretorio.$novo_nome.'>
-
+            <img style="max-height: 40px;" src=' . $diretorio . $novo_nome . '>
           </td>       
         
         </tr>

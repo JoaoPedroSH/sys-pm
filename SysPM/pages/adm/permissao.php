@@ -80,48 +80,6 @@ include_once "../../db/Conexao.php";
             </div>
           </div>
 
-          <!-- Modal de Cadastro de usuário -->
-          <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Adicionar Usuário</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form action="../../services/CadastrandoUsuario.php" method="post">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col -5">
-                          <label for="">Usuário</label>
-                          <input type="text" class="form-control" id="novouser" name="novouser" required>
-                        </div>
-                        <div class="col -5">
-                          <label for="">Senha:</label>
-                          <input type="text" class="form-control" id="novouser" name="newsenha" required>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <label for="">Tipo usuário:</label>
-                        <select name="novotipouser" id="" style="text-align: center;">
-                          <option value="adm">Adm</option>
-                          <option value="arm">Armeiro</option>
-                        </select>
-                      </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary ">Salvar Usuário</button>
-                </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
           <!-- Tabela de Usuários -->
           <table class="table table-hover table-bordered table-striped">
 
@@ -133,11 +91,11 @@ include_once "../../db/Conexao.php";
                 }
               </style>
 
-                <th>#</th>
-                <th>USUÁRIO</th>
-                <th>SENHA</th>
-                <th>PERMISSÃO</th>
-                <th>AÇÃO</th>
+              <th>#</th>
+              <th>USUÁRIO</th>
+              <th>SENHA</th>
+              <th>PERMISSÃO</th>
+              <th>AÇÃO</th>
 
             </thead>
 
@@ -181,42 +139,93 @@ include_once "../../db/Conexao.php";
             }
             ?>
 
-            <!-- Modal de edição do usuário -->
-            <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-              <div class="modal-dialog">
+            <!-- Modal de Cadastro de usuário -->
+            <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuário</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Usuário</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="../../services/EditandoUsuario.php" method="post">
+                    <form action="../../services/CadastrandoUsuario.php" method="post" enctype="multipart/form-data">
                       <div class="container">
                         <div class="row">
-                          <div class="col -3">
-                            <label for="message-text" class="col-form-label">Usuário:</label>
-                            <input type="text" class="form-control" id="user" name="user" required>
-                          </div>
-                          <div class="col -3">
-                            <label for="recipient-name" class="col-form-label">Senha:</label>
-                            <input type="text" class="form-control" id="senha" name="senha" required>
-                          </div>
+                          <label>Usuário</label>
+                          <input type="text" class="form-control" id="novouser" name="novouser" required>
                         </div>
                         <br>
-                        <div class="row" style=" margin: auto;">
-                          <label for="recipient-name" class="col-form-label">Acesso: </label>
-                          <select id="acesso" name="acesso" required style="text-align: center;">
+                        <div class="row">
+                          <label>Senha</label>
+                          <input type="text" class="form-control" id="novouser" name="newsenha" required>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <label> Permissão </label> <br>
+                          <select class="form-control" name="novotipouser" id="" style="text-align: center;">
                             <option value="adm">Adm</option>
                             <option value="arm">Armeiro</option>
                           </select>
                         </div>
+                        <br>
+                        <div class="row">
+                          <label> Assinatura </label> <br>
+                          <label for="assinaturafile" class="form-control labelAssinatura"> Selecionar </label>
+                          <input type="file" id="assinaturafile" name="assinaturafile" style="display: none;">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary ">Salvar Usuário</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal de edição do usuário -->
+            <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Editar Usuário </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="../../services/EditandoUsuario.php" method="post" enctype="multipart/form-data">
+                      <div class="container">
+                        <div class="row">
+                          <label> Usuário </label>
+                          <input type="text" class="form-control" id="user" name="user" required>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <label> Senha </label>
+                          <input type="text" class="form-control" id="senha" name="senha" required>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <label> Permissão </label>
+                          <select class="form-control" id="acesso" name="acesso" required style="text-align: center;">
+                            <option value="adm">Adm</option>
+                            <option value="arm">Armeiro</option>
+                          </select>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <label> Assinatura </label> <br>
+                          <label for="editassinaturafile" class="form-control labelAssinatura"> Selecionar </label>
+                          <input type="file" id="editassinaturafile" name="editassinaturafile" style="display: none;">
+                        </div>
                       </div>
                       <input type="hidden" class="form-control" name="id" id="id">
-                      <br>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                         <button type="submit" class="btn btn-primary ">Salvar Alterações</button>
                       </div>
                     </form>
@@ -357,5 +366,21 @@ if (isset($_SESSION['error_edit'])) {
     });
   });
 </script>
+
+<style>
+  .labelAssinatura {
+    background: gray;
+    color: #F2F2F2;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .labelAssinatura:hover {
+    color: #333;
+    background: #ced4da;
+  }
+</style>
 
 </html>

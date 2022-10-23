@@ -33,13 +33,13 @@ if (!isset($_SESSION)) {
 </head>
 
 <style>
-    .col,
-    .col-md-10,
-    .col-md-12,
-    .col-md-3,
-    .col-md-6 {
-        position: static;
-    }
+  .col,
+  .col-md-10,
+  .col-md-12,
+  .col-md-3,
+  .col-md-6 {
+    position: static;
+  }
 </style>
 
 <body>
@@ -51,14 +51,14 @@ if (!isset($_SESSION)) {
 
       <!-- Templete Sidebar -->
       <?php
-            if(isset($_SESSION['arm'])) {
-            include '../layouts/navbar_lateral_armeiro.html';
-            }
-            
-            if (isset($_SESSION['adm'])){
-            include '../layouts/navbar_lateral.html';
-            }
-            ?>
+      if (isset($_SESSION['arm'])) {
+        include '../layouts/navbar_lateral_armeiro.html';
+      }
+
+      if (isset($_SESSION['adm'])) {
+        include '../layouts/navbar_lateral.html';
+      }
+      ?>
 
       <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
         <div class="col-md-12 table-responsive pt-3" style="min-width: 480px;">
@@ -121,10 +121,11 @@ if (!isset($_SESSION)) {
                       <label><input value="ordinario" type="radio" style=" margin-left: 10px;" name="cadastro" required> ORDINÁRIO</label>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <label for="imagem">ADICIONAR FOTO: </label>
-                  <input type="file" id="foto" name="foto" accept="image/*">
+                  <div class="col-md-3">
+                    <label>ADICIONAR FOTO </label>
+                    <label for="foto" class="form-control" id="labelFoto"> Selecionar </label>
+                    <input type="file" id="foto" name="foto" accept="image/*" style="display: none;">
+                  </div>
                 </div>
                 <hr />
 
@@ -183,5 +184,21 @@ if (isset($_SESSION['error_created'])) {
 }
 unset($_SESSION['error_created'])
 ?>
+
+<style>
+  #labelFoto {
+    background: gray;
+    color: #F2F2F2;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #labelFoto:hover {
+    color: #333;
+    background: #ced4da;
+  }
+</style>
 
 </html>

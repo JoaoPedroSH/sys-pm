@@ -1,3 +1,4 @@
 services/biblioteca_pdf/assinaturas/*
+services/store/*
 services/biblioteca_pdf/doc/*
 services/store/img/armas/*

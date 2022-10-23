@@ -61,6 +61,8 @@ if (!isset($_SESSION)) {
             if (isset($_SESSION['adm'])) {
                 include '../layouts/navbar_lateral.html';
             }
+
+            $_SESSION['user_ass'];
             ?>
 
             <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
@@ -96,12 +98,20 @@ if (!isset($_SESSION)) {
                                         <label> DECLARAÇÃO </label>
                                         <textarea class="form-control" name="declaracao" id="declaracao" cols="30" rows="2" placeholder="" required></textarea>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label> OFICIAL <input class="form-control" style="width:550px; " type="text" name="oficial" id="oficial" placeholder="" required></label>
+                                    <div class="form-group col-md-5">
+                                        <label> OFICIAL </label>
+                                        <input class="form-control" type="text" name="oficial" id="oficial" placeholder="" required>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-2">
                                         <label> ASSINATURA </label><br>
-                                        <input type="file" name="assinaturafile" id="assinaturafile" accept="image/*">
+                                        
+                                        <select class="form-control" name="selecionaModo" id="selecionaModo" onchange="visibilidadeInput()">
+                                            <option value="auto" selected> Automática </option>
+                                            <option value="manual"> Manual </option>
+                                        </select>
+                                        <label for="assinaturafile" class="form-control" id="labelAssinatura" style="display: none;"> Selecionar </label>
+                                        <input type="file" name="assinaturafile" id="assinaturafile" accept="image/*" style="display: none;" />
+                                        <input type="hidden" name="user_assinatura" id="user_assinatura" value="<?= $_SESSION['user_ass'] ?>">
                                     </div>
                                 </div>
                                 <hr />
@@ -119,7 +129,6 @@ if (!isset($_SESSION)) {
                                     </div>
                                     <br><br><br>
                                 </div>
-
                             </form>
                         </div>
                     </main>
@@ -128,5 +137,32 @@ if (!isset($_SESSION)) {
         </div>
     </div>
 </body>
+
+<script>
+    function visibilidadeInput() {
+        var x = document.getElementById("selecionaModo");
+        if (x.options[x.selectedIndex].value != "auto") {
+            document.getElementById('labelAssinatura').style.display = "block";
+        } else {
+            document.getElementById('labelAssinatura').style.display = "none";
+        }
+    }
+</script>
+
+<style>
+  #labelAssinatura {
+    background: gray;
+    color: #F2F2F2;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #labelAssinatura:hover {
+    color: #333;
+    background: #ced4da;
+  }
+</style>
 
 </html>

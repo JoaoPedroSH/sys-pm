@@ -39,6 +39,7 @@ if (isset($_POST['usuario'])) {
         if ($_POST['tipo'] == "adm") {  
 
             $_SESSION['adm'] = true;
+            $_SESSION['user_ass'] = $user = $_POST['usuario'];
             header("location:adm_arm/home.php");
 
         } elseif ($_POST['tipo'] == "arm") {

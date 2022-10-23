@@ -10,11 +10,16 @@ $id = $_POST['id'];
 
 if (isset($_POST['novouser'])) {
 
+  $foto = $_FILES['assinaturafile']['name'];
+  $novo_nome = md5(time()) . "_" . $foto;
+  $diretorio = "store/img/assinaturas_usuarios/";
+  move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);
+
   $usuarios = $_POST['novouser'];
   $senha = $_POST['newsenha'];
   $tipouser = $_POST['novotipouser'];
 
-  $sql = "INSERT INTO `usuario`(`id_usuario`, `user`, `senha`, `tipo_user`) VALUES (null,'$usuarios','$senha','$tipouser')";
+  $sql = "INSERT INTO `usuario`(`id_usuario`, `user`, `senha`, `tipo_user`, `assinatura`) VALUES (null,'$usuarios','$senha','$tipouser', '$novo_nome')";
 
   $result = mysqli_query($conexao, $sql);
 
