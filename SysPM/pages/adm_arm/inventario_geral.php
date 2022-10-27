@@ -101,7 +101,6 @@ if (!isset($_SESSION)) {
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Nº Série</th>
-                                <th>Patrimônio</th>
                                 <th>Localização</th>
                                 <th>Situação</th>
                                 <th>Cautela</th>
@@ -121,7 +120,6 @@ if (!isset($_SESSION)) {
                                         <td><?php echo $linhas['marca'] ?></td>
                                         <td><?php echo $linhas['modelo'] ?></td>
                                         <td><?php echo $linhas['n_serie'] ?></td>
-                                        <td><?php echo $linhas['patrimonio'] ?></td>
                                         <td><?php echo $linhas['localizacao'] ?></td>
                                         <td><?php echo $linhas['situacao'] ?></td>
                                         <td><?php echo $linhas['cautela'] ?></td>
@@ -153,7 +151,6 @@ if (!isset($_SESSION)) {
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Nº Série</th>
-                                <th>Patrimônio</th>
                                 <th>Localização</th>
                                 <th>Situação</th>
                                 <th>Cautela</th>
@@ -173,7 +170,6 @@ if (!isset($_SESSION)) {
                                         <td><?php echo $linhas['marca'] ?></td>
                                         <td><?php echo $linhas['modelo'] ?></td>
                                         <td><?php echo $linhas['n_serie'] ?></td>
-                                        <td><?php echo $linhas['patrimonio'] ?></td>
                                         <td><?php echo $linhas['localizacao'] ?></td>
                                         <td><?php echo $linhas['situacao'] ?></td>
                                         <td><?php echo $linhas['cautela'] ?></td>
@@ -314,14 +310,10 @@ if (!isset($_SESSION)) {
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Nº Série</th>
-                                <th>Patrimônio</th>
                                 <th>Localização</th>
                                 <th>Situação</th>
                                 <th>Cautela</th>
                                 <th>Validade</th>
-                                <th>Nível</th>
-                                <th>Tamanho</th>
-                                <th>Fabricação</th>
 
                             </thead>
 
@@ -340,16 +332,11 @@ if (!isset($_SESSION)) {
                                         <td><?php echo $linhas['marca'] ?></td>
                                         <td><?php echo $linhas['modelo'] ?></td>
                                         <td><?php echo $linhas['n_serie'] ?></td>
-                                        <td><?php echo $linhas['patrimonio'] ?></td>
                                         <td><?php echo $linhas['localizacao'] ?></td>
                                         <td><?php echo $linhas['situacao'] ?></td>
                                         <td><?php echo $linhas['cautela'] ?></td>
                                         <td><?php $dat01 = date("d/m/Y", strtotime($linhas['validade']));
                                             echo  $dat01; ?></td>
-                                        <td><?php echo $linhas['nivel'] ?></td>
-                                        <td><?php echo $linhas['tamanho'] ?></td>
-                                        <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
-                                            echo  $date02; ?></td>
 
                                     </tr>
                                 </tbody>
@@ -380,14 +367,10 @@ if (!isset($_SESSION)) {
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Nº Série</th>
-                                <th>Patrimônio</th>
                                 <th>Localização</th>
                                 <th>Situação</th>
                                 <th>Cautela</th>
                                 <th>Validade</th>
-                                <th>Nível</th>
-                                <th>Tamanho</th>
-                                <th>Fabricação</th>
 
                             </thead>
 
@@ -406,16 +389,11 @@ if (!isset($_SESSION)) {
                                         <td> <?php echo $linhas['marca'] ?> </td>
                                         <td> <?php echo $linhas['modelo'] ?> </td>
                                         <td> <?php echo $linhas['n_serie'] ?> </td>
-                                        <td> <?php echo $linhas['patrimonio'] ?> </td>
                                         <td> <?php echo $linhas['localizacao'] ?> </td>
                                         <td> <?php echo $linhas['situacao'] ?> </td>
                                         <td> <?php echo $linhas['cautela'] ?> </td>
                                         <td> <?php $dat01 = date("d/m/Y", strtotime($linhas['validade']));
                                                 echo  $dat01; ?> </td>
-                                        <td> <?php echo $linhas['nivel'] ?> </td>
-                                        <td> <?php echo $linhas['tamanho'] ?> </td>
-                                        <td> <?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
-                                                echo  $date02; ?> </td>
                                     </tr>
                                 </tbody>
                             <?php
