@@ -66,6 +66,7 @@ if (!isset($_SESSION)) {
                             <input style="width:40%; box-shadow: 1,5px 1,5px 1,5px 1,5px black;" class="form-control" id="myInput" type="text" placeholder="Buscar...">
 
                             <!-- Botão de ação da tabela -->
+                            <!--
                             <div class="col-md-8" style="text-align: right;">
                                 <button type="submit" class="btn btn-outline-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-pdf-fill" viewBox="0 0 20 20">
@@ -75,7 +76,7 @@ if (!isset($_SESSION)) {
                                     Imprimir
                                 </button>
                             </div>
-
+            
                         </div>
 
                         <!-- Input que valida a impressão no service -->
