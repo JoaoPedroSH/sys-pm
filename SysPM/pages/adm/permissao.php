@@ -75,7 +75,7 @@ include_once "../../db/Conexao.php";
             <br>
 
             <!-- Botão de ação de cadastro -->
-            <div class="col-md-1">
+            <div class="col-md-2">
               <button class="btn btn-success" onclick="openModal()" style="box-shadow: 2px 2px 2px black;margin-left: 10px;height: 37px;"> Adicionar Usuário </button>
             </div>
           </div>
