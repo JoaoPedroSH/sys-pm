@@ -512,7 +512,7 @@ if (isset($_SESSION['fez_backup'])) {
             position: 'top-start',
             icon: 'success',
             title: 'Backup bem sucedido!',
-            text: 'Encontre o arquivo de backup em Downloads/Backups_SysPM',
+            text: 'Encontre o arquivo de backup em Disco Local(C:) > Backups_SysPM',
             showConfirmButton: true,
             confirmButtonColor: '#2ECC71',
             timer: 6000
