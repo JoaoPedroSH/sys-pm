@@ -222,7 +222,7 @@ include_once "../../db/Conexao.php";
                                                 </div>
                                                 <div>
                                                     <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
-                                                    <textarea id="obs" name="obs" cols="57" rows="2"> </textarea>
+                                                    <textarea id="obs" class="form-control" name="obs" cols="57" rows="2"> </textarea>
                                                 </div>
 
                                                 <input type="hidden" name="id" id="id" value="">
