@@ -196,7 +196,7 @@
         <li class="nav-item">
           <!-- Documentação -->
 
-          <a role="button" aria-pressed="true" class="btn btn-outline-dark"
+          <a role="button" aria-pressed="true" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal"
             style="margin-bottom: 10px; padding-right: 10px;" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:2px;" width="22" height="22"
               fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
@@ -213,5 +213,147 @@
         </li>
       </ul>
     </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Ajuda</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <!-- início do accordion -->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Como cadastrar armas.</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para cadastrar armas, adicione as informações nos respectivos campos: Marca, Modelo, Nº de Série,
+                  Patrimônio, Localização, Situação, Cautela;</p>
+                <p>Marque o "Tipo de cadastro": GTO ou Ordinário;</p>
+                <p>No campo "Data úly. inspeção", clique no ícone do calendário e selecione a data desejada;</p>
+                <p>Adicione a foto clicando em "Escolher arquivo";</p>
+                <p>Caso tenha observações, insira no campo "Observação".</p>
+                <p>Por último, selecione "Salvar" ou "Cancelar".</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Como cadastrar munições.</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para cadastrar munições, adicione as informações nos respectivos campos: Marca, Modelo, Quantidade;
+                </p>
+                <p>No campo "Validade", clique no ícone do calendário e selecione a data desejada;</p>
+                <p>Marque o "Tipo de cadastro": GTO ou Ordinário;</p>
+                <p>Marque o "Tipo de munição": Química ou Não Química;</p>
+                <p>Caso tenha observações, insira no campo "Observação";</p>
+                <p>Por último, selecione "Salvar" ou "Cancelar".</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Como cadastrar equipamentos.</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para cadastrar munições, adicione as informações nos respectivos campos: Tipo, Modelo, Nº Série,
+                  Marca, Patrimônio, Localização, Situação, Cautela, Nível, Tamanho;</p>
+                <p>No campo "Validade" e "Fabricação", clique no ícone do calendário e selecione a data desejada;</p>
+                <p>Marque o "Tipo de cadastro": GTO ou Ordinário;</p>
+                <p>Caso tenha observações, insira no campo "Observação";</p>
+                <p>Por último, selecione "Salvar" ou "Cancelar".</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Como consultar.</a>
+              </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+              <div class="panel-body">Para consultar, basta preencher o campo "Faça sua consulta" dentro do tipo de
+                consulta que deseja (Armas GTO, Armas Ordinário...).
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Como gerar "Cautela do EPI".</a>
+              </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para gerar a "Documentação Cautela EPI", adicione as informações nos respectivos campos: Equipamento,
+                  Arma, Munição, Parte, Termo, Declaração;</p>
+                <p>Para adicionar a assinatura, clique em "Escolher arquivo" para selecionar o arquivo desejado;</p>
+                <p>Por fim, clique em "Gerar PDF".</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Como gerar "Descargo de
+                  munição".</a>
+              </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para gerar o "Descargo de Munição", adicione as informações nos respectivos campos: Tipo de munição,
+                  Oficial, Quantidade, Operação;</p>
+                <p>No campo "Data", clique no ícone do calendário e selecione a data desejada;</p>
+                <p>Marque o "Tipo de cadastro": GTO ou Ordinário;</p>
+                <p>Caso tenha observações, insira no campo "Observação".</p>
+                <p>Por fim, clique em "Gerar PDF".</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Como gerenciar permissões".</a>
+              </h4>
+            </div>
+            <div id="collapse7" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>Para gerenciar as permissões, selecione o usuário desejado procurando na lista ou inserindo o nome no
+                  campo "Faça sua consulta";</p>
+                <p>No usuário desejado, clique em "Editar" para editar o usuário ou clique em "Excluir" para excluir o
+                  usuário;</p>
+                <p>Ao clicar em "Editar", faça as alterações que deseja e em seguida clique em "Salvar alterações";</p>
+                <p>Para adicionar um novo usuário, clique no botão "Add Usuário". Em seguida preencha os campos
+                  "Usuário", "Senha" e clique em "Tipo usuário" para escolher entre "Adm" e "Armeiro". Em seguida,
+                  clique em "Salvar Usuário".</p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- fim do accordion -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+
   </div>
 </div>
