@@ -10,7 +10,7 @@ $id = $_POST['id'];
 
 if (isset($_POST['novouser'])) {
 
-  $foto = $_FILES['assinaturafile']['name'];
+  $foto = str_replace(" ", "-", $_FILES['assinaturafile']['name']);
   $novo_nome = md5(time()) . "_" . $foto;
   $diretorio = "store/img/assinaturas_usuarios/";
   move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);

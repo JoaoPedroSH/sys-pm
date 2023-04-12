@@ -117,6 +117,8 @@ include_once "../../db/Conexao.php";
                   <td>
                     <form action="../../services/ExcluindoUsuario.php" method="post">
 
+                    <?php $urlAssinatura = "../../services/store/img/assinaturas_usuarios/" . $linhas['assinatura'] ?>
+
                       <!-- Botão de ação de edição de usuário -->
                       <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-senha="<?= $linhas['senha'] ?>" data-user="<?= $linhas['user'] ?>" data-acesso="<?= $linhas['tipo_user'] ?>" data-id="<?= $linhas['id_usuario'] ?>">
                         Editar
@@ -141,7 +143,7 @@ include_once "../../db/Conexao.php";
 
             <!-- Modal de Cadastro de usuário -->
             <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Adicionar Usuário</h5>
@@ -174,6 +176,9 @@ include_once "../../db/Conexao.php";
                           <label> Assinatura </label> <br>
                           <label for="assinaturafile" class="form-control labelAssinatura"> Selecionar </label>
                           <input type="file" id="assinaturafile" name="assinaturafile" style="display: none;">
+                          <div class="form-group">
+                            <img src="" id="add-assinatura-preview" style="width:350px;">
+                          </div>
                         </div>
                       </div>
                   </div>
@@ -188,7 +193,7 @@ include_once "../../db/Conexao.php";
 
             <!-- Modal de edição do usuário -->
             <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-              <div class="modal-dialog modal-sm">
+              <div class="modal-dialog modal-md">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"> Editar Usuário </h5>
@@ -221,6 +226,9 @@ include_once "../../db/Conexao.php";
                           <label> Assinatura </label> <br>
                           <label for="editassinaturafile" class="form-control labelAssinatura"> Selecionar </label>
                           <input type="file" id="editassinaturafile" name="editassinaturafile" style="display: none;">
+                          <div class="form-group">
+                            <img src="<?php echo $urlAssinatura; ?>" id="assinatura-preview" style="width:350px;">
+                          </div>
                         </div>
                       </div>
                       <input type="hidden" class="form-control" name="id" id="id">
@@ -239,6 +247,42 @@ include_once "../../db/Conexao.php";
     </div>
   </div>
 </body>
+
+<script>
+  const inputImagemADD = document.getElementById("assinaturafile");
+  const imagemPreviewADD = document.getElementById("add-assinatura-preview");
+
+  inputImagemADD.addEventListener("change", function() {
+    const arquivo = inputImagemADD.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function() {
+      imagemPreviewADD.src = reader.result;
+    }, false);
+
+    if (arquivo) {
+      reader.readAsDataURL(arquivo);
+    }
+  });
+</script>
+
+<script>
+  const inputImagem = document.getElementById("editassinaturafile");
+  const imagemPreview = document.getElementById("assinatura-preview");
+
+  inputImagem.addEventListener("change", function() {
+    const arquivo = inputImagem.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function() {
+      imagemPreview.src = reader.result;
+    }, false);
+
+    if (arquivo) {
+      reader.readAsDataURL(arquivo);
+    }
+  });
+</script>
 
 <!-- MODAL DE CADASTRO -->
 <script>

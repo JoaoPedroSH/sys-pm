@@ -22,17 +22,15 @@ if ($modo_de_assinatura == 'auto') {
   $sqlAssinatura = "SELECT * FROM `usuario` WHERE `user` LIKE '$user_assinatura'";
   $resultSqlAssinatura = mysqli_query($conexao, $sqlAssinatura);
 
-  
-
   while ($row = $resultSqlAssinatura->fetch_assoc()) {
     $novo_nome = $row['assinatura'];
   }
   $diretorio = "../store/img/assinaturas_usuarios/";
 } else if ($modo_de_assinatura == 'manual') {
 
-  $foto = $_FILES['assinaturafile']['name'];
+  $foto = str_replace(" ", "-", $_FILES['assinaturafile']['name']);
   $novo_nome = md5(time()) . "_" . $foto;
-  $diretorio = "assinaturas/";
+  $diretorio = "./assinaturas/";
   move_uploaded_file($_FILES['assinaturafile']['tmp_name'], $diretorio . $novo_nome);
 
   if ($foto == '') {
@@ -195,8 +193,8 @@ $documento = '
 
           <td style="text-align:center; font-size: 12px; padding: 1em;">
             <img style="max-height: 40px;" src=' . $diretorio . $novo_nome . '>
-          </td>       
-        
+          </td>    
+
         </tr>
 
       </table>

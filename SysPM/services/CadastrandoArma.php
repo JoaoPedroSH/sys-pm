@@ -15,7 +15,7 @@ if (isset($_POST['n_serie'])) {
   $observacao = $_POST['observacao'];
   $data_inspecao = $_POST['data_inspecao'];
 
-  $foto = $_FILES['foto']['name'];
+  $foto = str_replace(" ", "-", $_FILES['foto']['name']);
   $novo_nome = md5(time()) . "_" . $foto;
   $diretorio = "store/img/armas/";
   move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);

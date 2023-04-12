@@ -7,7 +7,7 @@ $id = $_POST['idArmaFoto'];
 $tipo =  $_POST['tipoArmaFoto'];
 
 if (isset($_FILES['foto_arma'])) {
-    $foto = $_FILES['foto_arma']['name'];
+    $foto = str_replace(" ", "-", $_FILES['foto_arma']['name']);
     $novo_nome = md5(time()) . "_" . $foto;
     $diretorio = "store/img/armas/";
     move_uploaded_file($_FILES['foto_arma']['tmp_name'], $diretorio . $novo_nome);

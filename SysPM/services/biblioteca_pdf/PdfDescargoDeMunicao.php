@@ -12,7 +12,7 @@ $uuid = md5(md5($data));
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-  $documento = '
+$documento = '
 
       <style>
 
@@ -118,6 +118,16 @@ require_once __DIR__ . '/vendor/autoload.php';
           </tr>
 
         </table>
+
+      </div>
+
+      <br>
+      <br>
+
+      <div style="text-align:center;">
+
+        <p>___________________________________________________________________________________</p>
+        <p>Assinatura</p>
 
       </div>
       
