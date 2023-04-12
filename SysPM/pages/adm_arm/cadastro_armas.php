@@ -71,10 +71,6 @@ if (!isset($_SESSION)) {
               <form action="../../services/CadastrandoArma.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                   <div class="form-group col-md-3">
-                    <label>TIPO DE ARMA</label>
-                    <input type="text" class="form-control" name="tipo_arma" placeholder="">
-                  </div>
-                  <div class="form-group col-md-3">
                     <label>MARCA</label>
                     <input type="text" class="form-control" name="marca" placeholder="" required>
                   </div>
@@ -125,6 +121,7 @@ if (!isset($_SESSION)) {
                     <label>ADICIONAR FOTO </label>
                     <label for="foto" class="form-control" id="labelFoto"> Selecionar </label>
                     <input type="file" id="foto" name="foto" accept="image/*" style="display: none;">
+                    <img src="" id="foto-preview" style="width:200px;">
                   </div>
                 </div>
                 <hr />
@@ -148,6 +145,24 @@ if (!isset($_SESSION)) {
     </div>
   </div>
 </body>
+
+<script>
+    const inputImagem = document.getElementById("foto");
+    const imagemPreview = document.getElementById("foto-preview");
+
+    inputImagem.addEventListener("change", function() {
+        const arquivo = inputImagem.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function() {
+            imagemPreview.src = reader.result;
+        }, false);
+
+        if (arquivo) {
+            reader.readAsDataURL(arquivo);
+        }
+    });
+</script>
 
 <!-- Alerta de Sucesso ao Cadastrar a Arma -->
 <?php

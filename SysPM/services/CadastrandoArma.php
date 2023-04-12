@@ -5,7 +5,6 @@ if (isset($_POST['n_serie'])) {
 
   include('../db/Conexao.php');
 
-  $tipo_arma = $POST['tipo_arma'];
   $marca = $_POST['marca'];
   $modelo = $_POST['modelo'];
   $n_serie = $_POST['n_serie'];
@@ -26,7 +25,7 @@ if (isset($_POST['n_serie'])) {
     $tipo = 'gto';
     $data_atual = date('d/m/Y');
 
-    $query = "INSERT INTO `armas_gto` (`id`, `foto`, `tipo_arma`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$tipo_arma','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
+    $query = "INSERT INTO `armas_gto` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
     $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`, `tipo_inventario`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual', '$tipo')";
 
@@ -35,7 +34,7 @@ if (isset($_POST['n_serie'])) {
     $tipo = 'ord';
     $data_atual = date('d/m/Y');
 
-    $query = "INSERT INTO `armas_ord` (`id`, `foto`, `tipo_arma`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$tipo_arma','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
+    $query = "INSERT INTO `armas_ord` (`id`, `foto`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`,`situacao`, `cautela`, `data_inspecao`, `obs`) VALUES (null,'$novo_nome','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$data_inspecao','$observacao')";
 
     $query1 = "INSERT INTO `historico_armas` (`id`, `n_serie`, `localizacao`, `cautela`, `data_atual`, `tipo_inventario`) VALUES (null,'$n_serie','$localizacao','$cautela','$data_atual','$tipo')";
   }

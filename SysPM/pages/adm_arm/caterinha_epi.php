@@ -104,13 +104,14 @@ if (!isset($_SESSION)) {
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label> ASSINATURA </label><br>
-                                        
+
                                         <select class="form-control" name="selecionaModo" id="selecionaModo" onchange="visibilidadeInput()">
                                             <option value="auto" selected> Automática </option>
                                             <option value="manual"> Manual </option>
                                         </select>
                                         <label for="assinaturafile" class="form-control" id="labelAssinatura" style="display: none;"> Selecionar </label>
                                         <input type="file" name="assinaturafile" id="assinaturafile" accept="image/*" style="display: none;" />
+                                        <img src="" id="assinaturafile-preview" style="width:350px;">
                                         <input type="hidden" name="user_assinatura" id="user_assinatura" value="<?= $_SESSION['user_ass'] ?>">
                                     </div>
                                 </div>
@@ -139,6 +140,24 @@ if (!isset($_SESSION)) {
 </body>
 
 <script>
+    const inputImagem = document.getElementById("assinaturafile");
+    const imagemPreview = document.getElementById("assinaturafile-preview");
+
+    inputImagem.addEventListener("change", function() {
+        const arquivo = inputImagem.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function() {
+            imagemPreview.src = reader.result;
+        }, false);
+
+        if (arquivo) {
+            reader.readAsDataURL(arquivo);
+        }
+    });
+</script>
+
+<script>
     function visibilidadeInput() {
         var x = document.getElementById("selecionaModo");
         if (x.options[x.selectedIndex].value != "auto") {
@@ -150,19 +169,19 @@ if (!isset($_SESSION)) {
 </script>
 
 <style>
-  #labelAssinatura {
-    background: gray;
-    color: #F2F2F2;
-    text-transform: uppercase;
-    display: block;
-    text-align: center;
-    cursor: pointer;
-  }
+    #labelAssinatura {
+        background: gray;
+        color: #F2F2F2;
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+    }
 
-  #labelAssinatura:hover {
-    color: #333;
-    background: #ced4da;
-  }
+    #labelAssinatura:hover {
+        color: #333;
+        background: #ced4da;
+    }
 </style>
 
 </html>

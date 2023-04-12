@@ -48,14 +48,14 @@ include_once "../../db/Conexao.php";
     <div class="row">
 
       <?php
-            if(isset($_SESSION['arm'])) {
-            include '../layouts/navbar_lateral_armeiro.html';
-            }
-            
-            if (isset($_SESSION['adm'])){
-            include '../layouts/navbar_lateral.html';
-            }
-            ?>
+      if (isset($_SESSION['arm'])) {
+        include '../layouts/navbar_lateral_armeiro.html';
+      }
+
+      if (isset($_SESSION['adm'])) {
+        include '../layouts/navbar_lateral.html';
+      }
+      ?>
 
       <div class="corpo-painel col-md-10" style="position: static; background-color:#F2F2F2; background-size: cover;min-height: 97vh; height: auto;">
 
@@ -146,7 +146,10 @@ include_once "../../db/Conexao.php";
                   </td>
 
                   <td style="display: flex;justify-content: space-around;flex-wrap: nowrap;">
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-tipo-arma="<?= $linhas['tipo_arma'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>">
+
+                    <?php $urlImagem = "../../services/store/img/armas/" . $linhas['foto'] ?>
+
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-foto-arma="<?= $linhas['foto'] ?>" data-marca="<?= $linhas['marca'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-numero-serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-observacao="<?= $linhas['obs'] ?>" data-ult-inspecao="<?= $linhas['data_inspecao'] ?>">
                       Editar
                     </button>
 
@@ -300,12 +303,18 @@ include_once "../../db/Conexao.php";
 
                             <input type="hidden" id="idArmaFoto" name="idArmaFoto">
 
-                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg">
+                            <label for="foto_arma" class="form-control" id="labelFoto"> Selecionar </label>
 
+                            <input type="file" id="foto_arma" name="foto_arma" accept="image/png, image/jpeg, image/jpg" style="display: none;">
+
+                          </div>
+                          <div class="form-group">
+                            <img src="<?php echo $urlImagem; ?>" id="foto-edit-preview">
+                          </div>
+                          <div class="form-group">
                             <button type="submit" class="btn btn-outline-primary">
-                              Atualizar
+                              Atualizar foto
                             </button>
-
                           </div>
                         </form>
 
@@ -402,14 +411,14 @@ include_once "../../db/Conexao.php";
                             <label for="message-text" class="col-form-label">
                               CAUTELA
 
-                              <select class="form-select " aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
+                              <select class="form-control" aria-label="Default select example" style="text-align: center;" required name="tipoedicao">
 
                                 <option value="correcao">
-                                  Corrigir
+                                  Corrigir nome do oficial
                                 </option>
 
                                 <option value="mudanca">
-                                  Mudar
+                                  Trocar de oficial
                                 </option>
 
                               </select>
@@ -457,6 +466,41 @@ include_once "../../db/Conexao.php";
   </div>
 </body>
 
+<style>
+  #labelFoto {
+    background: gray;
+    color: #F2F2F2;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #labelFoto:hover {
+    color: #333;
+    background: #ced4da;
+  }
+</style>
+
+
+<script>
+  const inputImagem = document.getElementById("foto_arma");
+  const imagemPreview = document.getElementById("foto-edit-preview");
+
+  inputImagem.addEventListener("change", function() {
+    const arquivo = inputImagem.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function() {
+      imagemPreview.src = reader.result;
+    }, false);
+
+    if (arquivo) {
+      reader.readAsDataURL(arquivo);
+    }
+  });
+</script>
+
 <!-- ALERTA DO STATUS FINAL DA EDIÇÃO -->
 <?php
 if (isset($_SESSION['success_edit'])) {
@@ -502,7 +546,6 @@ if (isset($_SESSION['error_edit'])) {
     $('#modalEdit').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget);
       var id = button.data('id');
-      var tipo_arma = button.data('tipo-arma');
       var marca = button.data('marca');
       var modelo = button.data('modelo');
       var n_serie = button.data('numero-serie');
@@ -515,7 +558,6 @@ if (isset($_SESSION['error_edit'])) {
 
       $('#id').val(id);
       $('#idArmaFoto').val(id);
-      $('#tipo_arma').val(tipo_arma);
       $('#marca').val(marca);
       $('#modelo').val(modelo);
       $('#n_serie').val(n_serie);

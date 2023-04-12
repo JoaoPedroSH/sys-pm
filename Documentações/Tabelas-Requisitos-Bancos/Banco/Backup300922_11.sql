@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `armas_gto`;
 CREATE TABLE `armas_gto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) NOT NULL,
-  `tipo_arma` varchar(255) NOT NULL,
   `marca` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `modelo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `n_serie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -58,7 +57,6 @@ DROP TABLE IF EXISTS `armas_ord`;
 CREATE TABLE `armas_ord` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) NOT NULL,
-  `tipo_arma` varchar(255) NOT NULL,
   `marca` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `modelo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `n_serie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
