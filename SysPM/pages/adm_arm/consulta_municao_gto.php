@@ -145,22 +145,22 @@ include_once "../../db/Conexao.php";
                       <form action="../../services/EditandoMunicao.php" method="POST" onsubmit="return  verificar()">
                         <div class="form-group">
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">Marca:</label>
+                            <label for="message-text" class="col-form-label">MARCA</label>
                             <input type="text" class="form-control" id="marca" name="marca">
                           </div>
-                          <label for="recipient-name" class="col-form-label">Modelo:</label>
+                          <label for="recipient-name" class="col-form-label">MODELO</label>
                           <input type="text" class="form-control" id="modelo" name="modelo">
                         </div>
                         <div class="form-group">
-                          <label for="message-text" class="col-form-label">Validade:</label>
+                          <label for="message-text" class="col-form-label">VALIDADE</label>
                           <input type="date" class="form-control" id="validade" name="validade">
                         </div>
                         <div class="form-group">
-                          <label for="message-text" class="col-form-label">Quantidade:</label>
+                          <label for="message-text" class="col-form-label">QUANTIDADE</label>
                           <input type="number" min="0" class="form-control" id="quantidade" name="quantidade">
                         </div>
                         <div>
-                          <label for="message-text" class="col-form-label">Observações:</label><br>
+                          <label for="message-text" class="col-form-label">OBSERVAÇÕES</label><br>
                           <textarea id="obs" class="form-control" name="obs" cols="57" rows="2"> </textarea>
                         </div>
 

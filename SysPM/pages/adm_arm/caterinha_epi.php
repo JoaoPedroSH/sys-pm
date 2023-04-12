@@ -106,7 +106,8 @@ if (!isset($_SESSION)) {
                                         <label> ASSINATURA </label><br>
 
                                         <select class="form-control" name="selecionaModo" id="selecionaModo" onchange="visibilidadeInput()">
-                                            <option value="auto" selected> Automática </option>
+                                            <option value="caneta" selected> Na caneta </option>
+                                            <option value="auto"> Automática </option>
                                             <option value="manual"> Manual </option>
                                         </select>
                                         <label for="assinaturafile" class="form-control" id="labelAssinatura" style="display: none;"> Selecionar </label>

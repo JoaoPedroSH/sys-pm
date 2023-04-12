@@ -105,9 +105,9 @@ include_once "../../db/Conexao.php";
                             <th>LOCALIZAÇÃO</th>
                             <th>SITUAÇÃO</th>
                             <th>CAUTELA</th>
-                            <th>VALIDADE</th>
                             <th>NÍVEL</th>
                             <th>TAMANHO</th>
+                            <th>VALIDADE</th>
                             <th>FABRICAÇÃO</th>
                             <th>OBS</th>
                             <th>AÇÃO</th>
@@ -129,19 +129,18 @@ include_once "../../db/Conexao.php";
                             <tbody id="myTable">
                                 <tr>
                                     <td><?= $x ?></td>
-                                    <td><?= $linhas['tipo'] ?></td>
-                                    <td><?= $linhas['marca'] ?></td>
-                                    <td><?= $linhas['modelo'] ?></td>
-                                    <td><?= $linhas['n_serie'] ?></td>
-                                    <td><?= $linhas['patrimonio'] ?></td>
-                                    <td><?= $linhas['localizacao'] ?></td>
-                                    <td><?= $linhas['situacao'] ?></td>
-                                    <td><?= $linhas['cautela'] ?></td>
+                                    <td><?php echo $linhas['tipo'] ?></td>
+                                    <td><?php echo $linhas['marca'] ?></td>
+                                    <td><?php echo $linhas['modelo'] ?></td>
+                                    <td><?php echo $linhas['n_serie'] ?></td>
+                                    <td><?php echo $linhas['patrimonio'] ?></td>
+                                    <td><?php echo $linhas['localizacao'] ?></td>
+                                    <td><?php echo $linhas['situacao'] ?></td>
+                                    <td><?php echo $linhas['cautela'] ?></td>
+                                    <td><?php echo $linhas['nivel'] ?></td>
+                                    <td><?php echo $linhas['tamanho'] ?></td>
                                     <td><?php $date01 = date("d/m/Y", strtotime($linhas['validade']));
                                         echo  $date01; ?></td>
-
-                                    <td><?= $linhas['nivel'] ?></td>
-                                    <td><?= $linhas['tamanho'] ?></td>
                                     <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
                                         echo  $date02; ?></td>
 
@@ -173,55 +172,55 @@ include_once "../../db/Conexao.php";
                                         <div class="modal-body">
                                             <form action="../../services/EditandoEquipamento.php" method="POST" onsubmit="return  verificar()">
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="col-form-label">TIPO:</label>
+                                                    <label for="recipient-name" class="col-form-label">TIPO</label>
                                                     <input type="text" class="form-control" id="material" name="material">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="col-form-label">Modelo:</label>
+                                                    <label for="recipient-name" class="col-form-label">MODELO</label>
                                                     <input type="text" class="form-control" id="modelo" name="modelo">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">Marca:</label>
+                                                    <label for="message-text" class="col-form-label">MARCA</label>
                                                     <input type="text" class="form-control" id="marca" name="marca">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">Nº Série:</label>
+                                                    <label for="message-text" class="col-form-label">N° SÉRIE</label>
                                                     <input type="text" class="form-control" id="n_serie" name="n_serie">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">PRATIMÔNIO:</label>
+                                                    <label for="message-text" class="col-form-label">PRATIMÔNIO</label>
                                                     <input type="text" class="form-control" id="patrimonio" name="patrimonio">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">LOCALIZAÇÃO:</label>
+                                                    <label for="message-text" class="col-form-label">LOCALIZAÇÃO</label>
                                                     <input type="text" class="form-control" id="localizacao" name="localizacao">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">SITUAÇÃO:</label>
+                                                    <label for="message-text" class="col-form-label">SITUAÇÃO</label>
                                                     <input type="text" class="form-control" id="situacao" name="situacao">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">CAUTELA:</label>
+                                                    <label for="message-text" class="col-form-label">CAUTELA</label>
                                                     <input type="text" class="form-control" id="cautela" name="cautela">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">VALIDADE:</label>
+                                                    <label for="message-text" class="col-form-label">VALIDADE</label>
                                                     <input type="date" class="form-control" id="validade" name="validade">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">FABRICAÇÃO:</label>
+                                                    <label for="message-text" class="col-form-label">FABRICAÇÃO</label>
                                                     <input type="date" class="form-control" id="fabricacao" name="fabricacao">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label"> NÍVEL:</label>
+                                                    <label for="message-text" class="col-form-label"> NÍVEL</label>
                                                     <input type="text" class="form-control" id="nivel" name="nivel">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label"> TAMANHO:</label>
+                                                    <label for="message-text" class="col-form-label"> TAMANHO</label>
                                                     <input type="text" class="form-control" id="tamanho" name="tamanho">
                                                 </div>
                                                 <div>
-                                                    <label for="message-text" class="col-form-label">OBERVAÇÕES:</label><br>
+                                                    <label for="message-text" class="col-form-label">OBERVAÇÕES</label><br>
                                                     <textarea id="obs" class="form-control" name="obs" cols="57" rows="2"> </textarea>
                                                 </div>
 
