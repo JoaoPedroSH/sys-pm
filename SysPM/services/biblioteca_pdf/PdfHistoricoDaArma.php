@@ -4,7 +4,7 @@ session_start();
 
 $imprimir = $_POST['imprimir'];
 $nSerie = $_POST['n_serie'];
-$tipoEdicao = $_POST['tipo'];
+$tipoInventario = $_POST['tipo_inventario'];
 
 if (isset($_POST['imprimir'])) {
 
@@ -12,7 +12,7 @@ if (isset($_POST['imprimir'])) {
 
   include_once('../../db/Conexao.php');
 
-  if ($tipoEdicao == 'gto') {
+  if ($tipoInventario == 'gto') {
     $queryGto = "SELECT foto, marca, modelo FROM armas_gto WHERE `n_serie`='$nSerie'";
 
     $resultGto = mysqli_query($conexao, $queryGto);
@@ -32,6 +32,7 @@ if (isset($_POST['imprimir'])) {
 
   $resultHist = mysqli_query($conexao, $queryHist);
 
+  date_default_timezone_set('America/Belem');
   $data = date('d/m/Y \- H:i:s');
 
   $uuid = md5(md5(time()));
@@ -40,7 +41,7 @@ if (isset($_POST['imprimir'])) {
 
     if ($hist['n_serie'] == $nSerie) {
 
-      $linhasTable .= "<hr/>" . $hist['localizacao'] . " | " . $hist['cautela'] . " | " . $hist['data_atual'] . "<hr/>";
+      $linhasTable .= "<hr/>" . $hist['localizacao'] . " - " . $hist['cautela'] . " - " . $hist['data_atual'] . "<hr/>";
 
       $historico = "
   <style>
@@ -127,7 +128,7 @@ if (isset($_POST['imprimir'])) {
 
       <tr>
         
-        <th>LOCALIZAÇÃO | CAUTELA | DATA DA INSPEÇÃO</th>
+        <th>LOCALIZAÇÃO - CAUTELA - DATA</th>
     
       </tr>
 

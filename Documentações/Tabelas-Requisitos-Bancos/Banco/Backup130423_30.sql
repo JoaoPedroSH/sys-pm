@@ -35,7 +35,7 @@ CREATE TABLE `armas_gto` (
   `data_inspecao` varchar(255) NOT NULL,
   `obs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `armas_ord` (
   `data_inspecao` varchar(255) NOT NULL,
   `obs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=365 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=369 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `cautela_do_epi` (
   `oficial` varchar(255) NOT NULL,
   `documento` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +127,7 @@ CREATE TABLE `equip_gto` (
   `fabricacao` text,
   `obs` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `equip_ord` (
   `fabricacao` text,
   `obs` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +189,7 @@ CREATE TABLE `historico_acesso` (
   `hora_entrada` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hora_saida` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +198,7 @@ CREATE TABLE `historico_acesso` (
 
 LOCK TABLES `historico_acesso` WRITE;
 /*!40000 ALTER TABLE `historico_acesso` DISABLE KEYS */;
+INSERT INTO `historico_acesso` VALUES (197,'teste','adm','13/04/2023','03:37:07','');
 /*!40000 ALTER TABLE `historico_acesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +217,7 @@ CREATE TABLE `historico_armas` (
   `data_atual` varchar(255) NOT NULL,
   `tipo_inventario` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +245,7 @@ CREATE TABLE `municao_gto` (
   `obs` varchar(255) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
   `tipo` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=armscii8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +273,7 @@ CREATE TABLE `municao_ord` (
   `obs` varchar(255) NOT NULL,
   `tipo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=armscii8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,8 +297,9 @@ CREATE TABLE `usuario` (
   `user` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `senha` varchar(100) NOT NULL,
   `tipo_user` varchar(12) NOT NULL,
+  `assinatura` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Sistema de Login do site ';
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Sistema de Login do site ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +308,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (2,'joao','123','adm');
+INSERT INTO `usuario` VALUES (36,'joao','123','adm','b654d747dcec331f3f1e3cc3529e44e2_assinatura.jpeg');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -319,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-30  4:06:12
+-- Dump completed on 2023-04-13  3:39:30

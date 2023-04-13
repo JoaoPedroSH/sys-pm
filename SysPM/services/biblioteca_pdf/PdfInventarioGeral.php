@@ -2,6 +2,8 @@
 
 session_start();
 
+date_default_timezone_set('America/Belem');
+
 $imprimir = $_POST['imprimir'];
 
 if (isset($_POST['imprimir'])) {

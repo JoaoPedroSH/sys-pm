@@ -226,6 +226,8 @@ include_once "../../db/Conexao.php";
                             ?>
                                 <input type="hidden" name="n_serie" value="<?= $linhas1['n_serie'] ?>">
 
+                                <input type="hidden" name="tipo_inventario" id="tipo_inventario" value="ord">
+
                                 <div id="historico_pdf">
                                   <div id="row_hist" style="display: flex;">
 
@@ -310,7 +312,7 @@ include_once "../../db/Conexao.php";
 
                           </div>
                           <div class="form-group">
-                            <img src="<?php echo $urlImagem; ?>" id="foto-edit-preview">
+                            <img src="<?php echo $urlImagem; ?>" id="foto-edit-preview" style="width: 170px;height: 150px;left: 50%;transform: translate(-50%);position: relative;">
                           </div>
                           <div class="form-group">
                             <button type="submit" class="btn btn-outline-primary">
