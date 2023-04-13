@@ -10,8 +10,8 @@ $patrimonio =  $_POST['patrimonio'];
 $localizacao =   $_POST['localizacao'];
 $situacao = $_POST['situacao'];
 $cautela =  $_POST['cautela'];
-$validade =  $_POST['val'];
-$fabricacao =  $_POST['fab'];
+$validade =  $_POST['validade'];
+$fabricacao =  $_POST['fabricacao'];
 $nivel =  $_POST['nivel'];
 $tamanho =  $_POST['tamanho'];
 $obs =  $_POST['obs'];
@@ -33,15 +33,15 @@ if ($tipo == "gto") {
   } else {
     //se der errado criando uma sessão
     $_SESSION['error_edit'] = true;
-  }
+  } 
 } else {
 
-  $query = "UPDATE `equip_ord` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
+  $query01 = "UPDATE `equip_ord` SET `tipo`='$material',`marca`='$marca',`modelo`='$modelo',`n_serie`='$serie',`patrimonio`='$patrimonio',`localizacao`='$localizacao',`situacao`='$situacao',`cautela`='$cautela',`validade`='$validade',`nivel`='$nivel',`tamanho`='$tamanho',`fabricacao`='$fabricacao',`obs`='$obs'
          WHERE `id`='$id'";
 
-  $result = mysqli_query($conexao, $query);
+  $result01 = mysqli_query($conexao, $query01);
 
-  if ($result == 1) {
+  if ($result01 == 1) {
     //criando sessão caso tenha success_edit com sucesso
     $_SESSION['success_edit'] = true;
     header('Location: ../pages/adm_arm/consulta_equipamento_ordinario.php');

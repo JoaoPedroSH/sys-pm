@@ -135,7 +135,7 @@ include_once "../../db/Conexao.php";
                                     <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-tipo="<?= $linhas['tipo'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-marca="<?= $linhas['marca'] ?>" data-n_serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-validade="<?= $linhas['validade'] ?>" data-fabricacao="<?= $linhas['fabricacao'] ?>" data-nivel="<?= $linhas['nivel'] ?> " data-tamanho="<?= $linhas['tamanho'] ?> " data-obs="<?= $linhas['obs'] ?>">Editar</button>
+                                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-tipo="<?= $linhas['tipo'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-marca="<?= $linhas['marca'] ?>" data-n_serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-validade="<?= $linhas['validade'] ?>" data-fabricacao="<?= $linhas['fabricacao'] ?>" data-nivel="<?= $linhas['nivel'] ?> " data-tamanho="<?= $linhas['tamanho'] ?> " data-obs="<?= $linhas['obs'] ?>">Editar</button>
                                     </td>
 
 
@@ -194,11 +194,11 @@ include_once "../../db/Conexao.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">VALIDADE</label>
-                                                    <input type="date" class="form-control" id="val" name="val">
+                                                    <input type="date" class="form-control" id="validade" name="validade">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">FABRICAÇÃO</label>
-                                                    <input type="date" class="form-control" id="fab" name="fab">
+                                                    <input type="date" class="form-control" id="fabricacao" name="fabricacao">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label"> NÍVEL</label>
@@ -345,8 +345,8 @@ if (isset($_SESSION['error_edit'])) {
             $('#localizacao').val(localizacao);
             $('#situacao').val(situacao);
             $('#cautela').val(cautela);
-            $('#val').val(validade);
-            $('#fab').val(fabricacao);
+            $('#validade').val(validade);
+            $('#fabricacao').val(fabricacao);
             $('#nivel').val(nivel);
             $('#tamanho').val(tamanho);
             $('#obs').val(observacao);
@@ -366,9 +366,8 @@ if (isset($_SESSION['error_edit'])) {
                     icon: 'warning',
                     title: user_id,
                     showConfirmButton: true,
-                    confirmButtonColor: '#55B3F8',
+                    confirmButtonColor: '#f8bb86',
                 })
-
             } else {
                 Swal.fire({
                     position: 'top-end',

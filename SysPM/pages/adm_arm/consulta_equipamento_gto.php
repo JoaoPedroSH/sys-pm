@@ -144,10 +144,10 @@ include_once "../../db/Conexao.php";
                                     <td><?php $date02 = date("d/m/Y", strtotime($linhas['fabricacao']));
                                         echo  $date02; ?></td>
 
-                                    <td><Button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</Button>
+                                    <td><button class="btn btn-outline-danger obs" id="<?= $linhas['obs'] ?>">OBS</button>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-tipo="<?= $linhas['tipo'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-marca="<?= $linhas['marca'] ?>" data-n_serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-validade="<?= $linhas['validade'] ?>" data-fabricacao="<?= $linhas['fabricacao'] ?>" data-nivel="<?= $linhas['nivel'] ?> " data-tamanho="<?= $linhas['tamanho'] ?> " data-obs="<?= $linhas['obs'] ?>">Editar</button>
+                                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEdit" data-id="<?= $linhas['id'] ?>" data-tipo="<?= $linhas['tipo'] ?>" data-modelo="<?= $linhas['modelo'] ?>" data-marca="<?= $linhas['marca'] ?>" data-n_serie="<?= $linhas['n_serie'] ?>" data-patrimonio="<?= $linhas['patrimonio'] ?>" data-localizacao="<?= $linhas['localizacao'] ?>" data-situacao="<?= $linhas['situacao'] ?>" data-cautela="<?= $linhas['cautela'] ?>" data-validade="<?= $linhas['validade'] ?>" data-fabricacao="<?= $linhas['fabricacao'] ?>" data-nivel="<?= $linhas['nivel'] ?> " data-tamanho="<?= $linhas['tamanho'] ?> " data-obs="<?= $linhas['obs'] ?>">Editar</button>
                                     </td>
 
                                 </tr>
@@ -376,7 +376,7 @@ if (isset($_SESSION['error_edit'])) {
                     icon: 'warning',
                     title: user_id,
                     showConfirmButton: true,
-                    confirmButtonColor: '#55B3F8',
+                    confirmButtonColor: '#f8bb86',
                 })
 
             } else {
