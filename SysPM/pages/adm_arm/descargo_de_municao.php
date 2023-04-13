@@ -75,7 +75,7 @@ if (!isset($_SESSION)) {
                             <form action="../../services/biblioteca_pdf/PdfDescargoDeMunicao.php" target="_blank" method="POST">
                                 <div class="row">
                                     <div class="form-group col-md-2">
-                                        <label>MUNIÇÂO</label>
+                                        <label>MUNIÇÃO</label>
                                         <input type="text" class="form-control" name="tipo" placeholder="" required>
                                     </div>
                                     <div class="form-group col-md-2">
