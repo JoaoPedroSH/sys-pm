@@ -610,7 +610,7 @@ if (isset($_SESSION['error_edit'])) {
           icon: 'warning',
           title: user_id,
           showConfirmButton: true,
-          confirmButtonColor: '#F8CA2F',
+          confirmButtonColor: '#55B3F8',
         })
       } else {
         Swal.fire({

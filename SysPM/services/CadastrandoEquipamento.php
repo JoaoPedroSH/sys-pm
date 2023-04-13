@@ -22,10 +22,10 @@ if (isset($_POST['n_serie'])) {
 
     if ($tipo == 'gto') {
 
-        $query = "INSERT INTO `equip_gto`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `validade`, `nivel`, `tamanho`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$nivel','$tamanho','$validade','$fabricacao','$obs')";
+        $query = "INSERT INTO `equip_gto`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `validade`, `nivel`, `tamanho`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$validade','$nivel','$tamanho','$fabricacao','$obs')";
     } else {
 
-        $query = "INSERT INTO `equip_ord`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `nivel`, `tamanho`, `validade`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$nivel','$tamanho','$validade','$fabricacao','$obs')";
+        $query = "INSERT INTO `equip_ord`(`id`, `tipo`, `marca`, `modelo`, `n_serie`, `patrimonio`, `localizacao`, `situacao`, `cautela`, `validade`,`nivel`, `tamanho`, `fabricacao`, `obs`) VALUES (NULL,'$material','$marca','$modelo','$n_serie','$patrimonio','$localizacao','$situacao','$cautela','$validade','$nivel','$tamanho','$fabricacao','$obs')";
     }
 
     $result = mysqli_query($conexao, $query);
