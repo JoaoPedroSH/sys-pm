@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 15-Jun-2022 às 03:55
+-- Tempo de geração: 13-Abr-2023 às 14:29
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -56,7 +56,7 @@ ALTER TABLE `municao_ord`
 -- AUTO_INCREMENT de tabela `municao_ord`
 --
 ALTER TABLE `municao_ord`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

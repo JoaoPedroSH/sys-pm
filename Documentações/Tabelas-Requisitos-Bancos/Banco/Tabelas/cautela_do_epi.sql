@@ -25,16 +25,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historico_armas`
+-- Estrutura da tabela `cautela_do_epi`
 --
 
-CREATE TABLE `historico_armas` (
+CREATE TABLE `cautela_do_epi` (
   `id` int(11) NOT NULL,
-  `n_serie` varchar(255) NOT NULL,
-  `cautela` varchar(255) NOT NULL,
-  `localizacao` varchar(255) NOT NULL,
-  `data_atual` varchar(255) NOT NULL,
-  `tipo_inventario` varchar(255) NOT NULL
+  `data_geracao` varchar(255) NOT NULL,
+  `oficial` varchar(255) NOT NULL,
+  `documento` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -42,9 +40,9 @@ CREATE TABLE `historico_armas` (
 --
 
 --
--- Índices para tabela `historico_armas`
+-- Índices para tabela `cautela_do_epi`
 --
-ALTER TABLE `historico_armas`
+ALTER TABLE `cautela_do_epi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -52,10 +50,10 @@ ALTER TABLE `historico_armas`
 --
 
 --
--- AUTO_INCREMENT de tabela `historico_armas`
+-- AUTO_INCREMENT de tabela `cautela_do_epi`
 --
-ALTER TABLE `historico_armas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+ALTER TABLE `cautela_do_epi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

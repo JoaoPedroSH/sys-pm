@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 15-Jun-2022 às 03:55
+-- Tempo de geração: 13-Abr-2023 às 14:29
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -55,7 +55,7 @@ ALTER TABLE `historico_acesso`
 -- AUTO_INCREMENT de tabela `historico_acesso`
 --
 ALTER TABLE `historico_acesso`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
